@@ -1,12 +1,16 @@
-import "./App.css";
+import React, { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
+import FormPage from "./pages/FormPage";
 
-function App() {
+const App = function () {
   return (
-    <div className="">
-      <LandingPage />
+    <div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/formpage" element={<FormPage />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
