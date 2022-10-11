@@ -1,6 +1,4 @@
-// import React, { useState, useEffect } from "react";
 
-import { Calendar } from "primereact/calendar";
 
 import InputWrapper from "./InputWrapper";
 
@@ -9,11 +7,12 @@ import "./Styles.css";
 export default function CalendarInput(props) {
   return (
     <InputWrapper {...props}>
-      <Calendar
+      <input
         optionLabel="FECHA DE EMISIÓN"
         // value={year}
         // options={years}
         dropdownIcon={""}
+        type='date'
         // onChange={(e) => {
         //   setYear(e.value);
         // }}

@@ -1,6 +1,4 @@
 import React from "react";
-import { InputText } from "primereact/inputtext";
-
 import InputWrapper from "./InputWrapper";
 
 import "./Styles.css";
@@ -11,14 +9,14 @@ export default function TextInput(props) {
 
   return (
     <InputWrapper {...props}>
-      <InputText
+      <input
         id={fieldName}
         name={fieldName}
         value={formik.values[fieldName]}
         onChange={formik.handleChange(fieldName)}
         onBlur={formik.handleBlur(fieldName)}
         placeholder={placeholder}
-        className={`w-full font-Montserrat border-rose-600 ${
+        className={`${
           formik.errors[fieldName] && formik.touched[fieldName]
             ? "p-invalid"
             : ""
@@ -26,6 +24,7 @@ export default function TextInput(props) {
         required={isRequired}
         disabled={disabled}
         keyfilter={isAlphabetic ? /^[A-Za-z\s]*$/ : null}
+        type="text"
       />
     </InputWrapper>
   );

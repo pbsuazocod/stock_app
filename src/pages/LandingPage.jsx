@@ -12,10 +12,10 @@ function LandingPage() {
   return (
     <PageWrapper>
       <FormWrapper formTitle={formTitle}>
-        <div className=" flex h-[80%] items-center mr-[2.5%] ml-[2.5%] justify-between flex-wrap content-center">
+        <div className=" flex h-[80%] items-center mr-[10%] ml-[10%] mt-[10%] mb-[10%] justify-between flex-wrap content-center">
           <Link
             to="/formpage"
-            className="pt-[2%] pl-[2%] items-center bg-white w-[45%] min-w-[200px] h-[40%] rounded-lg"
+            className="pt-[2%] pl-[2%]  items-center bg-white w-[45%] min-w-[200px] h-[40%] rounded-lg"
           >
             <img src={logo_bursatiles} alt="logo corredora bursatil" />
             <div className="text-sm text-[#1A3B69] font-bold">
@@ -25,7 +25,7 @@ function LandingPage() {
           </Link>
           <Link
             to="/formpage"
-            className="pt-[2%] pl-[2%] items-center bg-white w-[45%] h-[40%] mt-[4%] min-w-[200px] rounded-lg"
+            className="pt-[2%] pl-[2%] items-center bg-white w-[45%] h-[40%] min-w-[200px] rounded-lg"
           >
             <img src={logo_hencorp} alt="logo corredora hencorp" />
             <div className="text-sm text-[#1A3B69] font-bold">

@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react'
 
-import InputLoader from './InputLoader';
+// import InputLoader from './InputLoader';
 
 // import './Styles.css';
 
@@ -55,11 +55,11 @@ export default function InputWrapper(props) {
                     <button className='helptext-toggle' type='button' onClick={() => setShowToolTip(!showToolTip)}>?</button>}
                 </span>
 
-                {(isLoading || isLoadingError) &&
+                {/* {(isLoading || isLoadingError) &&
                 <InputLoader
                     error={isLoadingError}
                     action={isLoadingAction}
-                />}
+                />} */}
             </label>
 
             <div className='input-field-wrapper'>

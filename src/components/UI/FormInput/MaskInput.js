@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputMask } from "primereact/inputmask";
+
 
 import InputWrapper from './InputWrapper';
 
@@ -18,7 +18,7 @@ export default function MaskInput(props) {
     return (
         <InputWrapper {...props}>
 
-            <InputMask
+            <input
                 id={fieldName}
                 name={fieldName}
                 value={formik.values[fieldName]}
@@ -26,11 +26,12 @@ export default function MaskInput(props) {
                 onBlur={formik.handleBlur(fieldName)}
                 placeholder={placeholder}
                 mask={mask}
-                className={`w-full ${formik.errors[fieldName] && formik.touched[fieldName] ? 'p-invalid' : ''}`}
+                className={`${formik.errors[fieldName] && formik.touched[fieldName] ? 'p-invalid' : ''}`}
                 required={isRequired}
                 disabled={disabled}
                 autoClear={false}
                 unmask={true}
+                type='tel'
             />
 
         </InputWrapper>

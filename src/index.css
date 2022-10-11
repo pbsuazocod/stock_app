@@ -1,4 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  input[type="url"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="week"],
+  input[type="time"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="checkbox"],
+  select,
+  select[multiple],
+  textarea,
+  select {
+    @apply block
+    w-full
+    h-1/2
+    font-Montserrat
+    rounded-md
+    border-gray-300
+    shadow-sm
+    focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+}

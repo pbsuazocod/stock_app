@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputNumber } from "primereact/inputnumber";
+// import { InputNumber } from "primereact/inputnumber";
 
 import InputWrapper from './InputWrapper';
 
@@ -18,16 +18,17 @@ export default function NumberInput(props) {
         <InputWrapper {...props}>
         {console.log(formik.values[fieldName])}
 
-            <InputNumber 
+            <input
                 id={fieldName}
                 name={fieldName}
                 value={formik.values[fieldName]}
                 onChange={(e) => formik.setFieldValue(fieldName, e.value)}
                 onBlur={formik.handleBlur(fieldName)}
                 placeholder={placeholder}
-                className={`w-full ${formik.errors[fieldName] && formik.touched[fieldName] ? 'p-invalid' : ''}`}
+                className={` ${formik.errors[fieldName] && formik.touched[fieldName] ? 'p-invalid' : ''}`}
                 required={isRequired}
                 disabled={disabled}
+                type='number'
             />
 
         </InputWrapper>
