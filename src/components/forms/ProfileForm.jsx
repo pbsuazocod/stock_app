@@ -10,6 +10,7 @@ import TextInput from "../UI/FormInput/TextInput";
 import NumberInput from "../UI/FormInput/NumberInput";
 import CalendarInput from "../UI/FormInput/CalendarInput";
 import MaskInput from "../UI/FormInput/MaskInput";
+import FormWrapper from "../UI/FormWrapper/FormWrapper";
 
 // Validation
 
@@ -39,6 +40,7 @@ function ProfileForm() {
   };
 
   return (
+    <FormWrapper currentStep={formStep}>
     <form className="">
       {JSON.stringify(formStep)}
       {/* formStep 1 */}
@@ -218,6 +220,7 @@ function ProfileForm() {
         </button>
       </div>
     </form>
+    </FormWrapper>
   );
 }
 
