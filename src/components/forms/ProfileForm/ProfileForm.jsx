@@ -14,14 +14,15 @@ import MaskInput from "../../UI/FormInput/MaskInput";
 import FormWrapper from "../../UI/FormWrapper/FormWrapper";
 
 // Validation
-
 import { initialValues, validationSchema } from "../ValidationSchema";
 
+
 function ProfileForm() {
+
+// Manage States
   const [formStep, setFormStep] = useState(1);
-
+const [counter, setCounter] = useState(0)
   // Setup form with formik
-
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema[formStep],
@@ -30,6 +31,7 @@ function ProfileForm() {
     },
   });
 
+// Handlers
   const clickHandler = (e) => {
     e.preventDefault();
     setFormStep(formStep + 1);
@@ -39,6 +41,12 @@ function ProfileForm() {
     e.preventDefault();
     setFormStep(formStep - 1);
   };
+
+const IncreasePersonInput = () => {
+  setCounter(counter + 1)
+}
+
+
 
   return (
     <FormWrapper currentStep={formStep}>
@@ -219,7 +227,24 @@ function ProfileForm() {
 
         {/* -----------------------------formStep 3 */}
 
+
+        {/* <div className="App">
+      <button onClick={handleClick}>Hello</button>
+
+      {Array.from(Array(counter)).map((c, index) => {
+        return ;
+      })}
+    </div> */}
+
+
+
+
+
         {formStep === 3 && (
+
+
+
+
           <div className="p-[2%]">
             <p>
               DESEA AUTORIZAR A OTRA PERSONA QUE GIRE INSTRUCCIONES EN SU NOMBRE
@@ -318,7 +343,7 @@ function ProfileForm() {
             
             {formStep === 3 && (
               <div className="flex items-center gap-2">
-              <button className="text-green-600">
+              <button onClick={IncreasePersonInput} className="text-green-600">
                 <FaPlusCircle />
               </button>
               AÑADIR OTRA PERSONA
