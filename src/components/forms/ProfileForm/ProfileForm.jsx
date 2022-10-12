@@ -44,7 +44,9 @@ function ProfileForm() {
     <FormWrapper currentStep={formStep}>
       <form className="">
         {/* {JSON.stringify(formStep)} */}
-        {/* formStep 1 */}
+
+
+        {/* ----------------------------formStep 1 */}
         {formStep == 1 && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6">
@@ -149,7 +151,7 @@ function ProfileForm() {
           </>
         )}
 
-        {/* formStep 2 */}
+        {/* ----------------------------formStep 2 */}
 
         {formStep === 2 && (
           <>
@@ -215,7 +217,7 @@ function ProfileForm() {
           </>
         )}
 
-        {/* formStep 3 */}
+        {/* -----------------------------formStep 3 */}
 
         {formStep === 3 && (
           <div className="p-[2%]">
