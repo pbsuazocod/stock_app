@@ -11,14 +11,20 @@ export default function FormWrapper({children, formTitle, currentStep}) {
     //   return "pedro"
     // }else return "error"
 
-switch (currentStep, formTitle) {
-  case formTitle:
-   return formTitle
+switch (currentStep) {
+  case 0:
+   return 'SELECCIONE LA CASA DE CORREDORES DE BOLSA CON LA QUE DESEA VINCULARSE'
      break;
-    case 0:
-      return 'Pedro'
+    case 1:
+      return 'DATOS GENERALES'
       break;  
-
+      case 2:
+        return 'DATOS LABORALES'
+        break;  
+      case 3:
+        return 'FIRMAS AUTORIZADAS'
+        break;  
+  
   default:
     return 'default'
     break;
@@ -29,10 +35,8 @@ switch (currentStep, formTitle) {
     return (
         <div className="h-full w-11/12 lg:w-9/12 bg-[#F7F7F7] rounded-3xl">
             <div
-                className={`bg-[#1A3B69] text-white text-[70%] h-10 md:text-[100%] rounded-t-3xl flex-grow  flex pr-[2%] pl-[2%]  items-center font-Montserrat ${currentStep === null ? "" : "justify-center"}`} >
+                className={`bg-[#1A3B69] text-white text-[70%] h-10 md:text-[100%] rounded-t-3xl flex-grow  flex pr-[2%] pl-[2%]  items-center font-Montserrat ${currentStep === 0 ? "justify-center" : ""}`} >
                 {< Titles />}
-                {/* {JSON.stringify(title)} */}
-                {/* {JSON.stringify(currentStep)} */}
             </div>
             {children}
         </div>

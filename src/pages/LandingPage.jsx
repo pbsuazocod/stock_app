@@ -6,12 +6,9 @@ import { Link } from "react-router-dom";
 import FormWrapper from "../components/UI/FormWrapper/FormWrapper";
 
 function LandingPage() {
-  const formTitle =
-    "SELECCIONE LA CASA DE CORREDORES DE BOLSA CON LA QUE DESEA VINCULARSE";
-
   return (
     <PageWrapper>
-      <FormWrapper formTitle={formTitle}>
+      <FormWrapper currentStep={0}>
         <div className=" flex h-[80%] items-center mr-[10%] ml-[10%] mt-[10%] mb-[10%] justify-between flex-wrap content-center">
           <Link
             to="/formpage"
