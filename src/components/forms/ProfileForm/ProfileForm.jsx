@@ -16,12 +16,10 @@ import FormWrapper from "../../UI/FormWrapper/FormWrapper";
 // Validation
 import { initialValues, validationSchema } from "../ValidationSchema";
 
-
 function ProfileForm() {
-
-// Manage States
+  // Manage States
   const [formStep, setFormStep] = useState(1);
-const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(0);
   // Setup form with formik
   const formik = useFormik({
     initialValues: initialValues,
@@ -31,7 +29,7 @@ const [counter, setCounter] = useState(0)
     },
   });
 
-// Handlers
+  // Handlers
   const clickHandler = (e) => {
     e.preventDefault();
     setFormStep(formStep + 1);
@@ -42,17 +40,14 @@ const [counter, setCounter] = useState(0)
     setFormStep(formStep - 1);
   };
 
-const IncreasePersonInput = () => {
-  setCounter(counter + 1)
-}
-
-
+  const IncreasePersonInput = () => {
+    setCounter(counter + 1);
+  };
 
   return (
     <FormWrapper currentStep={formStep}>
       <form className="">
-        {/* {JSON.stringify(formStep)} */}
-
+        {JSON.stringify(formStep)}
 
         {/* ----------------------------formStep 1 */}
         {formStep == 1 && (
@@ -227,24 +222,7 @@ const IncreasePersonInput = () => {
 
         {/* -----------------------------formStep 3 */}
 
-
-        {/* <div className="App">
-      <button onClick={handleClick}>Hello</button>
-
-      {Array.from(Array(counter)).map((c, index) => {
-        return ;
-      })}
-    </div> */}
-
-
-
-
-
         {formStep === 3 && (
-
-
-
-
           <div className="p-[2%]">
             <p>
               DESEA AUTORIZAR A OTRA PERSONA QUE GIRE INSTRUCCIONES EN SU NOMBRE
@@ -331,26 +309,149 @@ const IncreasePersonInput = () => {
           </div>
         )}
 
+        {/* -----------------------------formStep 4 */}
+
+        {formStep === 4 && (
+          <div className="space-y-4 ml-[2%] mr-[2%]">
+            <div className="flex items-center">
+              <input formik={formik} type="radio" />
+              <label className="pl-2">
+                POR COMPRAS DE VALORES O VENCIMIENTO DE OPERACIONES A CARGO DEL
+                CLIENTE
+              </label>
+            </div>
+            <div className="pl-[2%]">
+              <div className="flex items-center">
+                <input formik={formik} type="radio" />
+                <label className="pl-2">CHEQUE A NOMBRE DE LA CASA</label>
+              </div>
+              <div className="flex items-center">
+                <input formik={formik} type="radio" />
+                <label className="pl-2">ABONO A CUENTA DE LA CASA</label>
+              </div>
+            </div>
+            <div className="flex items-center">
+              <input formik={formik} type="radio" />
+              <label className="pl-2">
+                POR VENTA DE VALORES O VENCIMIENTO DE OPERACIONES A FAVOR DEL
+                CLIENTE
+              </label>
+            </div>
+            <div className="pl-[2%]">
+              <div className="flex items-center">
+                <input formik={formik} type="radio" />
+                <label className="pl-2">CHEQUE A NOMBRE DEL CLIENTE</label>
+              </div>
+              <div className="flex items-center">
+                <input formik={formik} type="radio" />
+                <label className="pl-2">ABONO A CUENTA DEL CLIENTE</label>
+              </div>
+            </div>
+            <div className=" mb-[2%] border-t-2 border-[#C1C1C1]" />
+            <div>
+              <h1 className="text-xl text-[#1A3B69]"> CUENTA BANCARIA</h1>
+              <div className="flex gap-6">
+                <TextInput
+                  formik={formik}
+                  fieldName={"woner_of_the_account"}
+                  label={"NOMBRE DEL TITULAR DE LA CUENTA"}
+                  isAlphabetic
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"bank_name"}
+                  label={"BANCO"}
+                  isAlphabetic
+                />
+              </div>
+              <div className="flex gap-6">
+                <TextInput
+                  formik={formik}
+                  fieldName={"type_of_account"}
+                  label={"TIPO DE CUENTA"}
+                  isAlphabetic
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"account_number"}
+                  label={"NÚMERO DE CUENTA"}
+                  isAlphabetic
+                />
+              </div>
+              <div className=" mt-[2%] mb-[2%] border-t-2 border-[#C1C1C1]" />
+              <h1 className="text-xl text-[#1A3B69]">
+                MEDIO PARA LA RECEPCION DE INFORMACION
+              </h1>
+              <input formik={formik} type="radio" />
+              <label className="pl-2">
+                ACEPTO RECIBIR Y ENVIAR LA INFORMACIÓN RELACIONADA A LA CUENTA
+                DE VALORES POR MEDIOS ELECTRONICOS
+              </label>
+              <div className="mt-[2%] mb-[2%] border-t-2 border-[#C1C1C1]" />
+              PEP (PERSONA EXPUESTA POLITICAMENTE)
+              <span className="text-[#40B879]">*</span>
+              <p className="font-normal text-sm">
+                Personas naturales que desempeñan o han desempeñado funciones
+                públicas en nuestro país o en el extranjero (Eje. Presidente,
+                Ministros, Diputados, Alcaldes, Fiscal, Magistrado, Embajadores,
+                etc)
+              </p>
+              <div className="flex gap-6 pt-2">
+                <div className="flex items-center">
+                  <input formik={formik} type="radio" />
+                  <label className="pl-2">SÍ</label>
+                </div>
+                <div className="flex items-center">
+                  <input formik={formik} type="radio" />
+                  <label className="pl-2">NO</label>
+                </div>
+              </div>
+              ES USTED CIUDADANO O RESIDENTE (GREEN CARD) ESTADOUNIDENSE
+              <span className="text-[#40B879]">*</span>
+              <div className="flex gap-6 pt-2">
+                <div className="flex items-center">
+                  <input formik={formik} type="radio" />
+                  <label className="pl-2">SÍ</label>
+                </div>
+                <div className="flex items-center">
+                  <input formik={formik} type="radio" />
+                  <label className="pl-2">NO</label>
+                </div>
+              </div>
+              <div className="flex gap-1">
+                <span className="text-[#40B879]">*</span>
+                <p className="font-normal text-sm">
+                  En caso su respuesta sea SI la CCB le solicitara documentación
+                  adicional en cumplimiento a la Ley FATCA y Ley contral el
+                  Lavado de Dinero y Financiamiento al terrorismo
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* buttons  */}
         <div
-          className={`mr-[4%] ml-[4%] divide-y-8 h-20 border-t-2 border-[#C1C1C1] flex ${
-            formStep <= 0 ? "justify-end" : "justify-between"
-          } `}
+          className={`m-[2%] border-t-2 border-[#C1C1C1] flex`}
         >
           <div className="w-full pt-[2%]">
-            
-            
-            
             {formStep === 3 && (
               <div className="flex items-center gap-2">
-              <button onClick={IncreasePersonInput} className="text-green-600">
-                <FaPlusCircle />
-              </button>
-              AÑADIR OTRA PERSONA
-            </div>
+                <button
+                  onClick={IncreasePersonInput}
+                  className="text-green-600"
+                >
+                  <FaPlusCircle />
+                </button>
+                AÑADIR OTRA PERSONA
+              </div>
             )}
 
-            <div className="flex justify-between">
+            <div
+              className={`flex ${
+                formStep === 1 ? "justify-end" : "justify-between"
+              }`}
+            >
               {formStep > 1 && (
                 <>
                   <button
