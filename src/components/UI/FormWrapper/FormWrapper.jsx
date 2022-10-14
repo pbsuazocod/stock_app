@@ -35,9 +35,9 @@ export default function FormWrapper({ children, formTitle, currentStep }) {
     }
   };
 
-  // bg-[#F7F7F7]
+  
   return (
-    <div className=" w-11/12 lg:max-w-[50%] h-full bg-red-400 rounded-3xl">
+    <div className=" w-11/12 lg:max-w-[50%] h-full bg-[#F7F7F7] rounded-3xl">
       <div
         className={`bg-[#1A3B69] text-white text-[70%] h-12 md:text-[100%] rounded-t-3xl flex-grow  flex pr-[2%] pl-[4%]  items-center font-Montserrat ${
           currentStep === 0 ? "justify-center" : ""
