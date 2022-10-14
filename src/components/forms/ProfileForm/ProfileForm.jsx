@@ -474,7 +474,7 @@ function ProfileForm() {
                   <>
                     <button
                       onClick={DecreceStepperHandler}
-                      className="bg-[#1A3B69] rounded-lg text-white lg:w-[25%] w-[40%]  h-12 mt-4 gap-2 flex justify-center items-center"
+                      className="bg-[#1A3B69] rounded-lg text-white h-12 lg:w-[25%] w-[40%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center"
                     >
                       <div className="lg:text-3xl text-xl ">
                         <FaArrowLeft />
@@ -486,8 +486,8 @@ function ProfileForm() {
 
                 <button
                   onClick={clickHandler}
-                  className={` rounded-lg text-white h-12 lg:w-[25%] w-[40%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${
-                    formStep === 4 ? "w-60 bg-[#40B879]" : "bg-[#1A3B69] w-52"
+                  className={`rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${
+                    formStep === 4 ? "w-[42%] pr-2 bg-[#40B879]" : "bg-[#1A3B69] w-[40%]"
                   }`}
                 >
                   {formStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"}
