@@ -21,7 +21,7 @@ function LandingPage() {
             </div>
           </Link>
           <Link
-            to="/formpage"
+            to="/riskpage"
             className="p-[2%] items-center bg-white w-[45%] h-[40%] min-w-[200px] rounded-lg"
           >
             <img src={logo_hencorp} alt="logo corredora hencorp" />

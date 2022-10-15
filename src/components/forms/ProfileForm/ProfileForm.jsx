@@ -17,10 +17,13 @@ import { FaPlusCircle } from "react-icons/fa";
 // Validation
 import { initialValues, validationSchema } from "../ValidationSchema";
 
+const currentPage = "profileForm"
+
 function ProfileForm() {
   // Manage States
   const [formStep, setFormStep] = useState(1);
   const [counter, setCounter] = useState(0);
+  
 
   // Setup form with formik
   const formik = useFormik({
@@ -30,6 +33,9 @@ function ProfileForm() {
       alert(values);
     },
   });
+
+
+
 
   // Handlers
   const clickHandler = (e) => {
@@ -47,9 +53,10 @@ function ProfileForm() {
   };
 
   return (
-    <FormWrapper currentStep={formStep}>
+    <FormWrapper currentStep={formStep} currentPage={currentPage}>
       <form className="">
         {/* {JSON.stringify(formStep)} */}
+      
 
         {/* ----------------------------formStep 1 */}
         {formStep == 1 && (
