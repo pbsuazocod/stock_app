@@ -365,7 +365,6 @@ function ProfileForm() {
             <div className=" mb-[2%] border-t-2 border-[#C1C1C1]" />
             <div>
               <h1 className="text-xl text-[#1A3B69] mb-[2%]">
-                {" "}
                 CUENTA BANCARIA
               </h1>
               <div className="grid-none md:grid grid-rows-2 grid-cols-2 gap-4">
