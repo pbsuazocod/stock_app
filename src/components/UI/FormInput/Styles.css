@@ -2,3 +2,6 @@ html * {
   font-family: "Montserrat";
 }
 
+.p-error {
+  color: red;
+}

@@ -3,6 +3,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import * as Yup from "yup";
 
 // components
 import TextInput from "../../UI/FormInput/TextInput";
@@ -17,29 +18,28 @@ import { FaPlusCircle } from "react-icons/fa";
 // Validation
 import { initialValues, validationSchema } from "../ValidationSchema";
 
-const currentPage = "profileForm"
+const currentPage = "profileForm";
 
 function ProfileForm() {
   // Manage States
   const [formStep, setFormStep] = useState(1);
   const [counter, setCounter] = useState(0);
-  
 
   // Setup form with formik
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: validationSchema[formStep],
+    validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(values);
+      alert("formik values", formik.values);
+      console.log("Form Values", formik.values);
     },
   });
 
-
-
-
+  console.log("formik errors", formik.errors);
   // Handlers
   const clickHandler = (e) => {
     e.preventDefault();
+    console.log("i got clicked");
     setFormStep(formStep + 1);
   };
 
@@ -54,11 +54,9 @@ function ProfileForm() {
 
   return (
     <FormWrapper currentStep={formStep} currentPage={currentPage}>
-      <form className="">
-        {/* {JSON.stringify(formStep)} */}
-      
+      <form className="" onSubmit={formik.handleSubmit}>
+        {/* {JSON.stringify(formik.values)} */}
 
-        {/* ----------------------------formStep 1 */}
         {formStep == 1 && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6">
@@ -68,12 +66,14 @@ function ProfileForm() {
                   fieldName={"name"}
                   label={"NOMBRE"}
                   isAlphabetic
+                  type={"text"}
                 />
                 <div className="w-1/2">
-                  <NumberInput
+                  <TextInput
                     formik={formik}
                     fieldName={"age"}
                     label={"EDAD"}
+                    type={"number"}
                   />
                 </div>
                 <TextInput
@@ -81,29 +81,34 @@ function ProfileForm() {
                   fieldName={"type_of_document"}
                   label={"TIPO DE DOCUMENTO"}
                   isAlphabetic
+                  type={"text"}
                 />
-                <CalendarInput
+                <TextInput
                   formik={formik}
                   fieldName={"issue_date"}
                   label={"FECHA DE EMISIÓN"}
+                  type={'date'}
                 />
                 <TextInput
                   formik={formik}
                   fieldName={"marital_status"}
                   label={"ESTADO CIVIL"}
                   isAlphabetic
+                  type={"text"}
                 />
                 <TextInput
                   formik={formik}
                   fieldName={"address"}
                   label={"DIRECCIÓN"}
                   isAlphabetic
+                  type={"text"}
                 />
-                <MaskInput
+                <TextInput
                   formik={formik}
                   fieldName={"home_number"}
                   label={"TELÉFONO CASA"}
                   mask={"(999) 999-9999"}
+                  type={'tel'}
                 />
                 <TextInput
                   formik={formik}
@@ -112,12 +117,14 @@ function ProfileForm() {
                   toolTip={
                     "Solicitamos su direción de correo para comunicarnos con usted, por su seguridad nunca le solicitaremos que nos proporcione ninguna información por esta vía."
                   }
+                  type={'email'}
                 />
                 <TextInput
                   formik={formik}
-                  fieldName={"home"}
+                  fieldName={"recidency"}
                   label={"RESIDENCIA"}
                   isAlphabetic
+                  type={"text"}
                 />
               </div>
               <div className="space-y-2 ">
@@ -127,13 +134,15 @@ function ProfileForm() {
                   fieldName={"nacionality"}
                   label={"NACIONALIDAD"}
                   isAlphabetic
+                  type={"text"}
                 />
-                <CalendarInput
+                <TextInput
                   formik={formik}
                   fieldName={"day_of_birth"}
                   label={"FECHA DE NACIMIENTO"}
+                  type={'date'}
                 />
-                <MaskInput
+                <TextInput
                   formik={formik}
                   fieldName={"identification_card"}
                   label={"NÚMERO DE DOCUMENTO"}
@@ -141,37 +150,41 @@ function ProfileForm() {
                   toolTip={
                     "Solicitamos su número de documento para poder registrar y validar la información de identidad que es suministrada en este formulario."
                   }
+                  type={'tel'}
                 />
-                <CalendarInput
+                <TextInput
                   formik={formik}
                   fieldName={"expiration_date"}
                   label={"FECHA DE VENCIMIENTO"}
+                  type={'date'}
+
                 />
                 <TextInput
                   formik={formik}
                   fieldName={"profession"}
                   label={"PROFESIÓN"}
                   isAlphabetic
+                  type={"text"}
                 />
-                <NumberInput
+                <TextInput
                   formik={formik}
                   fieldName={"nit_number"}
                   label={"NÚMERO DE NIT"}
+                  type={'tel'}
                 />
-                <MaskInput
+                <TextInput
                   formik={formik}
                   fieldName={"cellphone_number"}
                   label={"TELÉFONO CELULAR"}
                   mask={"(999) 999-9999"}
+                  type={'tel'}
                 />
               </div>
             </div>
           </>
         )}
 
-        {/* ----------------------------formStep 2 */}
-
-        {formStep === 2 && (
+        {/* {formStep === 2 && (
           <>
             <div className="p-[3%] space-y-4">
               <div className="">
@@ -235,7 +248,7 @@ function ProfileForm() {
           </>
         )}
 
-        {/* -----------------------------formStep 3 */}
+
 
         {formStep === 3 && (
           <div className="p-[2%]">
@@ -324,7 +337,7 @@ function ProfileForm() {
           </div>
         )}
 
-        {/* -----------------------------formStep 4 */}
+ 
 
         {formStep === 4 && (
           <div className="space-y-4 m-[3%]">
@@ -443,18 +456,16 @@ function ProfileForm() {
               </div>
             </div>
           </div>
-        )}
+        )} */}
 
-        {/* -----------------------------formStep 5 */}
-
-        {formStep === 5 && (
+        {/* {formStep === 5 && (
           <Link to="/" className="m-[2%]">
             <h1>EL FORMULARIO FUE ENVIADO EXITOSAMENTE.</h1>
           </Link>
-        )}
+        )} */}
 
         {/* buttons  */}
-        {formStep < 5 ? (
+        {/* {formStep < 5 ? (
           <div
             className={`mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1] flex`}
           >
@@ -506,7 +517,11 @@ function ProfileForm() {
           </div>
         ) : (
           ""
-        )}
+        )} */}
+
+        <button type="submit" className="bg-red-300">
+          Submit
+        </button>
       </form>
     </FormWrapper>
   );
