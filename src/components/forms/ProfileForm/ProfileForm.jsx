@@ -22,7 +22,7 @@ const currentPage = "profileForm";
 
 function ProfileForm() {
   // Manage States
-  const [formStep, setFormStep] = useState(1);
+  const [formStep, setFormStep] = useState(2);
   const [counter, setCounter] = useState(0);
 
   // Setup form with formik
@@ -55,9 +55,9 @@ function ProfileForm() {
   return (
     <FormWrapper currentStep={formStep} currentPage={currentPage}>
       <form className="" onSubmit={formik.handleSubmit}>
-        {/* {JSON.stringify(formik.values)} */}
+        {JSON.stringify(formik.values)}
 
-        {formStep == 1 && (
+        {/* {formStep == 1 && (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6">
               <div className="space-y-2">
@@ -128,7 +128,7 @@ function ProfileForm() {
                 />
               </div>
               <div className="space-y-2 ">
-                {/* 2DO COLUMN */}
+              
                 <TextInput
                   formik={formik}
                   fieldName={"nacionality"}
@@ -182,22 +182,22 @@ function ProfileForm() {
               </div>
             </div>
           </>
-        )}
+        )} */}
 
-        {/* {formStep === 2 && (
+         {formStep === 2 && (
           <>
             <div className="p-[3%] space-y-4">
-              <div className="">
+              <div role='group' className="">
                 <div className="flex items-center">
-                  <input formik={formik} type="radio" />
+                  <input formik={formik} type="radio" name='type_of_work' value='negocio propio o independiente' />
                   <label className="pl-2">NEGOCIO PROPIO O INDEPENDIENTE</label>
                 </div>
                 <div className="flex items-center">
-                  <input formik={formik} type="radio" />
+                  <input formik={formik} type="radio" name='type_of_work' value='empleo privado, empleo publico'/>
                   <label className="pl-2">EMPLEO PRIVADO, EMPLEO PUBLICO</label>
                 </div>
                 <div className="flex items-center">
-                  <input formik={formik} type="radio" />
+                  <input formik={formik} type="radio" name='type_of_work' value='pensionado'/>
                   <label className="pl-2">PENSIONADO</label>
                 </div>
               </div>
@@ -208,6 +208,7 @@ function ProfileForm() {
                   label={"NOMBRE DE LA EMPRESA"}
                   className="w-1/2"
                   isAlphabetic
+                  type='text'
                 />
               </div>
               <TextInput
@@ -215,6 +216,7 @@ function ProfileForm() {
                 fieldName={"company_line_of_work"}
                 label={"A QUÉ SE DEDICA LA EMPRESA"}
                 isAlphabetic
+                type='text'
               />
               <div className="md:flex gap-4 ">
                 <TextInput
@@ -222,20 +224,23 @@ function ProfileForm() {
                   fieldName={"job_title"}
                   label={"CARGO"}
                   isAlphabetic
-                />
+                  type='text'
+                  />
                 <TextInput
                   formik={formik}
                   fieldName={"time_in_the_company"}
                   label={"TIEMPO QUE LABORA EN LA EMPRESA"}
                   isAlphabetic
-                />
+                  type='number'
+                  />
               </div>
               <div className="w-1/2">
-                <MaskInput
+                <TextInput
                   formik={formik}
                   fieldName={"phone"}
                   label={"TELÉFONO"}
                   mask={"(999) 999-9999"}
+                  type='tel'
                 />
               </div>
               <TextInput
@@ -243,14 +248,15 @@ function ProfileForm() {
                 fieldName={"full_address"}
                 label={"DIRECCIÓN COMPLETA"}
                 isAlphabetic
-              />
+                type='text'
+                />
             </div>
           </>
         )}
 
 
 
-        {formStep === 3 && (
+        {/* {formStep === 3 && (
           <div className="p-[2%]">
             <div className="pl-[1%]">
               <p>
@@ -335,11 +341,11 @@ function ProfileForm() {
               </div>
             </div>
           </div>
-        )}
+        )} */}
 
  
 
-        {formStep === 4 && (
+        {/* {formStep === 4 && (
           <div className="space-y-4 m-[3%]">
             <div className="flex items-center">
               <input formik={formik} type="radio" />
@@ -456,7 +462,7 @@ function ProfileForm() {
               </div>
             </div>
           </div>
-        )} */}
+        )}  */}
 
         {/* {formStep === 5 && (
           <Link to="/" className="m-[2%]">

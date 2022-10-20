@@ -20,6 +20,13 @@ export const initialValues = {
   nit_number: "",
   cellphone_number: "",
   expiration_date: "",
+  type_of_work: "",
+  company_name: "",
+  company_line_of_work: "",
+  job_title: "",
+  time_in_the_company: "",
+  phone: "",
+  full_address: "",
 };
 
 let today = new Date().toLocaleDateString();
@@ -55,12 +62,25 @@ export const validationSchema = Yup.object({
     "Favor introducir la fecha de vencimiento"
   ),
   profession: Yup.string().required("Favor ingresar su profesión"),
+  type_of_work: Yup.string().required("A radio option is required"),
   nit_number: Yup.number()
     .min(10, "Verifica que estes ingresando el número correctamente")
     .required("Favor completar con tu número NIT"),
   cellphone_number: Yup.number()
     .min(10, "Verifica que estes ingresando el número correctamente")
     .required("Favor completar con tu número celular"),
+    company_name: Yup.string().required("Favor ingresar el nombre de la compañia"),
+    company_line_of_work: Yup.string().required("Favor ingresar a que se dedica la compañia"),
+    job_title: Yup.string().required("Favor ingresar titulo de su cargo"),
+    time_in_the_company: Yup.number()
+    .min(10, "Verifica que estes ingresando el número correctamente")
+    .required("Favor ingresar tiempo que labora en la empresa"),
+    phone: Yup.number()
+    .min(10, "Verifica que estes ingresando el número correctamente")
+    .required("Favor completar con tu número celular"),
+    company_line_of_work: Yup.string().required("Favor ingresar el nombre de la compañia"),
+    full_address: Yup.string().required("Favor ingresar el nombre de la compañia"),
+
 });
 
 // export const validationSchema = [
