@@ -7,8 +7,8 @@ import FormiKContainer from "../components/formik/FormiKContainer";
 function FormPage() {
   return (
     <PageWrapper>
-      {/* <ProfileForm/> */}
-      <FormiKContainer />
+      <ProfileForm/>
+      {/* <FormiKContainer /> */}
     </PageWrapper>
   );
 }

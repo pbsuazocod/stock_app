@@ -6,6 +6,7 @@ import Radio from "../UI/FormInput/Radio";
 import CheckBoxGroup from "../UI/FormInput/CheckBoxGroup";
 import DatePicker from "../UI/FormInput/DatePicker";
 
+
 function FormikControl(props) {
   const { control, ...rest } = props;
   switch (control) {
@@ -19,7 +20,6 @@ function FormikControl(props) {
       return <Radio {...rest} />;
     case "checkbox":
       return <CheckBoxGroup {...rest} />;
-
     case "date":
       return <DatePicker {...rest} />;
     default:

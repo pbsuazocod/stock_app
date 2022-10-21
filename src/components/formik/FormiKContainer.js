@@ -3,12 +3,13 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./FormikControl";
 import Text from "./Text";
+import FormStep_1 from "../forms/ProfileForm/FormStep_1";
 
 function FormiKContainer() {
 
 
   const initialValues = {
-    email: "",
+    name: "",
     description: "",
     selectOption: "",
     radioOptions: "",
@@ -16,7 +17,7 @@ function FormiKContainer() {
     birthDay: null,
   };
   const validationSchema = Yup.object({
-    email: Yup.string().required("required"),
+    name: Yup.string().required("required"),
     description: Yup.string().required("required"),
     selectOption: Yup.string().required("required"),
     radioOptions: Yup.string().required("required"),
@@ -33,8 +34,7 @@ function FormiKContainer() {
     >
       {(formik) => (
         <Form>
-          <Text />
-          {/* <FormikControl control="date" label="BirthDay" name="birthDate" /> */}
+         <FormStep_1/>
           <button type="submit">Submit Button</button>
         </Form>
       )}

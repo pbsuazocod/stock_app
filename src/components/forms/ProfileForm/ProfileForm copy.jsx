@@ -1,6 +1,6 @@
 import { Form } from "formik";
 import React from "react";
-import { Formik } from "formik";
+import { useFormik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
@@ -17,29 +17,25 @@ import { FaPlusCircle } from "react-icons/fa";
 
 // Validation
 import { initialValues, validationSchema } from "../ValidationSchema";
-import FormikControl from "../../formik/FormikControl";
-import FormStep_1 from "./FormStep_1";
 
 const currentPage = "profileForm";
 
-
 function ProfileForm() {
   // Manage States
-  const [formStep, setFormStep] = useState(1);
+  const [formStep, setFormStep] = useState(2);
   const [counter, setCounter] = useState(0);
-  const onSubmit = (errors) => console.log("Form Data", errors);
 
   // Setup form with formik
-  // const formik = useFormik({
-  //   initialValues: initialValues,
-  //   validationSchema: validationSchema,
-  //   onSubmit: (values) => {
-  //     alert("formik values", formik.values);
-  //     console.log("Form Values", formik.values);
-  //   },
-  // });
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert("formik values", formik.values);
+      console.log("Form Values", formik.values);
+    },
+  });
 
-  // console.log("formik errors", formik.errors);
+  console.log("formik errors", formik.errors);
   // Handlers
   const clickHandler = (e) => {
     e.preventDefault();
@@ -58,91 +54,209 @@ function ProfileForm() {
 
   return (
     <FormWrapper currentStep={formStep} currentPage={currentPage}>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}>
-        {(formik) => (
-          <Form>
-            {/* {JSON.stringify()} */}
+      <form className="" onSubmit={formik.handleSubmit}>
+        {JSON.stringify(formik.values)}
 
-            {formStep == 1 && (
-              <FormStep_1 />
-            )}
-
-            {formStep === 2 && (
-              <>
-                <div className="p-[3%] space-y-4">
-                  <div role='group' className="">
-                    <div className="flex items-center">
-                      <input formik={formik} type="radio" name='type_of_work' value='negocio propio o independiente' />
-                      <label className="pl-2">NEGOCIO PROPIO O INDEPENDIENTE</label>
-                    </div>
-                    <div className="flex items-center">
-                      <input formik={formik} type="radio" name='type_of_work' value='empleo privado, empleo publico' />
-                      <label className="pl-2">EMPLEO PRIVADO, EMPLEO PUBLICO</label>
-                    </div>
-                    <div className="flex items-center">
-                      <input formik={formik} type="radio" name='type_of_work' value='pensionado' />
-                      <label className="pl-2">PENSIONADO</label>
-                    </div>
-                  </div>
-                  <div className="w-1/2">
-                    <TextInput
-                      formik={formik}
-                      fieldName={"company_name"}
-                      label={"NOMBRE DE LA EMPRESA"}
-                      className="w-1/2"
-                      isAlphabetic
-                      type='text'
-                    />
-                  </div>
+        {/* {formStep == 1 && (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6">
+              <div className="space-y-2">
+                <TextInput
+                  formik={formik}
+                  fieldName={"name"}
+                  label={"NOMBRE"}
+                  isAlphabetic
+                  type={"text"}
+                />
+                <div className="w-1/2">
                   <TextInput
                     formik={formik}
-                    fieldName={"company_line_of_work"}
-                    label={"A QUÉ SE DEDICA LA EMPRESA"}
-                    isAlphabetic
-                    type='text'
-                  />
-                  <div className="md:flex gap-4 ">
-                    <TextInput
-                      formik={formik}
-                      fieldName={"job_title"}
-                      label={"CARGO"}
-                      isAlphabetic
-                      type='text'
-                    />
-                    <TextInput
-                      formik={formik}
-                      fieldName={"time_in_the_company"}
-                      label={"TIEMPO QUE LABORA EN LA EMPRESA"}
-                      isAlphabetic
-                      type='number'
-                    />
-                  </div>
-                  <div className="w-1/2">
-                    <TextInput
-                      formik={formik}
-                      fieldName={"phone"}
-                      label={"TELÉFONO"}
-                      mask={"(999) 999-9999"}
-                      type='tel'
-                    />
-                  </div>
-                  <TextInput
-                    formik={formik}
-                    fieldName={"full_address"}
-                    label={"DIRECCIÓN COMPLETA"}
-                    isAlphabetic
-                    type='text'
+                    fieldName={"age"}
+                    label={"EDAD"}
+                    type={"number"}
                   />
                 </div>
-              </>
-            )}
+                <TextInput
+                  formik={formik}
+                  fieldName={"type_of_document"}
+                  label={"TIPO DE DOCUMENTO"}
+                  isAlphabetic
+                  type={"text"}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"issue_date"}
+                  label={"FECHA DE EMISIÓN"}
+                  type={'date'}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"marital_status"}
+                  label={"ESTADO CIVIL"}
+                  isAlphabetic
+                  type={"text"}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"address"}
+                  label={"DIRECCIÓN"}
+                  isAlphabetic
+                  type={"text"}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"home_number"}
+                  label={"TELÉFONO CASA"}
+                  mask={"(999) 999-9999"}
+                  type={'tel'}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"email"}
+                  label={"CORREO ELECTRÓNICO"}
+                  toolTip={
+                    "Solicitamos su direción de correo para comunicarnos con usted, por su seguridad nunca le solicitaremos que nos proporcione ninguna información por esta vía."
+                  }
+                  type={'email'}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"recidency"}
+                  label={"RESIDENCIA"}
+                  isAlphabetic
+                  type={"text"}
+                />
+              </div>
+              <div className="space-y-2 ">
+              
+                <TextInput
+                  formik={formik}
+                  fieldName={"nacionality"}
+                  label={"NACIONALIDAD"}
+                  isAlphabetic
+                  type={"text"}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"day_of_birth"}
+                  label={"FECHA DE NACIMIENTO"}
+                  type={'date'}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"identification_card"}
+                  label={"NÚMERO DE DOCUMENTO"}
+                  mask={"999-9999999-9"}
+                  toolTip={
+                    "Solicitamos su número de documento para poder registrar y validar la información de identidad que es suministrada en este formulario."
+                  }
+                  type={'tel'}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"expiration_date"}
+                  label={"FECHA DE VENCIMIENTO"}
+                  type={'date'}
+
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"profession"}
+                  label={"PROFESIÓN"}
+                  isAlphabetic
+                  type={"text"}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"nit_number"}
+                  label={"NÚMERO DE NIT"}
+                  type={'tel'}
+                />
+                <TextInput
+                  formik={formik}
+                  fieldName={"cellphone_number"}
+                  label={"TELÉFONO CELULAR"}
+                  mask={"(999) 999-9999"}
+                  type={'tel'}
+                />
+              </div>
+            </div>
+          </>
+        )} */}
+
+         {formStep === 2 && (
+          <>
+            <div className="p-[3%] space-y-4">
+              <div role='group' className="">
+                <div className="flex items-center">
+                  <input formik={formik} type="radio" name='type_of_work' value='negocio propio o independiente' />
+                  <label className="pl-2">NEGOCIO PROPIO O INDEPENDIENTE</label>
+                </div>
+                <div className="flex items-center">
+                  <input formik={formik} type="radio" name='type_of_work' value='empleo privado, empleo publico'/>
+                  <label className="pl-2">EMPLEO PRIVADO, EMPLEO PUBLICO</label>
+                </div>
+                <div className="flex items-center">
+                  <input formik={formik} type="radio" name='type_of_work' value='pensionado'/>
+                  <label className="pl-2">PENSIONADO</label>
+                </div>
+              </div>
+              <div className="w-1/2">
+                <TextInput
+                  formik={formik}
+                  fieldName={"company_name"}
+                  label={"NOMBRE DE LA EMPRESA"}
+                  className="w-1/2"
+                  isAlphabetic
+                  type='text'
+                />
+              </div>
+              <TextInput
+                formik={formik}
+                fieldName={"company_line_of_work"}
+                label={"A QUÉ SE DEDICA LA EMPRESA"}
+                isAlphabetic
+                type='text'
+              />
+              <div className="md:flex gap-4 ">
+                <TextInput
+                  formik={formik}
+                  fieldName={"job_title"}
+                  label={"CARGO"}
+                  isAlphabetic
+                  type='text'
+                  />
+                <TextInput
+                  formik={formik}
+                  fieldName={"time_in_the_company"}
+                  label={"TIEMPO QUE LABORA EN LA EMPRESA"}
+                  isAlphabetic
+                  type='number'
+                  />
+              </div>
+              <div className="w-1/2">
+                <TextInput
+                  formik={formik}
+                  fieldName={"phone"}
+                  label={"TELÉFONO"}
+                  mask={"(999) 999-9999"}
+                  type='tel'
+                />
+              </div>
+              <TextInput
+                formik={formik}
+                fieldName={"full_address"}
+                label={"DIRECCIÓN COMPLETA"}
+                isAlphabetic
+                type='text'
+                />
+            </div>
+          </>
+        )}
 
 
 
-            {/* {formStep === 3 && (
+        {/* {formStep === 3 && (
           <div className="p-[2%]">
             <div className="pl-[1%]">
               <p>
@@ -229,9 +343,9 @@ function ProfileForm() {
           </div>
         )} */}
 
+ 
 
-
-            {/* {formStep === 4 && (
+        {/* {formStep === 4 && (
           <div className="space-y-4 m-[3%]">
             <div className="flex items-center">
               <input formik={formik} type="radio" />
@@ -350,14 +464,14 @@ function ProfileForm() {
           </div>
         )}  */}
 
-            {/* {formStep === 5 && (
+        {/* {formStep === 5 && (
           <Link to="/" className="m-[2%]">
             <h1>EL FORMULARIO FUE ENVIADO EXITOSAMENTE.</h1>
           </Link>
         )} */}
 
-            {/* buttons  */}
-            {/* {formStep < 5 ? (
+        {/* buttons  */}
+        {/* {formStep < 5 ? (
           <div
             className={`mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1] flex`}
           >
@@ -411,14 +525,10 @@ function ProfileForm() {
           ""
         )} */}
 
-            <button type="submit" className="bg-red-300">
-              Submit
-            </button>
-          </Form>
-        )}
-
-
-      </Formik>
+        <button type="submit" className="bg-red-300">
+          Submit
+        </button>
+      </form>
     </FormWrapper>
   );
 }
