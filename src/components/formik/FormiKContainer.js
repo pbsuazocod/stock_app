@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormikControl from "./FormikControl";
 import Text from "./Text";
-import FormStep_1 from "../forms/ProfileForm/FormStep_1";
+import FormStepOne from "../forms/ProfileForm/FormStepOne";
 
 function FormiKContainer() {
 
@@ -34,7 +34,7 @@ function FormiKContainer() {
     >
       {(formik) => (
         <Form>
-         <FormStep_1/>
+          <FormStepOne />
           <button type="submit">Submit Button</button>
         </Form>
       )}
