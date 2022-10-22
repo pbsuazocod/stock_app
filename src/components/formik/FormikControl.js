@@ -4,7 +4,9 @@ import Select from "../UI/FormInput/Select";
 import TextArea from "../UI/FormInput/TextArea";
 import Radio from "../UI/FormInput/Radio";
 import CheckBoxGroup from "../UI/FormInput/CheckBoxGroup";
-import DatePicker from "../UI/FormInput/DatePicker";
+import Date from "../UI/FormInput/Date";
+import Number from "../UI/FormInput/Number";
+
 
 
 function FormikControl(props) {
@@ -21,7 +23,9 @@ function FormikControl(props) {
     case "checkbox":
       return <CheckBoxGroup {...rest} />;
     case "date":
-      return <DatePicker {...rest} />;
+      return <Date {...rest} />;
+    case "number":
+      return <Number {...rest} />;
     default:
       return null;
   }

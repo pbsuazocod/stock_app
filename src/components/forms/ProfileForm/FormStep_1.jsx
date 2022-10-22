@@ -1,139 +1,122 @@
-import React from 'react'
-import FormikControl from '../../formik/FormikControl';
+import React from "react";
+import FormikControl from "../../formik/FormikControl";
 
-import FormWrapper from '../../UI/FormWrapper/FormWrapper';
-import { useState } from 'react'
-
+import FormWrapper from "../../UI/FormWrapper/FormWrapper";
+import { useState } from "react";
+import Calendar from "../../UI/FormInput/Date";
 
 function FormStep_1() {
-
-
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6">
         <div className="space-y-2">
           <FormikControl
-            control='input'
+            control="input"
             label="NOMBRE"
-            name='name'
+            name="name"
             type="text"
           />
           <div className="w-1/2">
-            <TextInput
-              formik={formik}
-              fieldName={"age"}
-              label={"EDAD"}
-              type={"number"}
+            <FormikControl
+              control="input"
+              name="age"
+              label="EDAD"
+              type="number"
             />
           </div>
-          <TextInput
-            formik={formik}
-            fieldName={"type_of_document"}
+          <FormikControl
+            control="input"
+            name={"type_of_document"}
             label={"TIPO DE DOCUMENTO"}
-            isAlphabetic
             type={"text"}
           />
-          <TextInput
-            formik={formik}
-            fieldName={"issue_date"}
+
+          <FormikControl
+            control="date"
+            name={"issue_date"}
             label={"FECHA DE EMISIÓN"}
-            type={'date'}
+            type={"date"}
           />
-          <TextInput
-            formik={formik}
-            fieldName={"marital_status"}
+          <FormikControl
+            control="input"
+            name={"marital_status"}
             label={"ESTADO CIVIL"}
-            isAlphabetic
             type={"text"}
           />
-          <TextInput
-            formik={formik}
-            fieldName={"address"}
+          <FormikControl
+            control="input"
+            name={"address"}
             label={"DIRECCIÓN"}
-            isAlphabetic
             type={"text"}
           />
-          <TextInput
-            formik={formik}
-            fieldName={"home_number"}
-            label={"TELÉFONO CASA"}
+          <FormikControl
+            control="input"
+            name="home_number"
+            label="TELÉFONO CASA"
             mask={"(999) 999-9999"}
-            type={'tel'}
+            type="tel"
           />
-          <TextInput
-            formik={formik}
-            fieldName={"email"}
-            label={"CORREO ELECTRÓNICO"}
-            toolTip={
-              "Solicitamos su direción de correo para comunicarnos con usted, por su seguridad nunca le solicitaremos que nos proporcione ninguna información por esta vía."
-            }
-            type={'email'}
+          <FormikControl
+            control="input"
+            name="email"
+            label="CORREO ELECTRÓNICO"
+            type={"email"}
           />
-          <TextInput
-            formik={formik}
-            fieldName={"recidency"}
-            label={"RESIDENCIA"}
-            isAlphabetic
+          <FormikControl
+            control="input"
+            name="recidency"
+            label="RESIDENCIA"
             type={"text"}
           />
         </div>
         <div className="space-y-2 ">
+          <FormikControl
+            control="input"
+            name="nacionality"
+            label="NACIONALIDAD"
+            type="text"
+          />
+          <FormikControl
+            control="date"
+            name="day_of_birth"
+            label="FECHA DE NACIMIENTO"
+          />
+          <FormikControl
+            control="input"
+            name="identification_card"
+            label="NÚMERO DE DOCUMENTO"
+            mask="999-9999999-9"
+            type="tel"
+          />
+          <FormikControl
+            control="date"
+            name="expiration_date"
+            label="FECHA DE VENCIMIENTO"
+          />
+          <FormikControl
+            control="input"
+            name="profession"
+            label="PROFESIÓN"
+            type="text"
+          />
+          <FormikControl
+            control="input"
+            name="nit_number"
+            label="NÚMERO DE NIT"
+            type="tel"
+          />
+          <FormikControl
+            control="input"
+            name="cellphone_number"
+            label="TELÉFONO CELULAR"
+            mask="(999) 999-9999"
+            type="tel"
 
-          <TextInput
-            formik={formik}
-            fieldName={"nacionality"}
-            label={"NACIONALIDAD"}
-            isAlphabetic
-            type={"text"}
-          />
-          <TextInput
-            formik={formik}
-            fieldName={"day_of_birth"}
-            label={"FECHA DE NACIMIENTO"}
-            type={'date'}
-          />
-          <TextInput
-            formik={formik}
-            fieldName={"identification_card"}
-            label={"NÚMERO DE DOCUMENTO"}
-            mask={"999-9999999-9"}
-            toolTip={
-              "Solicitamos su número de documento para poder registrar y validar la información de identidad que es suministrada en este formulario."
-            }
-            type={'tel'}
-          />
-          <TextInput
-            formik={formik}
-            fieldName={"expiration_date"}
-            label={"FECHA DE VENCIMIENTO"}
-            type={'date'}
-
-          />
-          <TextInput
-            formik={formik}
-            fieldName={"profession"}
-            label={"PROFESIÓN"}
-            isAlphabetic
-            type={"text"}
-          />
-          <TextInput
-            formik={formik}
-            fieldName={"nit_number"}
-            label={"NÚMERO DE NIT"}
-            type={'tel'}
-          />
-          <TextInput
-            formik={formik}
-            fieldName={"cellphone_number"}
-            label={"TELÉFONO CELULAR"}
-            mask={"(999) 999-9999"}
-            type={'tel'}
           />
         </div>
       </div>
     </>
-
-  )
+  );
 }
 
-export default FormStep_1
+export default FormStep_1;

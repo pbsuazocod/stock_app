@@ -20,6 +20,7 @@ export const initialValues = {
   nit_number: "",
   cellphone_number: "",
   expiration_date: "",
+  // step 2
   type_of_work: "",
   company_name: "",
   company_line_of_work: "",
@@ -31,21 +32,22 @@ export const initialValues = {
 
 let today = new Date().toLocaleDateString();
 
-console.log(today);
-
 export const validationSchema = Yup.object({
   name: Yup.string()
     .max(15, "Debe ser mas de 10 caracteres.")
     .required("Favor ingresar tu nombre completo"),
   age: Yup.number()
-    .required("Favor ingresar su edad")
+    .required("Favor ingresar tu edad")
     .min(18, "Debe ser mayor de 18 años"),
   type_of_document: Yup.string().required("Favor ingresar tipo de documento"),
   issue_date: Yup.string().required("Favor introducir la fecha de emisión"),
   marital_status: Yup.string().required("Favor ingresar su estado civil"),
   address: Yup.string().required("Favor ingresar su dirección"),
-  home_number: Yup.number()
-    .min(10, "Verifica que estes ingresando el número correctamente")
+  home_number: Yup.string()
+    .required()
+    .matches(/^[0-9]+$/, "Solo introdusca numeros")
+    .min(10, "Debe contener 10 digitos")
+    .max(10, "Debe contener 10 digitos")
     .required("Favor completar con tu número celular"),
   email: Yup.string()
     .email("Invalid email address")
@@ -62,25 +64,28 @@ export const validationSchema = Yup.object({
     "Favor introducir la fecha de vencimiento"
   ),
   profession: Yup.string().required("Favor ingresar su profesión"),
-  type_of_work: Yup.string().required("A radio option is required"),
   nit_number: Yup.number()
     .min(10, "Verifica que estes ingresando el número correctamente")
     .required("Favor completar con tu número NIT"),
-  cellphone_number: Yup.number()
-    .min(10, "Verifica que estes ingresando el número correctamente")
+    cellphone_number: Yup.string()
+    .required()
+    .matches(/^[0-9]+$/, "Solo introdusca numeros")
+    .min(10, "Debe contener 10 digitos")
+    .max(10, "Debe contener 10 digitos")
     .required("Favor completar con tu número celular"),
-    company_name: Yup.string().required("Favor ingresar el nombre de la compañia"),
-    company_line_of_work: Yup.string().required("Favor ingresar a que se dedica la compañia"),
-    job_title: Yup.string().required("Favor ingresar titulo de su cargo"),
-    time_in_the_company: Yup.number()
-    .min(10, "Verifica que estes ingresando el número correctamente")
-    .required("Favor ingresar tiempo que labora en la empresa"),
-    phone: Yup.number()
-    .min(10, "Verifica que estes ingresando el número correctamente")
-    .required("Favor completar con tu número celular"),
-    company_line_of_work: Yup.string().required("Favor ingresar el nombre de la compañia"),
-    full_address: Yup.string().required("Favor ingresar el nombre de la compañia"),
-
+  //Step2
+  // type_of_work: Yup.string().required("A radio option is required"),
+  //   company_name: Yup.string().required("Favor ingresar el nombre de la compañia"),
+  //   company_line_of_work: Yup.string().required("Favor ingresar a que se dedica la compañia"),
+  //   job_title: Yup.string().required("Favor ingresar titulo de su cargo"),
+  //   time_in_the_company: Yup.number()
+  //   .min(10, "Verifica que estes ingresando el número correctamente")
+  //   .required("Favor ingresar tiempo que labora en la empresa"),
+  //   phone: Yup.number()
+  //   .min(10, "Verifica que estes ingresando el número correctamente")
+  //   .required("Favor completar con tu número celular"),
+  //   company_line_of_work: Yup.string().required("Favor ingresar el nombre de la compañia"),
+  //   full_address: Yup.string().required("Favor ingresar el nombre de la compañia"),
 });
 
 // export const validationSchema = [

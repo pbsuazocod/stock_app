@@ -22,12 +22,10 @@ import FormStep_1 from "./FormStep_1";
 
 const currentPage = "profileForm";
 
-
 function ProfileForm() {
   // Manage States
   const [formStep, setFormStep] = useState(1);
   const [counter, setCounter] = useState(0);
-  const onSubmit = (errors) => console.log("Form Data", errors);
 
   // Setup form with formik
   // const formik = useFormik({
@@ -39,7 +37,7 @@ function ProfileForm() {
   //   },
   // });
 
-  // console.log("formik errors", formik.errors);
+  // console.log("formik errors", Formik.values);
   // Handlers
   const clickHandler = (e) => {
     e.preventDefault();
@@ -55,35 +53,56 @@ function ProfileForm() {
   const IncreasePersonInput = () => {
     setCounter(counter + 1);
   };
+  // const onSubmit = (e) => console.log(e);
+  const onSubmit = (values) => console.log("Form Data", values);
 
   return (
     <FormWrapper currentStep={formStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={onSubmit}>
+        onSubmit={onSubmit}
+        validateOnMount
+      >
         {(formik) => (
           <Form>
             {/* {JSON.stringify()} */}
 
-            {formStep == 1 && (
-              <FormStep_1 />
-            )}
+            {formStep == 1 && <FormStep_1 />}
 
-            {formStep === 2 && (
+            {/* {formStep === 2 && (
               <>
                 <div className="p-[3%] space-y-4">
-                  <div role='group' className="">
+                  <div role="group" className="">
                     <div className="flex items-center">
-                      <input formik={formik} type="radio" name='type_of_work' value='negocio propio o independiente' />
-                      <label className="pl-2">NEGOCIO PROPIO O INDEPENDIENTE</label>
+                      <input
+                        formik={formik}
+                        type="radio"
+                        name="type_of_work"
+                        value="negocio propio o independiente"
+                      />
+                      <label className="pl-2">
+                        NEGOCIO PROPIO O INDEPENDIENTE
+                      </label>
                     </div>
                     <div className="flex items-center">
-                      <input formik={formik} type="radio" name='type_of_work' value='empleo privado, empleo publico' />
-                      <label className="pl-2">EMPLEO PRIVADO, EMPLEO PUBLICO</label>
+                      <input
+                        formik={formik}
+                        type="radio"
+                        name="type_of_work"
+                        value="empleo privado, empleo publico"
+                      />
+                      <label className="pl-2">
+                        EMPLEO PRIVADO, EMPLEO PUBLICO
+                      </label>
                     </div>
                     <div className="flex items-center">
-                      <input formik={formik} type="radio" name='type_of_work' value='pensionado' />
+                      <input
+                        formik={formik}
+                        type="radio"
+                        name="type_of_work"
+                        value="pensionado"
+                      />
                       <label className="pl-2">PENSIONADO</label>
                     </div>
                   </div>
@@ -94,7 +113,7 @@ function ProfileForm() {
                       label={"NOMBRE DE LA EMPRESA"}
                       className="w-1/2"
                       isAlphabetic
-                      type='text'
+                      type="text"
                     />
                   </div>
                   <TextInput
@@ -102,7 +121,7 @@ function ProfileForm() {
                     fieldName={"company_line_of_work"}
                     label={"A QUÉ SE DEDICA LA EMPRESA"}
                     isAlphabetic
-                    type='text'
+                    type="text"
                   />
                   <div className="md:flex gap-4 ">
                     <TextInput
@@ -110,14 +129,14 @@ function ProfileForm() {
                       fieldName={"job_title"}
                       label={"CARGO"}
                       isAlphabetic
-                      type='text'
+                      type="text"
                     />
                     <TextInput
                       formik={formik}
                       fieldName={"time_in_the_company"}
                       label={"TIEMPO QUE LABORA EN LA EMPRESA"}
                       isAlphabetic
-                      type='number'
+                      type="number"
                     />
                   </div>
                   <div className="w-1/2">
@@ -126,7 +145,7 @@ function ProfileForm() {
                       fieldName={"phone"}
                       label={"TELÉFONO"}
                       mask={"(999) 999-9999"}
-                      type='tel'
+                      type="tel"
                     />
                   </div>
                   <TextInput
@@ -134,13 +153,11 @@ function ProfileForm() {
                     fieldName={"full_address"}
                     label={"DIRECCIÓN COMPLETA"}
                     isAlphabetic
-                    type='text'
+                    type="text"
                   />
                 </div>
               </>
-            )}
-
-
+            )} */}
 
             {/* {formStep === 3 && (
           <div className="p-[2%]">
@@ -228,8 +245,6 @@ function ProfileForm() {
             </div>
           </div>
         )} */}
-
-
 
             {/* {formStep === 4 && (
           <div className="space-y-4 m-[3%]">
@@ -357,67 +372,64 @@ function ProfileForm() {
         )} */}
 
             {/* buttons  */}
-            {/* {formStep < 5 ? (
-          <div
-            className={`mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1] flex`}
-          >
-            <div className="w-full pt-[2%]">
-              {formStep === 3 && (
-                <div className="flex items-center pl-[2%] gap-2">
-                  <button
-                    onClick={IncreasePersonInput}
-                    className="text-green-600"
-                  >
-                    <FaPlusCircle />
-                  </button>
-                  AÑADIR OTRA PERSONA
-                </div>
-              )}
-
+            {formStep < 5 ? (
               <div
-                className={`flex ${
-                  formStep === 1 ? "justify-end" : "justify-between"
-                }`}
+                className={`mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1] flex`}
               >
-                {formStep > 1 && (
-                  <>
+                <div className="w-full pt-[2%]">
+                  {formStep === 3 && (
+                    <div className="flex items-center pl-[2%] gap-2">
+                      <button
+                        onClick={IncreasePersonInput}
+                        className="text-green-600"
+                      >
+                        <FaPlusCircle />
+                      </button>
+                      AÑADIR OTRA PERSONA
+                    </div>
+                  )}
+
+                  <div
+                    className={`flex ${
+                      formStep === 1 ? "justify-end" : "justify-between"
+                    }`}
+                  >
+                    {formStep > 1 && (
+                      <>
+                        <button
+                          onClick={DecreceStepperHandler}
+                          className="bg-[#1A3B69] rounded-lg text-white h-12 lg:w-[25%] w-[40%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center"
+                        >
+                          <div className="lg:text-3xl text-xl ">
+                            <FaArrowLeft />
+                          </div>
+                          ANTERIOR
+                        </button>
+                      </>
+                    )}
+
                     <button
-                      onClick={DecreceStepperHandler}
-                      className="bg-[#1A3B69] rounded-lg text-white h-12 lg:w-[25%] w-[40%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center"
+                      disabled={!formik.isValid}
+                      onClick={clickHandler}
+                      className={`rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${
+                        formStep === 4
+                          ? "w-[42%] pr-2 bg-[#40B879]"
+                          : "bg-[#1A3B69] w-[40%]"
+                      }`}
                     >
-                      <div className="lg:text-3xl text-xl ">
-                        <FaArrowLeft />
+                      {formStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"}
+                      <div className="lg:text-3xl text-xl">
+                        <FaArrowRight />
                       </div>
-                      ANTERIOR
                     </button>
-                  </>
-                )}
-
-                <button
-                  onClick={clickHandler}
-                  className={`rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${
-                    formStep === 4 ? "w-[42%] pr-2 bg-[#40B879]" : "bg-[#1A3B69] w-[40%]"
-                  }`}
-                >
-                  {formStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"}
-                  <div className="lg:text-3xl text-xl">
-                    <FaArrowRight />
                   </div>
-                </button>
+                </div>
               </div>
-            </div>
-          </div>
-        ) : (
-          ""
-        )} */}
-
-            <button type="submit" className="bg-red-300">
-              Submit
-            </button>
+            ) : (
+              ""
+            )}
           </Form>
         )}
-
-
       </Formik>
     </FormWrapper>
   );
