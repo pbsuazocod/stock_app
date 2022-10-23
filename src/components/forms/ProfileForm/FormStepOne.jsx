@@ -1,11 +1,7 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
 
-import FormWrapper from "../../UI/FormWrapper/FormWrapper";
-import { useState } from "react";
-import Calendar from "../../UI/FormInput/Date";
-
-function FormStep_1() {
+function FormStepOne() {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6">
@@ -111,7 +107,6 @@ function FormStep_1() {
             label="TELÉFONO CELULAR"
             mask="(999) 999-9999"
             type="tel"
-
           />
         </div>
       </div>
@@ -119,4 +114,4 @@ function FormStep_1() {
   );
 }
 
-export default FormStep_1;
+export default FormStepOne;

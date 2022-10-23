@@ -1,5 +1,5 @@
-import { Form } from "formik";
 import React from "react";
+import { Form } from "formik";
 import { Formik } from "formik";
 import { useState } from "react";
 
@@ -15,7 +15,6 @@ import FormStepThree from "./FormStepThree";
 import FormStepFour from "./FormStepFour";
 import FormStepFive from "./FormStepFive";
 
-
 // Validation
 
 import { initialValues, validationSchema } from "../ValidationSchema";
@@ -24,7 +23,13 @@ const currentPage = "profileForm";
 
 // Form steps to be render
 
-const steps = ['Form Step One', 'Form Step two', 'Form Step tree', 'Form Step four', 'Form Step Five'];
+const steps = [
+  "Form Step One",
+  "Form Step two",
+  "Form Step tree",
+  "Form Step four",
+  "Form Step Five",
+];
 
 function _renderStepContent(step) {
   switch (step) {
@@ -44,15 +49,11 @@ function _renderStepContent(step) {
 }
 
 function ProfileForm() {
-
   // Manage States
-  // const [formStep, setFormStep] = useState(1);
   const [counter, setCounter] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
-
-  const onSubmit = (errors) => console.log("Form Data", errors);
 
   // Handlers
 
@@ -62,10 +63,13 @@ function ProfileForm() {
 
   const _handleBack = () => {
     setActiveStep(activeStep - 1);
-  }
+  };
 
   function _handleSubmit(values, actions) {
+    console.log(values);
     if (isLastStep) {
+      console.log('form', values);
+      alert(values);
       // _submitForm(values, actions);
     } else {
       setActiveStep(activeStep + 1);
@@ -79,12 +83,10 @@ function ProfileForm() {
       <Formik
         initialValues={initialValues}
         validationSchema={currentValidationSchema}
-        onSubmit={_handleSubmit}>
+        onSubmit={_handleSubmit}
+      >
         {(formik) => (
           <Form>
-
-            {/* {JSON.stringify()} */}
-
             {_renderStepContent(activeStep)}
 
             {/* buttons  */}
@@ -106,12 +108,14 @@ function ProfileForm() {
                   )}
 
                   <div
-                    className={`flex ${activeStep < 1 ? "justify-end" : "justify-between"
-                      }`}
+                    className={`flex ${
+                      activeStep < 1 ? "justify-end" : "justify-between"
+                    }`}
                   >
                     {activeStep > 0 && (
                       <>
                         <button
+                          type="button"
                           onClick={_handleBack}
                           className="bg-[#1A3B69] rounded-lg text-white h-12 lg:w-[25%] w-[40%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center"
                         >
@@ -124,16 +128,18 @@ function ProfileForm() {
                     )}
 
                     <button
-                      type='submit'
-                      className={`rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${activeStep === 4 ? "w-[42%] pr-2 bg-[#40B879]" : "bg-[#1A3B69] w-[40%]"
-                        }`}
+                      type="submit"
+                      className={`rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${
+                        activeStep === 4
+                          ? "w-[42%] pr-2 bg-[#40B879]"
+                          : "bg-[#1A3B69] w-[40%]"
+                      }`}
                     >
                       {activeStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"}
                       <div className="lg:text-3xl text-xl">
                         <FaArrowRight />
                       </div>
                     </button>
-                    <button type='submit' className="bg-red-300">Submit</button>
                   </div>
                 </div>
               </div>
