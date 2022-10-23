@@ -3,11 +3,9 @@ import Input from "../UI/FormInput/Input";
 import Select from "../UI/FormInput/Select";
 import TextArea from "../UI/FormInput/TextArea";
 import Radio from "../UI/FormInput/Radio";
-import CheckBoxGroup from "../UI/FormInput/CheckBoxGroup";
 import Date from "../UI/FormInput/Date";
 import Number from "../UI/FormInput/Number";
-
-
+import CheckBoxGroup from '../UI/FormInput/CheckBoxGroup'
 
 function FormikControl(props) {
   const { control, ...rest } = props;

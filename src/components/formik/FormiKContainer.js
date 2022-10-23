@@ -34,7 +34,7 @@ function FormiKContainer() {
     >
       {(formik) => (
         <Form>
-          <FormStepOne />
+          <Text />
           <button type="submit">Submit Button</button>
         </Form>
       )}

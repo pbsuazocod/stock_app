@@ -6,8 +6,8 @@ function CheckBoxGroup(props) {
   const { label, name, options, ...rest } = props;
   return (
     <div>
-      <label htmlFor={name}>{name}</label>
-      <Field id={name} name={name} {...rest}>
+      <label>{label}</label>
+      <Field name={name} {...rest}>
         {({ field }) => {
           return options.map((option) => {
             return (
@@ -21,8 +21,8 @@ function CheckBoxGroup(props) {
                 />
                 <label htmlFor={option.value}>{option.key}</label>
               </React.Fragment>
-            );
-          });
+            )
+          })
         }}
       </Field>
 

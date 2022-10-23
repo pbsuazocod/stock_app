@@ -21,6 +21,7 @@ function Text() {
   ];
   return (
     <div>
+      hello
       <FormikControl control="input" type="email" label="Email" name="email" />
       <FormikControl
         control="textarea"
