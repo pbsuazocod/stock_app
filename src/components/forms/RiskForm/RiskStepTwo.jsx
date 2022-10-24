@@ -1,5 +1,5 @@
 import React from "react";
-import { rangeOfIncomeOptions, savingsOptions } from "../../config/constants";
+import { rangeOfIncomeOptions, savingsOptions, trentOptions, capitalPercentageOptions } from "../../config/constants";
 import FormikControl from "../../formik/FormikControl";
 
 function RiskStepTwo() {
@@ -38,7 +38,7 @@ function RiskStepTwo() {
           />
           <FormikControl
             control="input"
-            name={"own-business_income"}
+            name={"own_business_income"}
             label={""}
             placeholder={"Ingresos por negocio propio"}
             type="text"
@@ -59,7 +59,7 @@ function RiskStepTwo() {
           />
           <FormikControl
             control="input"
-            name={"stock-inverstment"}
+            name={"stock_inverstment"}
             label={""}
             placeholder={"Inversiones en bolsa"}
             type="text"
@@ -107,7 +107,7 @@ function RiskStepTwo() {
           />
           <FormikControl
             control="input"
-            name={"others"}
+            name={"others_no_2"}
             label={""}
             type="text"
           />
@@ -131,10 +131,11 @@ function RiskStepTwo() {
       </p>
       <div className="lg:w-1/4 w-full">
         <FormikControl
-          control="input"
+          control="select"
           name={"capital_percentage"}
           label={""}
           placeholder={"Menos del 10%"}
+          options={capitalPercentageOptions}
         />
       </div>
       <p>
@@ -143,10 +144,10 @@ function RiskStepTwo() {
       </p>
       <div className="lg:w-1/4 w-full">
         <FormikControl
-          control="input"
+          control="select"
           name={"income_source_trend"}
           label={""}
-          placeholder={"Muy estable"}
+          options={trentOptions}
         />
       </div>
       <p>
@@ -156,7 +157,7 @@ function RiskStepTwo() {
       <div className="">
         <FormikControl
           control="textarea"
-          name={"language"}
+          name={"explain"}
           label={""}
           type={"textarea"}
           className={
