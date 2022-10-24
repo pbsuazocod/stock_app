@@ -105,3 +105,87 @@ export const typeOfInvestmentsOptions = [
   { key: "Acciones", value: "Acciones" },
   { key: "Otros", value: "Otros" },
 ];
+
+export const checkBoxOptions = [
+  { key: "Bonos corporativos", value: "Bonos corporativos" },
+  { key: "Bonos gubernamentales", value: "Bonos gubernamentales" },
+  { key: "Acciones", value: "Acciones" },
+  { key: "Fondos de inversión", value: "Fondos de inversión" },
+  { key: "Otros", value: "Otros" },
+];
+
+export const alternativeInvestmentsOptions = [
+  { key: "Notas y Eurobonos", value: "Notas y Eurobonos" },
+  { key: "Acciones locales", value: "Acciones locales" },
+  { key: "Acciones internacionales", value: "Acciones internacionales" },
+  { key: "Lotes y bonos del Estado", value: "Lotes y bonos del Estado" },
+  { key: "Ishares", value: "Ishares" },
+  { key: "ADRs", value: "ADRs" },
+  { key: "Certificados de inversión", value: "Certificados de inversión" },
+  { key: "Papeles Bursátiles", value: "Papeles Bursátiles" },
+  { key: "Otros valores", value: "Otros valores" },
+  { key: "Ninguno (Sólo indique)", value: "Ninguno (Sólo indique)" },
+];
+
+export const purposeOfInvestments = [
+  {
+    key: "Invertir en valores libres de riesgo y fácilmente convertibles en efectivo",
+    value:
+      "Invertir en valores libres de riesgo y fácilmente convertibles en efectivo ",
+  },
+  {
+    key: "Invertir en valores líquidos y con riesgos moderados.",
+    value: "Invertir en valores líquidos y con riesgos moderados.",
+  },
+  {
+    key: "Lograr un rendimiento que permita acumular capital para financiar metas futuras.",
+    value:
+      "Lograr un rendimiento que permita acumular capital para financiar metas futuras.",
+  },
+  {
+    key: "Obtener rentabilidad alta aunque esto signifique mayor riesgo",
+    value: "Obtener rentabilidad alta aunque esto signifique mayor riesgo",
+  },
+  {
+    key: "Otro (explique):___________________",
+    value: "Otro (explique):___________________",
+  },
+];
+export const economicSituationOptions = [
+  {
+    key: "Invertir en valores líquidos y con riesgos moderados",
+    value: "Invertir en valores líquidos y con riesgos moderados",
+  },
+  {
+    key: "Lograr un rendimiento que permita acumular capital para financiar metas futuras.",
+    value:
+      "Lograr un rendimiento que permita acumular capital para financiar metas futuras.",
+  },
+  {
+    key: "Obtener rentabilidad alta aunque esto signifique mayor riesgo.",
+    value: "Obtener rentabilidad alta aunque esto signifique mayor riesgo.",
+  },
+  {
+    key: "Otro (explique):___________________",
+    value: "Otro (explique):___________________",
+  },
+];
+
+export const trentOptions = [
+  { key: "Muy estable", value: "Muy estable" },
+  {
+    key: "Nada estable",
+    value: "Nada estable",
+  },
+  {
+    key: "Inestable",
+    value: "Inestable",
+  },
+];
+export const capitalPercentageOptions = [
+  { key: "Menos del 10%", value: "Menos del 10%" },
+  {
+    key: "Mas del 10%",
+    value: "Mas del 10%",
+  },
+];

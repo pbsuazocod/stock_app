@@ -19,7 +19,6 @@ export const initialValues = {
   profession: "",
   nit_number: "",
   cellphone_number: "",
-  expiration_date: "",
   // step 2
   type_of_work: "",
   company_name: "",

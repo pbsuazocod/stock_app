@@ -7,7 +7,6 @@ import FormWrapper from "../components/UI/FormWrapper/FormWrapper";
 // import RiskPage from ""
 
 function RiskPage() {
-
   return (
     <PageWrapper>
       <RiskForm />
