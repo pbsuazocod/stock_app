@@ -31,6 +31,16 @@ export const radioOptions = [
     value: "no",
   },
 ];
+export const languageOptions = [
+  {
+    key: "SI",
+    value: "yes",
+  },
+  {
+    key: "NO",
+    value: "no",
+  },
+];
 
 export const stockOptions = [
   {
@@ -56,8 +66,14 @@ export const saleOptions = [
 
 export const rangeOfIncomeOptions = [
   { key: "seleccione una opción", value: "" },
-  { key: "Menores de US$15,000.00 dolares", value: "Menores de US$15,000.00 dolares" },
-  { key: "Mayores de US$15,000.00 dolares", value: "Mayores de US$15,000.00 dolares" },
+  {
+    key: "Menores de US$15,000.00 dolares",
+    value: "Menores de US$15,000.00 dolares",
+  },
+  {
+    key: "Mayores de US$15,000.00 dolares",
+    value: "Mayores de US$15,000.00 dolares",
+  },
 ];
 
 export const savingsOptions = [
@@ -76,7 +92,6 @@ export const savingsOptions = [
 ];
 
 export const levelOfIncomeOptions = [
-  { key: "Menos de 1 año ", value: "" },
   { key: "Menos de 1 año ", value: "Menos de 1 año " },
   { key: "Mas de 1 año ", value: "Mas de 1 año " },
 ];

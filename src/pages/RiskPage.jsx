@@ -10,8 +10,8 @@ function RiskPage() {
 
   return (
     <PageWrapper>
-      {/* <RiskForm /> */}
-      <FormiKContainer />
+      <RiskForm />
+      {/* <FormiKContainer /> */}
     </PageWrapper>
   );
 }
