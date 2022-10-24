@@ -8,19 +8,20 @@ function Number(props) {
   const { label, name, ...rest } = props;
 
   return (
-    <div>
+    <React.Fragment>
       <Field id={name} name={name} {...rest}>
         {({ field, form }) => {
           return (
             <div className="flex flex-col">
+              {/* {JSON.stringify(field, null, 4)}.*/}
               <label htmlFor={name}>{label}</label>
-              <InputNumber  id={name} {...field} />
+              <InputNumber id={name} {...field} />
             </div>
           );
         }}
       </Field>
       <ErrorMessage name={name} component={TextError} />
-    </div>
+    </React.Fragment>
   );
 }
 

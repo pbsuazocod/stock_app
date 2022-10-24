@@ -6,6 +6,7 @@ import Radio from "../UI/FormInput/Radio";
 import Date from "../UI/FormInput/Date";
 import Number from "../UI/FormInput/Number";
 import CheckBoxGroup from '../UI/FormInput/CheckBoxGroup'
+import FieldArrayComponent from "../UI/FormInput/FieldArray";
 
 function FormikControl(props) {
   const { control, ...rest } = props;
@@ -24,6 +25,8 @@ function FormikControl(props) {
       return <Date {...rest} />;
     case "number":
       return <Number {...rest} />;
+    case "field_array":
+      return <FieldArrayComponent {...rest} />;
     default:
       return null;
   }

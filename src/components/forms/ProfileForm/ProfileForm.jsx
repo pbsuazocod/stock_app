@@ -17,7 +17,7 @@ import FormStepFive from "./FormStepFive";
 
 // Validation
 
-import { initialValues, validationSchema } from "../ValidationSchema";
+import { initialValues, validationSchema } from "./ValidationSchema";
 
 const currentPage = "profileForm";
 
@@ -28,7 +28,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five",
+  "Form Step Five"
 ];
 
 function _renderStepContent(step) {
@@ -50,16 +50,9 @@ function _renderStepContent(step) {
 
 function ProfileForm() {
   // Manage States
-  const [counter, setCounter] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
-
-  // Handlers
-
-  const IncreasePersonInput = () => {
-    setCounter(counter + 1);
-  };
 
   const _handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -68,7 +61,7 @@ function ProfileForm() {
   function _handleSubmit(values, actions) {
     console.log(values);
     if (isLastStep) {
-      console.log('form', values);
+      console.log("form", values);
       alert(values);
       // _submitForm(values, actions);
     } else {
@@ -89,24 +82,15 @@ function ProfileForm() {
           <Form>
             {_renderStepContent(activeStep)}
 
-            {/* buttons  */}
             {!isLastStep ? (
               <div
-                className={`mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1] flex`}
+                className={`${
+                  activeStep !== 2
+                    ? "mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1]"
+                    : ""
+                } flex`}
               >
                 <div className="w-full pt-[2%]">
-                  {activeStep === 2 && (
-                    <div className="flex items-center pl-[2%] gap-2">
-                      <button
-                        onClick={IncreasePersonInput}
-                        className="text-green-600"
-                      >
-                        <FaPlusCircle />
-                      </button>
-                      AÑADIR OTRA PERSONA
-                    </div>
-                  )}
-
                   <div
                     className={`flex ${
                       activeStep < 1 ? "justify-end" : "justify-between"

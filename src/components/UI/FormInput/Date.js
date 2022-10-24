@@ -13,7 +13,7 @@ function Date(props) {
           return (
             <div className="flex flex-col">
               <label htmlFor={name}>{label}</label>
-              <Calendar dateFormat="dd/mm/yy" id={name} {...field} />
+              <Calendar dateFormat="dd/mm/yy" id={name} {...field} disabled={rest.disabled}  />
             </div>
           );
         }}

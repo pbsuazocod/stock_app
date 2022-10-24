@@ -12,14 +12,12 @@ function FormStepOne() {
             name="name"
             type="text"
           />
-          <div className="w-1/2">
             <FormikControl
-              control="input"
+              control="number"
               name="age"
               label="EDAD"
               type="number"
             />
-          </div>
           <FormikControl
             control="input"
             name={"type_of_document"}
@@ -46,7 +44,7 @@ function FormStepOne() {
             type={"text"}
           />
           <FormikControl
-            control="input"
+            control="number"
             name="home_number"
             label="TELÉFONO CASA"
             mask={"(999) 999-9999"}

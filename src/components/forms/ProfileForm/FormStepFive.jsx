@@ -1,12 +1,14 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
 function FormStepFive() {
-    return (
-        <Link to="/" className="m-[2%]">
-            <h1>EL FORMULARIO FUE ENVIADO EXITOSAMENTE.</h1>
-        </Link>
-    )
+  return (
+    <Link to="/" className="m-[2%]">
+      <div className="min-h-[50vh]">
+        <h1>EL FORMULARIO FUE ENVIADO EXITOSAMENTE.</h1>
+      </div>
+    </Link>
+  );
 }
 
-export default FormStepFive
+export default FormStepFive;
