@@ -15,7 +15,7 @@ function Number(props) {
             <div className="flex flex-col">
               {/* {JSON.stringify(field, null, 4)}.*/}
               <label htmlFor={name}>{label}</label>
-              <InputNumber id={name} {...field} />
+              <InputNumber id={name} {...field} className={rest.className} />
             </div>
           );
         }}

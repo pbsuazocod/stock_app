@@ -1,14 +1,6 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
-import {
-  useFormikContext,
-  Formik,
-  Form,
-  Field,
-  FieldArray,
-  setNestedObjectValues,
-  ErrorMessage
-} from "formik";
+import { useFormikContext, FieldArray } from "formik";
 // Data
 import { authPersonOptions } from "../../config/constants";
 import { FaPlusCircle } from "react-icons/fa";
@@ -41,7 +33,7 @@ function FormStepThree({ counter }) {
         />
       </div>
 
-      <div className="mt-[2%] ml-[2%] ">
+      <div className="mt-[2%] ml-[2%]">
         <div className=" ">
           <FieldArray name="authorized_persons">
             {({ field, form, push, remove }) => {

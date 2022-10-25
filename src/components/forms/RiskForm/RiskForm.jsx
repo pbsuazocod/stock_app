@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Formik, Form } from "formik";
-import { Link } from "react-router-dom";
 
 // components
 import { FaArrowRight } from "react-icons/fa";
@@ -26,7 +25,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five",
+  "Form Step Five"
 ];
 
 function _renderStepContent(step) {
@@ -49,7 +48,7 @@ function _renderStepContent(step) {
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 

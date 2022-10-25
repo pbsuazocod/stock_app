@@ -156,7 +156,6 @@ export const validationSchema = [
       "Favor ingresar el nombre de la compañia"
     )
   }),
-
   Yup.object({
     type_of_work_aut_person: Yup.string().required(
       "Favor selecionar una opción"

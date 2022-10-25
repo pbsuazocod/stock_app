@@ -1,32 +1,35 @@
 import * as Yup from "yup";
 
 // Form initial values and validaiton schemas
-
-export const initialValues = {
-  aditionnal_language_option: "",
+export const step1Test = {
   language: "",
   reading_domain: "",
   writing_domain: "",
-  oral_expresion_domain: "",
+  oral_expresion_domain: ""
+};
+
+export const initialValues = {
+  aditionnal_language_option: "",
+  languages: [step1Test],
   // step 2
-  level_of_income:'',
-  salary:'',
-  own_business_income:"",
-  rent_for_real_state:"",
-  pensions_and_others:"",
-  stock_inverstment:'',
-  others:"",
-  salary_percentage:"",
-  income_front_own_business:'',
-  rent_for_property_rental:"",
-  Pensions_others:"",
-  stock_investments:"",
-  others_no_2:"",
-  stock_investments_amount:"",
-  capital_percentage:"",
-  income_source_trend:"",
-  explain:"",
-  savings:"",
+  level_of_income: "",
+  salary: "",
+  own_business_income: "",
+  rent_for_real_state: "",
+  pensions_and_others: "",
+  stock_inverstment: "",
+  others: "",
+  salary_percentage: "",
+  income_front_own_business: "",
+  rent_for_property_rental: "",
+  Pensions_others: "",
+  stock_investments: "",
+  others_no_2: "",
+  stock_investments_amount: "",
+  capital_percentage: "",
+  income_source_trend: "",
+  explain: "",
+  savings: "",
   // step 3
   checkBoxOptions: [],
   alternative_investments: [],
@@ -34,7 +37,7 @@ export const initialValues = {
   moderate: [],
   aggressive: [],
   purpose_of_investments: [],
-  economics_situation: [],
+  economics_situation: []
 };
 
 export const validationSchema = [
@@ -42,21 +45,15 @@ export const validationSchema = [
     aditionnal_language_option: Yup.string().required(
       "Favor selecionar una opción"
     ),
-    language: Yup.string().when("aditionnal_language_option", {
-      is: "yes",
-      then: Yup.string().required("Favor ingresar idioma"),
-    }),
-    reading_domain: Yup.string().when("aditionnal_language_option", {
-      is: "yes",
-      then: Yup.string().required("Favor ingresar porcentaje"),
-    }),
-    writing_domain: Yup.string().when("aditionnal_language_option", {
-      is: "yes",
-      then: Yup.string().required("Favor ingresar porcentaje"),
-    }),
-    oral_expresion_domain: Yup.string().when("aditionnal_language_option", {
-      is: "yes",
-      then: Yup.string().required("Favor ingresar porcentaje"),
-    }),
-  }),
+    languages: Yup.array().of(
+      Yup.object().shape({
+        language: Yup.string().required("Favor ingresar idioma"),
+        reading_domain: Yup.string().required("Favor ingresar porcentaje"),
+        writing_domain: Yup.string().required("Favor ingresar porcentaje"),
+        oral_expresion_domain: Yup.string().required(
+          "Gavor ingresar porcentaje"
+        )
+      })
+    )
+  })
 ];
