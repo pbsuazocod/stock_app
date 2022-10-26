@@ -44,21 +44,21 @@ function RiskStepOne() {
                         />
 
                         <FormikControl
-                          control="number"
+                          control="input"
                           name={`languages.${index}.reading_domain`}
                           label={"% DOMINIO DE LECTURA"}
                           type="number"
                           className="p-inputtext-lg block"
                         />
                         <FormikControl
-                          control="number"
+                          control="input"
                           name={`languages.${index}.writing_domain`}
                           label={"% DOMINIO DE ESCRITURA"}
                           type="number"
                           className="p-inputtext-lg block"
                         />
                         <FormikControl
-                          control="number"
+                          control="input"
                           name={`languages.${index}.oral_expresion_domain`}
                           label={"% DOMINIO EXPRESIÓN ORAL"}
                           type="number"
@@ -75,7 +75,7 @@ function RiskStepOne() {
                       <button
                         onClick={() =>
                           push({
-                            ...step1Test
+                            ...step1Test,
                           })
                         }
                         className=" flex items-center gap-2"

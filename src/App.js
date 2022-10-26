@@ -5,6 +5,7 @@ import React, { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import FormPage from "./pages/FormPage";
 import RiskPage from "./pages/RiskPage";
+import BoardingPage from "./pages/BoardingPage";
 
 const App = function () {
   return (
@@ -12,6 +13,7 @@ const App = function () {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/formpage" element={<FormPage />} />
+        <Route path="/onboarding" element={<BoardingPage />} />
         <Route path="/riskpage" element={<RiskPage />} />
       </Routes>
     </div>

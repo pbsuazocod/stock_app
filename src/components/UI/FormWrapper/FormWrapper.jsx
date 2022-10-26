@@ -1,19 +1,13 @@
 import React from "react";
 import { useState } from "react";
 
-export default function FormWrapper({
-  children,
-  currentStep,
-  currentPage,
-}) {
+export default function FormWrapper({ children, currentStep, currentPage }) {
   const [title, setTitle] = useState(currentStep);
 
   const Titles = () => {
-
-
     switch (currentStep) {
       case 0:
-        return "SELECCIONE LA CASA DE CORREDORES DE BOLSA CON LA QUE DESEA VINCULARSE";
+        return "SISTEMA DE VINCULACIÓN DIGITAL";
         break;
       case 1:
         if (currentPage === "riskpage") {
@@ -47,6 +41,15 @@ export default function FormWrapper({
         return "INSTRUCCIONES PARA LIQUIDACIÓN DE FONDOS";
         break;
 
+      case 6:
+        if (currentPage === "onBording_step_1") return "NOTIFICACIÓN";
+        break;
+      case 7:
+        if (currentPage === "onBording_step_1") return "NOTIFICACIÓN";
+        break;
+      case 8:
+        if (currentPage === "onBording_step_1") return "NOTIFICACIÓN";
+        break;
       default:
         return "default";
         break;
@@ -54,7 +57,11 @@ export default function FormWrapper({
   };
 
   return (
-    <div className={`w-11/12 h-full bg-[#F7F7F7] rounded-3xl ${currentPage === 'riskpage' ? 'w-[70%]': 'lg:max-w-[50%]' }`}>
+    <div
+      className={`w-11/12 h-full bg-[#F7F7F7] rounded-3xl ${
+        currentPage === "riskpage" ? "w-[70%]" : "lg:max-w-[50%]"
+      }`}
+    >
       <div
         className={`bg-[#1A3B69] text-white text-[70%] h-12 md:text-[100%] rounded-t-3xl flex-grow  flex pr-[2%] pl-[4%]  items-center font-Montserrat ${
           currentStep === 0 ? "justify-center" : ""

@@ -2,42 +2,42 @@ import * as Yup from "yup";
 
 // Form initial values and validation schemas
 const step1Test = {
-  name: "Juan Suazo",
-  age: "35",
-  type_of_document: "cedula",
-  issue_date: "13231321",
-  marital_status: "1321323",
-  address: "costa verde",
-  home_number: "8095377777",
-  email: "me@me.com",
-  recidency: "here",
-  nacionality: "dominican",
-  day_of_birth: "2/22/22",
-  identification_card: "22",
-  expiration_date: "22",
-  profession: "11323213213",
-  nit_number: "13213123231",
-  cellphone_number: "8095377777"
+  name: "",
+  age: "",
+  type_of_document: "",
+  issue_date: "",
+  marital_status: "",
+  address: "",
+  home_number: "",
+  email: "",
+  recidency: "",
+  nacionality: "",
+  day_of_birth: "",
+  identification_card: "",
+  expiration_date: "",
+  profession: "",
+  nit_number: "",
+  cellphone_number: "",
 };
 const step2Test = {
-  type_of_work: "1",
-  company_name: "1",
-  company_line_of_work: "1",
-  job_title: "1",
-  time_in_the_company: "20",
-  phone: "8095377777",
-  full_address: "1"
+  type_of_work: "",
+  company_name: "",
+  company_line_of_work: "",
+  job_title: "",
+  time_in_the_company: "",
+  phone: "",
+  full_address: "",
 };
 export const step3Test = {
-  name_of_aut_person: "juan",
-  day_of_birth_aut_person: "09/09/22",
-  place_of_birth_aut_person: "Manhatan",
-  email_aut_person: "me@me.com",
-  doc_id_aut_person: "22222222222",
-  nationality_aut_person: "Dominicano",
-  job_title_aut_person: "VIP",
-  phone_number_aut_person: "8095377777",
-  address_aut_person: "c4 #2 costa azul"
+  name_of_aut_person: "",
+  day_of_birth_aut_person: "",
+  place_of_birth_aut_person: "",
+  email_aut_person: "",
+  doc_id_aut_person: "",
+  nationality_aut_person: "",
+  job_title_aut_person: "",
+  phone_number_aut_person: "",
+  address_aut_person: "",
 };
 
 export const initialValues = {
@@ -90,7 +90,7 @@ export const initialValues = {
   account_number: "",
   receive_email_auth: "",
   PEP: "",
-  green_card: ""
+  green_card: "",
 };
 
 export const validationSchema = [
@@ -135,7 +135,7 @@ export const validationSchema = [
       .matches(/^[0-9]+$/, "Solo introdusca numeros")
       .min(10, "Debe contener 10 digitos")
       .max(10, "Debe contener 10 digitos")
-      .required("Favor completar con tu número celular")
+      .required("Favor completar con tu número celular"),
   }),
   Yup.object({
     type_of_work: Yup.string().required("Favor selecionar una opción"),
@@ -154,7 +154,7 @@ export const validationSchema = [
       .required("Favor completar con tu número celular"),
     full_address: Yup.string().required(
       "Favor ingresar el nombre de la compañia"
-    )
+    ),
   }),
   Yup.object({
     type_of_work_aut_person: Yup.string().required(
@@ -191,9 +191,9 @@ export const validationSchema = [
           .min(10, "Debe contener 10 digitos")
           .max(10, "Debe contener 10 digitos")
           .required("Favor completar con tu número celular"),
-        address_aut_person: Yup.string().required("Favor introducir dirección")
+        address_aut_person: Yup.string().required("Favor introducir dirección"),
       })
-    )
+    ),
   }),
   Yup.object({
     stock_purchase: Yup.string().required("Favor selecionar una opción"),
@@ -206,6 +206,6 @@ export const validationSchema = [
     account_number: Yup.string().required("Favor ingresar tipo de cuenta"),
     receive_email_auth: Yup.string().required("Favor ingresar tipo de cuenta"),
     PEP: Yup.string().required("Favor selecionar una opción"),
-    green_card: Yup.string().required("Favor selecionar una opción")
-  })
+    green_card: Yup.string().required("Favor selecionar una opción"),
+  }),
 ];

@@ -129,9 +129,10 @@ function FormStepThree({ counter }) {
                   <div className="w-full">
                     <div className="pl-[2%]">
                       <button
+                        type="button"
                         onClick={() =>
                           push({
-                            ...step3Test
+                            ...step3Test,
                           })
                         }
                         className=" flex items-center gap-2"

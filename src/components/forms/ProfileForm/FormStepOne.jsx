@@ -1,5 +1,6 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
+import { documentOptions } from "../../config/constants";
 
 function FormStepOne() {
   return (
@@ -12,17 +13,19 @@ function FormStepOne() {
             name="name"
             type="text"
           />
-            <FormikControl
-              control="number"
-              name="age"
-              label="EDAD"
-              type="number"
-            />
           <FormikControl
             control="input"
+            name="age"
+            label="EDAD"
+            type="number"
+          />
+
+          <FormikControl
+            control="select"
             name={"type_of_document"}
             label={"TIPO DE DOCUMENTO"}
-            type={"text"}
+            placeholder="Seleccione tipo de domuento"
+            options={documentOptions}
           />
 
           <FormikControl
@@ -44,7 +47,7 @@ function FormStepOne() {
             type={"text"}
           />
           <FormikControl
-            control="number"
+            control="input"
             name="home_number"
             label="TELÉFONO CASA"
             mask={"(999) 999-9999"}

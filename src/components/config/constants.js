@@ -20,6 +20,16 @@ export const authPersonOptions = [
     value: "no",
   },
 ];
+export const documentOptions = [
+  {
+    key: "DUI",
+    value: "DUI",
+  },
+  {
+    key: "Pasaporte",
+    value: "Pasaporte",
+  },
+];
 
 export const radioOptions = [
   {
