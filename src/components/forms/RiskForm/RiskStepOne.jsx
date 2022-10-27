@@ -73,6 +73,7 @@ function RiskStepOne() {
                   <div className="w-full">
                     <div className="pl-[2%]">
                       <button
+                        type="button"
                         onClick={() =>
                           push({
                             ...step1Test,

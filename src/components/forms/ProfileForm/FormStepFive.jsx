@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import { Button } from "primereact/button";
+import "./styles.css";
 
 function FormStepFive() {
   return (
@@ -11,15 +13,14 @@ function FormStepFive() {
       </div>
       <div className="flex flex-col flex-1 justify-between items-end mr-[2%] mb-[4%]">
         <div className="border-grey-300 border-t-4 w-full" />
-        <Link
-          to="/riskpage"
-          type="submit"
-          className={`bg-[#1A3B69] w-[40%] rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center`}
-        >
-          CONTINUAR
-          <div className="lg:text-3xl text-xl">
-            <FaArrowRight />
-          </div>
+        <Link to={"/riskpage"}>
+          <Button
+            type="button"
+            label="CONTINUAR"
+            iconPos="right"
+            icon="pi pi-arrow-right"
+            className="p-button-raised"
+          />
         </Link>
       </div>
     </div>
