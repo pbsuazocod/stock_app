@@ -17,7 +17,7 @@ function RiskStepThree() {
         <FormikControl
           control="radio"
           label=""
-          name="others_investments"
+          name="other_investments"
           options={radioOptions}
           className="pt-2"
         />
@@ -30,7 +30,7 @@ function RiskStepThree() {
 
           <FormikControl
             control="input"
-            name={"language"}
+            name={"investment_information"}
             label={""}
             type={"textarea"}
             className={
@@ -62,7 +62,6 @@ function RiskStepThree() {
           <div className="lg:w-1/4 w-full ">
             <FormikControl
               control="select"
-              label=""
               name="level_of_income"
               options={levelOfIncomeOptions}
             />
@@ -97,7 +96,7 @@ function RiskStepThree() {
           <FormikControl
             control="radio"
             label=""
-            name="outside_salvador"
+            name="outside_salvador_experience"
             options={radioOptions}
             className="pt-2"
           />

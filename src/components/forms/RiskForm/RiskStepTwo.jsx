@@ -1,5 +1,10 @@
 import React from "react";
-import { rangeOfIncomeOptions, savingsOptions, trentOptions, capitalPercentageOptions } from "../../config/constants";
+import {
+  rangeOfIncomeOptions,
+  savingsOptions,
+  trentOptions,
+  capitalPercentageOptions,
+} from "../../config/constants";
 import FormikControl from "../../formik/FormikControl";
 
 function RiskStepTwo() {
@@ -107,7 +112,7 @@ function RiskStepTwo() {
           />
           <FormikControl
             control="input"
-            name={"others_no_2"}
+            name={"others_percentaje"}
             label={""}
             type="text"
           />
