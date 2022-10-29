@@ -93,10 +93,10 @@ function FormStepFour() {
           />
 
           <FormikControl
-            control="input"
+            control="number"
             name={"account_number"}
             label={"NÚMERO DE CUENTA"}
-            type="text"
+            mask={"9999999999999"}
           />
         </div>
         <div className=" mt-[2%] mb-[2%] border-t-2 border-[#C1C1C1]" />

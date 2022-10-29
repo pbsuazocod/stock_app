@@ -14,10 +14,12 @@ function FormStepOne() {
             type="text"
           />
           <FormikControl
-            control="input"
+            control="number"
             name="age"
             label="EDAD"
-            type="number"
+            min={0} 
+            max={100}
+            mode="decimal"
           />
 
           <FormikControl
@@ -47,7 +49,7 @@ function FormStepOne() {
             type={"text"}
           />
           <FormikControl
-            control="input"
+            control="mask"
             name="home_number"
             label="TELÉFONO CASA"
             mask={"(999) 999-9999"}
@@ -79,7 +81,7 @@ function FormStepOne() {
             label="FECHA DE NACIMIENTO"
           />
           <FormikControl
-            control="input"
+            control="mask"
             name="identification_card"
             label="NÚMERO DE DOCUMENTO"
             mask="999-9999999-9"
@@ -100,13 +102,13 @@ function FormStepOne() {
             control="input"
             name="nit_number"
             label="NÚMERO DE NIT"
-            type="tel"
+            type="text"
           />
           <FormikControl
-            control="input"
+            control="mask"
             name="cellphone_number"
             label="TELÉFONO CELULAR"
-            mask="(999) 999-9999"
+            mask={"(999) 999-9999"}
             type="tel"
           />
         </div>

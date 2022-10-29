@@ -7,6 +7,7 @@ import Date from "../UI/FormInput/Date";
 import Number from "../UI/FormInput/Number";
 import CheckBoxGroup from '../UI/FormInput/CheckBoxGroup'
 import FieldArrayComponent from "../UI/FormInput/FieldArray";
+import Mask from "../UI/FormInput/Mask";
 
 function FormikControl(props) {
   const { control, ...rest } = props;
@@ -27,6 +28,8 @@ function FormikControl(props) {
       return <Number {...rest} />;
     case "field_array":
       return <FieldArrayComponent {...rest} />;
+    case "mask":
+      return <Mask {...rest}/>;
     default:
       return null;
   }

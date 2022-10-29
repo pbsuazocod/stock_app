@@ -1,5 +1,9 @@
 import * as Yup from "yup";
 
+const phoneRegExp = RegExp(
+  /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+);
+
 // Form initial values and validation schemas
 const step1Test = {
   name: "",
@@ -100,17 +104,15 @@ export const validationSchema = [
       .required("Favor ingresar tu nombre completo"),
     age: Yup.number()
       .required("Favor ingresar tu edad")
-      .min(18, "Debe ser mayor de 18 años"),
+      .min(18, "Debe ser mayor de 18 años")
+      .max(100, "Debe ser menor de 100 años"),
     type_of_document: Yup.string().required("Favor ingresar tipo de documento"),
     issue_date: Yup.string().required("Favor introducir la fecha de emisión"),
     marital_status: Yup.string().required("Favor ingresar su estado civil"),
     address: Yup.string().required("Favor ingresar su dirección"),
     home_number: Yup.string()
-      .required()
-      .matches(/^[0-9]+$/, "Solo introdusca numeros")
-      .min(10, "Debe contener 10 digitos")
-      .max(10, "Debe contener 10 digitos")
-      .required("Favor completar con tu número celular"),
+    .required("Favor ingresar un numero de télefono")
+    .matches(phoneRegExp, 'Favor ingresar un numero de télefono valido'),
     email: Yup.string()
       .email("Invalid email address")
       .required(
@@ -126,16 +128,13 @@ export const validationSchema = [
       "Favor introducir la fecha de vencimiento"
     ),
     profession: Yup.string().required("Favor ingresar su profesión"),
-    nit_number: Yup.number()
+    nit_number: Yup.string()
       .min(10, "Verifica que estes ingresando el número correctamente")
       .required("Favor completar con tu número NIT")
       .typeError("El campo solo permite números"),
     cellphone_number: Yup.string()
-      .required()
-      .matches(/^[0-9]+$/, "Solo introdusca numeros")
-      .min(10, "Debe contener 10 digitos")
-      .max(10, "Debe contener 10 digitos")
-      .required("Favor completar con tu número celular"),
+    .required("Favor ingresar un numero de télefono")
+    .matches(phoneRegExp, 'Favor ingresar un numero de télefono valido'),
   }),
   Yup.object({
     type_of_work: Yup.string().required("Favor selecionar una opción"),
@@ -149,9 +148,9 @@ export const validationSchema = [
     time_in_the_company: Yup.number()
       .min(10, "Verifica que estes ingresando el número correctamente")
       .required("Favor ingresar tiempo laboral en la empresa"),
-    phone: Yup.number()
-      .min(10, "Verifica que estes ingresando el número correctamente")
-      .required("Favor completar con tu número celular"),
+    phone: Yup.string()
+    .required("Favor ingresar un numero de télefono")
+    .matches(phoneRegExp, 'Favor ingresar un numero de télefono valido'),
     full_address: Yup.string().required(
       "Favor ingresar el nombre de la compañia"
     ),
@@ -186,11 +185,8 @@ export const validationSchema = [
           "Favor introducir nombre del cargo"
         ),
         phone_number_aut_person: Yup.string()
-          .required()
-          .matches(/^[0-9]+$/, "Solo introdusca numeros")
-          .min(10, "Debe contener 10 digitos")
-          .max(10, "Debe contener 10 digitos")
-          .required("Favor completar con tu número celular"),
+        .required("Favor ingresar un numero de télefono")
+        .matches(phoneRegExp, 'Favor ingresar un numero de télefono valido'),
         address_aut_person: Yup.string().required("Favor introducir dirección"),
       })
     ),

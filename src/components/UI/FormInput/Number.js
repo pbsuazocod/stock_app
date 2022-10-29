@@ -9,17 +9,19 @@ function Number(props) {
 
   return (
     <React.Fragment>
-      <Field id={name} name={name} {...rest}>
+      <Field id={name} name={name} {...rest} >
         {({ field, form }) => {
           return (
             <div className="flex flex-col">
-              {/* {JSON.stringify(rest, null, 4)}. */}
               <label htmlFor={name}>{label}</label>
               <InputNumber
                 id={name}
-                name={field.name}
-                value={field.value}
-                className={rest.className}
+                {...field}
+                {...rest}
+                // name={field.name}
+                // value={field.value}
+                // onValueChange={field.value}
+                // className={rest.className}
               />
             </div>
           );

@@ -43,16 +43,18 @@ function FormStepTwo() {
           />
 
           <FormikControl
-            control="input"
+            control="number"
             name="time_in_the_company"
             label="TIEMPO QUE LABORA EN LA EMPRESA"
-            type="number"
+            min={0} 
+            max={60}
+            mode="decimal"
           />
         </div>
 
         <div className="w-1/2">
           <FormikControl
-            control="input"
+            control="mask"
             name="phone"
             label="TELÉFONO"
             mask="(999) 999-9999"
