@@ -28,7 +28,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five",
+  "Form Step Five"
 ];
 
 function _renderStepContent(step) {
@@ -51,7 +51,7 @@ function _renderStepContent(step) {
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(3);
+  const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -82,7 +82,7 @@ function RiskForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        validationSchema={currentValidationSchema}
+        // validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (
@@ -96,18 +96,6 @@ function RiskForm() {
                 className={`mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1] flex`}
               >
                 <div className="w-full pt-[2%]">
-                  {activeStep === 2 && (
-                    <div className="flex items-center pl-[2%] gap-2">
-                      <button
-                        onClick={IncreasePersonInput}
-                        className="text-green-600"
-                      >
-                        <FaPlusCircle />
-                      </button>
-                      AÑADIR OTRA PERSONA
-                    </div>
-                  )}
-
                   <div
                     className={`flex ${
                       activeStep < 1 ? "justify-end" : "justify-between"

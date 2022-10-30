@@ -5,7 +5,7 @@ export const step1Test = {
   language: "",
   reading_domain: "",
   writing_domain: "",
-  oral_expresion_domain: "",
+  oral_expresion_domain: ""
 };
 
 export const initialValues = {
@@ -55,7 +55,7 @@ export const initialValues = {
   moderate: "",
   aggressive: "",
   purpose_of_investments: [],
-  economics_situation: [],
+  economics_situation: []
 };
 
 export const validationSchema = [
@@ -63,16 +63,20 @@ export const validationSchema = [
     aditionnal_language_option: Yup.string().required(
       "Favor selecionar una opción"
     ),
-    languages: Yup.array().of(
-      Yup.object().shape({
-        language: Yup.string().required("Favor ingresar idioma"),
-        reading_domain: Yup.string().required("Favor ingresar porcentaje"),
-        writing_domain: Yup.string().required("Favor ingresar porcentaje"),
-        oral_expresion_domain: Yup.string().required(
-          "Favor ingresar porcentaje"
-        ),
-      })
-    ),
+    languages: Yup.array().when("aditionnal_language_option", {
+      is: "yes",
+      then: (schema) =>
+        schema.of(
+          Yup.object().shape({
+            language: Yup.string().required("Favor ingresar idioma"),
+            reading_domain: Yup.string().required("Favor ingresar porcentaje"),
+            writing_domain: Yup.string().required("Favor ingresar porcentaje"),
+            oral_expresion_domain: Yup.string().required(
+              "Favor ingresar porcentaje"
+            )
+          })
+        )
+    })
   }),
   Yup.object().shape({
     level_of_income: Yup.string().required("Favor ingresar rango de ingresos"),
@@ -108,7 +112,7 @@ export const validationSchema = [
       "Favor seleccione una tendencia"
     ),
     explain: Yup.string().required("Favor ingresar explicar las razones"),
-    savings: Yup.string().required("Favor ingresar seleccione una opción"),
+    savings: Yup.string().required("Favor ingresar seleccione una opción")
   }),
   Yup.object().shape({
     other_investments: Yup.string().required("Favor seleccione una opción"),
@@ -138,7 +142,7 @@ export const validationSchema = [
     ),
     negotiated_values_3: Yup.string().required(
       "Favor ingresar tipos de valores negociados"
-    ),
+    )
   }),
   Yup.object().shape({
     conservative: Yup.string().required("Favor ingresar seleccione una opción"),
@@ -149,6 +153,6 @@ export const validationSchema = [
     ),
     economics_situation: Yup.array().required(
       "Favor ingresar seleccione una opción"
-    ),
-  }),
+    )
+  })
 ];

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import FormikControl from "../../formik/FormikControl";
 import { languageOptions } from "../../config/constants";
 import { useFormikContext, FieldArray } from "formik";
@@ -6,15 +6,15 @@ import { FaPlusCircle } from "react-icons/fa";
 import { step1Test } from "./ValidationSchema";
 
 function test(values) {
-  return values.languages.map((value) => (
+  return values.languages.map((value, key) => (
     // JSON.stringify(value)
-    <>
+    <div key={key}>
       <h1>language: {value.language}</h1>
       <h1>reading_domain: {value.reading_domain}</h1>
       <h1>writing_domain: {value.writing_domain}</h1>
       <h1>oral_expresion_domain: {value.oral_expresion_domain}</h1>
       <hr />
-    </>
+    </div>
   ));
 }
 function RiskStepOne() {
@@ -22,7 +22,7 @@ function RiskStepOne() {
   const { values, submitForm } = useFormikContext();
   return (
     <div className="p-[2%]">
-      {/* {test(values)} */}
+      {test(values)}
       <div className="pl-[1%]">
         <p>¿DOMINA UN IDIOMA ADICIONAL AL IDIOMA ESPAÑOL?</p>
         <div className="flex gap-2">
@@ -44,7 +44,7 @@ function RiskStepOne() {
               return (
                 <>
                   {languages.map((field, index) => (
-                    <>
+                    <React.Fragment key={index}>
                       <div className="grid-none md:grid grid-row-5 lg:grid-cols-4 grid-col-1 gap-4 border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
                         <FormikControl
                           control="input"
@@ -79,7 +79,7 @@ function RiskStepOne() {
                       <div
                         className={`my-[3%] border-t-2 border-[#C1C1C1] flex col-span-2`}
                       ></div>
-                    </>
+                    </React.Fragment>
                   ))}
                   <div className="w-full">
                     <div className="pl-[2%]">
@@ -90,7 +90,7 @@ function RiskStepOne() {
                             ...step1Test
                           })
                         }
-                        className=" flex items-center gap-2"
+                        className=" flex items-center gap-2 font-bold"
                       >
                         <span className="text-green-600">
                           <FaPlusCircle />

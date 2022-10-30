@@ -22,15 +22,26 @@
     @apply block
     w-full
     h-1/2
-    font-Montserrat
+    font-montserrat
     rounded-md
     border-gray-300
     shadow-sm
     focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
   }
+  button {
+    @apply block
+    font-montserrat;
+  }
+  ,
+  html {
+    font-family: Montserrat, system-ui, sans-serif;
+  }
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+* :not(.pi) {
+  font-family: "Montserrat", "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"); */
 /* .r {
   background-image: none !important;
 } */
