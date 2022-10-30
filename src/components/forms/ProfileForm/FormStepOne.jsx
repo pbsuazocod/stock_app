@@ -61,7 +61,7 @@ function FormStepOne() {
           />
           <FormikControl
             control="input"
-            name="recidency"
+            name="residency"
             label="RESIDENCIA"
             type={"text"}
           />
@@ -69,7 +69,7 @@ function FormStepOne() {
         <div className="space-y-2 ">
           <FormikControl
             control="input"
-            name="nacionality"
+            name="nationality"
             label="NACIONALIDAD"
             type="text"
           />

@@ -73,7 +73,7 @@ function FormStepFour() {
         <div className="grid-none md:grid grid-rows-2 grid-cols-2 gap-4">
           <FormikControl
             control="input"
-            name={"woner_of_the_account"}
+            name={"owner_of_the_account"}
             label={"NOMBRE DEL TITULAR DE LA CUENTA"}
             type="text"
           />

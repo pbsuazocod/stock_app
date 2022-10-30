@@ -8,16 +8,10 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 
 function OnBoarding() {
-  const steps = ["Form Step One", "Form Step two", "Form Step tree"];
-
   const currentPage = "onBording_step_1";
-
   // manage state
   const [activeStep, setActiveStep] = useState(6);
-  const isLastStep = activeStep === steps.length - 1;
-
   // Form steps to be render
-
   return (
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       {activeStep === 6 && (

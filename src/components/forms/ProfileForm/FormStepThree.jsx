@@ -4,10 +4,27 @@ import { useFormikContext, FieldArray } from "formik";
 // Data
 import { authPersonOptions } from "../../config/constants";
 import { FaPlusCircle } from "react-icons/fa";
-import { step3Test } from "./ValidationSchema";
-
+import { authorized_persons_values } from "./ValidationSchema";
+function test(values) {
+  return values.authorized_persons.map((value) => (
+    <>
+      <h1>name_of_aut_person: {value.name_of_aut_person}</h1>
+      <h1>
+        day_of_birth_aut_person: {JSON.stringify(value.day_of_birth_aut_person)}
+      </h1>
+      <h1>place_of_birth_aut_person: {value.place_of_birth_aut_person}</h1>
+      <h1>email_aut_person: {value.email_aut_person}</h1>
+      <h1>doc_id_aut_person: {value.doc_id_aut_person}</h1>
+      <h1>nationality_aut_person: {value.nationality_aut_person}</h1>
+      <h1>job_title_aut_person: {value.job_title_aut_person}</h1>
+      <h1>phone_number_aut_person: {value.phone_number_aut_person}</h1>
+      <h1>address_aut_person: {value.address_aut_person}</h1>
+      <hr />
+    </>
+  ));
+}
 function FormStepThree({ counter }) {
-  const { values, submitForm, errors } = useFormikContext();
+  const { values, errors } = useFormikContext();
   const [disableForm, setDisableForm] = React.useState(false);
   console.log(errors);
   React.useEffect(() => {
@@ -17,13 +34,10 @@ function FormStepThree({ counter }) {
   }, [values]);
   return (
     <div className="p-[2%]">
-      {/* {JSON.stringify(values.type_of_work_aut_person)} */}
-
       <div className="pl-[1%]">
         <p>
           DESEA AUTORIZAR A OTRA PERSONA QUE GIRE INSTRUCCIONES EN SU NOMBRE
         </p>
-
         <FormikControl
           control="radio"
           label=""
@@ -34,12 +48,12 @@ function FormStepThree({ counter }) {
       </div>
 
       <div className="mt-[2%] ml-[2%]">
+        {test(values)}
         <div className=" ">
           <FieldArray name="authorized_persons">
             {({ field, form, push, remove }) => {
               const { values } = form;
               const { authorized_persons } = values;
-              console.log(values);
 
               return (
                 <>
@@ -132,7 +146,7 @@ function FormStepThree({ counter }) {
                         type="button"
                         onClick={() =>
                           push({
-                            ...step3Test,
+                            ...authorized_persons_values
                           })
                         }
                         className=" flex items-center gap-2"

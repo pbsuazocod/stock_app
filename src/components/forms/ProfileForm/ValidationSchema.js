@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
 // Form initial values and validation schemas
-const step1Test = {
+export const step1 = {
   name: "",
   age: "",
   type_of_document: "",
@@ -10,25 +10,25 @@ const step1Test = {
   address: "",
   home_number: "",
   email: "",
-  recidency: "",
-  nacionality: "",
+  residency: "",
+  nationality: "",
   day_of_birth: "",
   identification_card: "",
   expiration_date: "",
   profession: "",
   nit_number: "",
-  cellphone_number: "",
+  cellphone_number: ""
 };
-const step2Test = {
+const step2 = {
   type_of_work: "",
   company_name: "",
   company_line_of_work: "",
   job_title: "",
   time_in_the_company: "",
   phone: "",
-  full_address: "",
+  full_address: ""
 };
-export const step3Test = {
+export const authorized_persons_values = {
   name_of_aut_person: "",
   day_of_birth_aut_person: "",
   place_of_birth_aut_person: "",
@@ -37,60 +37,30 @@ export const step3Test = {
   nationality_aut_person: "",
   job_title_aut_person: "",
   phone_number_aut_person: "",
-  address_aut_person: "",
+  address_aut_person: ""
+};
+const step3 = {
+  type_of_work_aut_person: "",
+  authorized_persons: [authorized_persons_values]
 };
 
-export const initialValues = {
-  ...step1Test,
-  // name: "",
-  // age: "-1",
-  // type_of_document: "",
-  // issue_date: "",
-  // marital_status: "",
-  // address: "",
-  // home_number: "",
-  // email: "",
-  // recidency: "",
-  // nacionality: "",
-  // day_of_birth: "",
-  // identification_card: "",
-  // expiration_date: "",
-  // profession: "",
-  // nit_number: "",
-  // cellphone_number: "",
-  // step 2
-  ...step2Test,
-  // type_of_work: "",
-  // company_name: "",
-  // company_line_of_work: "",
-  // job_title: "",
-  // time_in_the_company: "",
-  // phone: "",
-  // full_address: "",
-  // step 3
-  // ...step3Test,
-  type_of_work_aut_person: "",
-  authorized_persons: [step3Test],
-
-  // name_of_aut_person: "",
-  // day_of_birth_aut_person: "",
-  // place_of_birth_aut_person: "",
-  // email_aut_person: "",
-  // doc_id_aut_person: "",
-  // nationality_aut_person: "",
-  // job_title_aut_person: "",
-  // phone_number_aut_person: "",
-  // address_aut_person: "",
-  // step 4
+const step4 = {
   stock_purchase: "",
   sale_values: "",
-  woner_of_the_account: "",
+  owner_of_the_account: "",
   bank_name: "",
   type_of_account: "",
   account_number: "",
   receive_email_auth: "",
   PEP: "",
-  green_card: "",
+  green_card: ""
+};
+
+export const initialValues = {
+  ...step1,
+  ...step2,
+  ...step3,
+  ...step4
 };
 
 export const validationSchema = [
@@ -108,16 +78,16 @@ export const validationSchema = [
     home_number: Yup.string()
       .required()
       .matches(/^[0-9]+$/, "Solo introdusca numeros")
-      .min(10, "Debe contener 10 digitos")
-      .max(10, "Debe contener 10 digitos")
+      .min(10, "Debe contener un minimo de 10 digitos")
+      .max(10, "Debe contener un maximo de 10 digitos")
       .required("Favor completar con tu número celular"),
     email: Yup.string()
-      .email("Invalid email address")
+      .email("Correo electrónico no valido")
       .required(
         "Debes ingresar tu dirección de correo con el siguiente formato: tuemail@ejemplo.com"
       ),
-    recidency: Yup.string().required("Favor ingresar su residencia"),
-    nacionality: Yup.string().required("Favor ingresar su nacionalidad"),
+    residency: Yup.string().required("Favor ingresar su residencia"),
+    nationality: Yup.string().required("Favor ingresar su nacionalidad"),
     day_of_birth: Yup.string().required("Favor introducir la fecha de emisión"),
     identification_card: Yup.string().required(
       "Favor introducir número de documento"
@@ -133,9 +103,9 @@ export const validationSchema = [
     cellphone_number: Yup.string()
       .required()
       .matches(/^[0-9]+$/, "Solo introdusca numeros")
-      .min(10, "Debe contener 10 digitos")
-      .max(10, "Debe contener 10 digitos")
-      .required("Favor completar con tu número celular"),
+      .min(10, "Debe contener un minimo de 10 digitos")
+      .max(10, "Debe contener un maximo de 10 digitos")
+      .required("Favor completar con tu número celular")
   }),
   Yup.object({
     type_of_work: Yup.string().required("Favor selecionar una opción"),
@@ -154,7 +124,7 @@ export const validationSchema = [
       .required("Favor completar con tu número celular"),
     full_address: Yup.string().required(
       "Favor ingresar el nombre de la compañia"
-    ),
+    )
   }),
   Yup.object({
     type_of_work_aut_person: Yup.string().required(
@@ -191,14 +161,14 @@ export const validationSchema = [
           .min(10, "Debe contener 10 digitos")
           .max(10, "Debe contener 10 digitos")
           .required("Favor completar con tu número celular"),
-        address_aut_person: Yup.string().required("Favor introducir dirección"),
+        address_aut_person: Yup.string().required("Favor introducir dirección")
       })
-    ),
+    )
   }),
   Yup.object({
     stock_purchase: Yup.string().required("Favor selecionar una opción"),
     sale_values: Yup.string().required("Favor selecionar una opción"),
-    woner_of_the_account: Yup.string().required(
+    owner_of_the_account: Yup.string().required(
       "Favor ingresar titular de cuenta"
     ),
     bank_name: Yup.string().required("Favor ingresar nombre del banco"),
@@ -206,6 +176,6 @@ export const validationSchema = [
     account_number: Yup.string().required("Favor ingresar tipo de cuenta"),
     receive_email_auth: Yup.string().required("Favor ingresar tipo de cuenta"),
     PEP: Yup.string().required("Favor selecionar una opción"),
-    green_card: Yup.string().required("Favor selecionar una opción"),
-  }),
+    green_card: Yup.string().required("Favor selecionar una opción")
+  })
 ];

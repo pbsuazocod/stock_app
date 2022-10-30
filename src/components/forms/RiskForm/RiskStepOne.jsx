@@ -5,11 +5,24 @@ import { useFormikContext, FieldArray } from "formik";
 import { FaPlusCircle } from "react-icons/fa";
 import { step1Test } from "./ValidationSchema";
 
+function test(values) {
+  return values.languages.map((value) => (
+    // JSON.stringify(value)
+    <>
+      <h1>language: {value.language}</h1>
+      <h1>reading_domain: {value.reading_domain}</h1>
+      <h1>writing_domain: {value.writing_domain}</h1>
+      <h1>oral_expresion_domain: {value.oral_expresion_domain}</h1>
+      <hr />
+    </>
+  ));
+}
 function RiskStepOne() {
   const [adicLang, setAdicLang] = useState(false);
-
+  const { values, submitForm } = useFormikContext();
   return (
     <div className="p-[2%]">
+      {/* {test(values)} */}
       <div className="pl-[1%]">
         <p>¿DOMINA UN IDIOMA ADICIONAL AL IDIOMA ESPAÑOL?</p>
         <div className="flex gap-2">
@@ -28,8 +41,6 @@ function RiskStepOne() {
             {({ field, form, push, remove }) => {
               const { values } = form;
               const { languages } = values;
-              console.log(values);
-
               return (
                 <>
                   {languages.map((field, index) => (
@@ -73,9 +84,10 @@ function RiskStepOne() {
                   <div className="w-full">
                     <div className="pl-[2%]">
                       <button
+                        type="button"
                         onClick={() =>
                           push({
-                            ...step1Test,
+                            ...step1Test
                           })
                         }
                         className=" flex items-center gap-2"

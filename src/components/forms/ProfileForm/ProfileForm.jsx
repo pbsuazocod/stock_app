@@ -7,7 +7,6 @@ import { useState } from "react";
 
 import { FaArrowRight } from "react-icons/fa";
 import { FaArrowLeft } from "react-icons/fa";
-import { FaPlusCircle } from "react-icons/fa";
 import FormWrapper from "../../UI/FormWrapper/FormWrapper";
 import FormStepOne from "./FormStepOne";
 import FormStepTwo from "./FormStepTwo";
@@ -28,7 +27,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five",
+  "Form Step Five"
 ];
 
 function _renderStepContent(step) {
@@ -75,7 +74,7 @@ function ProfileForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={currentValidationSchema}
+        validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (

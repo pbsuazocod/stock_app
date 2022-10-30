@@ -67,7 +67,7 @@ function FieldArrayComponent(props) {
 
                 <FormikControl
                   control="input"
-                  name="nacionality_aut_person"
+                  name="nationality_aut_person"
                   label="NACIONALIDAD"
                   type="text"
                   disabled={disableForm}
