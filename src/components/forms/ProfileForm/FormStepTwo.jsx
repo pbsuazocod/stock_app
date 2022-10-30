@@ -10,14 +10,13 @@ function FormStepTwo() {
       <div className="p-[3%] space-y-4">
         <FormikControl
           control="radio"
-          label=""
           name="type_of_work"
           options={typeOfWorkOptions}
           className="pt-2"
           layout
         />
 
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <FormikControl
             control="input"
             name="company_name"
@@ -43,20 +42,20 @@ function FormStepTwo() {
           />
 
           <FormikControl
-            control="input"
+            control="number"
             name="time_in_the_company"
             label="TIEMPO QUE LABORA EN LA EMPRESA"
-            type="number"
+            mode="decimal"
           />
         </div>
 
-        <div className="w-1/2">
+        <div className="md:w-1/2">
           <FormikControl
-            control="input"
+            control="mask"
             name="phone"
             label="TELÉFONO"
             mask="(999) 999-9999"
-            type="tel"
+            // type="tel"
           />
         </div>
 

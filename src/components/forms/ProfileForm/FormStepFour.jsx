@@ -17,10 +17,11 @@ function FormStepFour() {
         <input
           id="compras"
           value={false}
+          className="text-green-500"
           onChange={() => {
             setStockPurchases(false);
           }}
-          type="radio"
+          type="checkbox"
         />
         <label className="pl-2">
           POR COMPRAS DE VALORES O VENCIMIENTO DE OPERACIONES A CARGO DEL
@@ -44,10 +45,11 @@ function FormStepFour() {
         <input
           id="ventas"
           value={false}
+          className="text-green-500"
           onChange={() => {
             setSaleValues(false);
           }}
-          type="radio"
+          type="checkbox"
         />
         <label className="pl-2">
           POR VENTA DE VALORES O VENCIMIENTO DE OPERACIONES A FAVOR DEL CLIENTE

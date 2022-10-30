@@ -60,7 +60,7 @@ function ProfileForm() {
   };
 
   function _handleSubmit(values, actions) {
-    console.log(values);
+    // console.log(values);
     if (isLastStep) {
       console.log("form", values);
       alert(values);
@@ -81,7 +81,7 @@ function ProfileForm() {
       >
         {(formik) => (
           <Form>
-            {JSON.stringify({ activeStep })}
+            {/* {JSON.stringify({ activeStep })} */}
             {_renderStepContent(activeStep)}
 
             {!isLastStep ? (

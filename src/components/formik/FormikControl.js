@@ -8,14 +8,20 @@ import Number from "../UI/FormInput/Number";
 import CheckBoxGroup from "../UI/FormInput/CheckBoxGroup";
 import FieldArrayComponent from "../UI/FormInput/FieldArray";
 import { useFormikContext } from "formik";
-import { step1 } from "../forms/ProfileForm/ValidationSchema";
+import Mask from "../UI/FormInput/Mask";
+import {
+  step1,
+  step2,
+  step3,
+  step4
+} from "../forms/ProfileForm/ValidationSchema";
 function FormikControl(props) {
   const { control, ...rest } = props;
   const { values } = useFormikContext();
   React.useEffect(() => {
-    for (const key in step1) {
+    for (const key in step4) {
       if (values[key]) {
-        console.log("key: ", values[key]);
+        console.log(`${key}: `, values[key]);
       }
     }
   }, [values]);
@@ -36,6 +42,8 @@ function FormikControl(props) {
       return <Number {...rest} />;
     case "field_array":
       return <FieldArrayComponent {...rest} />;
+    case "mask":
+      return <Mask {...rest} />;
     default:
       return null;
   }

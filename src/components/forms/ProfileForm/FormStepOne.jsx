@@ -1,6 +1,7 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
 import { documentOptions } from "../../config/constants";
+import { InputNumber } from "primereact";
 
 function FormStepOne() {
   return (
@@ -14,10 +15,10 @@ function FormStepOne() {
             type="text"
           />
           <FormikControl
-            control="input"
+            control="number"
             name="age"
             label="EDAD"
-            type="number"
+            mode="decimal"
           />
 
           <FormikControl
@@ -47,11 +48,10 @@ function FormStepOne() {
             type={"text"}
           />
           <FormikControl
-            control="input"
+            control="mask"
             name="home_number"
             label="TELÉFONO CASA"
             mask={"(999) 999-9999"}
-            type="tel"
           />
           <FormikControl
             control="input"
@@ -79,11 +79,10 @@ function FormStepOne() {
             label="FECHA DE NACIMIENTO"
           />
           <FormikControl
-            control="input"
+            control="mask"
             name="identification_card"
             label="NÚMERO DE DOCUMENTO"
             mask="999-9999999-9"
-            type="tel"
           />
           <FormikControl
             control="date"
@@ -100,14 +99,13 @@ function FormStepOne() {
             control="input"
             name="nit_number"
             label="NÚMERO DE NIT"
-            type="tel"
+            type="text"
           />
           <FormikControl
-            control="input"
+            control="mask"
             name="cellphone_number"
             label="TELÉFONO CELULAR"
             mask="(999) 999-9999"
-            type="tel"
           />
         </div>
       </div>

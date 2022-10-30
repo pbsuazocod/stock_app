@@ -5,12 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Montserrat: ["Montserrat", "cursive"],
-      },
-    },
+        Montserrat: ["Montserrat", "cursive"]
+      }
+    }
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-  ],
-
+  plugins: [require("@tailwindcss/forms")]
 };

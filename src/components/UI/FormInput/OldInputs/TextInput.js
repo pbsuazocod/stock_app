@@ -1,5 +1,5 @@
 import React from "react";
-import InputWrapper from "./InputWrapper";
+import InputWrapper from "../InputWrapper";
 
 import "./Styles.css";
 
@@ -11,7 +11,7 @@ export default function TextInput(props) {
     placeholder,
     isAlphabetic,
     disabled,
-    type,
+    type
   } = props;
 
   return (

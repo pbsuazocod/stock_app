@@ -1,6 +1,4 @@
-
-
-import InputWrapper from "./InputWrapper";
+import InputWrapper from "../InputWrapper";
 
 import "./Styles.css";
 
@@ -12,7 +10,7 @@ export default function CalendarInput(props) {
         // value={year}
         // options={years}
         dropdownIcon={""}
-        type='date'
+        type="date"
         // onChange={(e) => {
         //   setYear(e.value);
         // }}
