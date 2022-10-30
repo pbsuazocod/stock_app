@@ -7,37 +7,34 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
   const Titles = () => {
     switch (currentStep) {
       case 0:
-        return "SISTEMA DE VINCULACIÓN DIGITAL";
-        break;
-      case 1:
         if (currentPage === "riskpage") {
           return "PERFIL DE RIESGO DEL CLIENTE";
         } else {
           return "DATOS GENERALES";
         }
         break;
-      case 2:
+      case 1:
         if (currentPage === "riskpage") {
           return "PERFIL DE RIESGO DEL CLIENTE";
         } else {
           return "DATOS LABORALES";
         }
         break;
-      case 3:
+      case 2:
         if (currentPage === "riskpage") {
           return "PERFIL DE RIESGO DEL CLIENTE";
         } else {
           return "FIRMAS AUTORIZADAS";
         }
         break;
-      case 4:
+      case 3:
         if (currentPage === "riskpage") {
           return "PERFIL DE RIESGO DEL CLIENTE";
         } else {
           return "INSTRUCCIONES PARA LIQUIDACIÓN DE FONDOS";
         }
         break;
-      case 5:
+      case 4:
         return "INSTRUCCIONES PARA LIQUIDACIÓN DE FONDOS";
         break;
 
@@ -50,6 +47,9 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
       case 8:
         if (currentPage === "onBording_step_1") return "NOTIFICACIÓN";
         break;
+        case 9:
+          return "SISTEMA DE VINCULACIÓN DIGITAL";
+          break;
       default:
         return "default";
         break;

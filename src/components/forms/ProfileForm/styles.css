@@ -1,0 +1,14 @@
+.p-button {
+  background-color: #1a3b69;
+}
+.p-button:enabled:hover {
+  background-color: #012e6e;
+}
+.next .p-button {
+  background-color: #40b879;
+  border: #40b879;
+}
+.next .p-button:enabled:hover {
+  background-color: #09b85d;
+  border: #09b85d;
+}

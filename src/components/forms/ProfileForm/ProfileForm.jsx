@@ -2,6 +2,8 @@ import React from "react";
 import { Form } from "formik";
 import { Formik } from "formik";
 import { useState } from "react";
+import { Button } from "primereact/button";
+import "./styles.css";
 
 // components
 
@@ -79,15 +81,16 @@ function ProfileForm() {
       >
         {(formik) => (
           <Form>
+            {JSON.stringify({ activeStep })}
             {_renderStepContent(activeStep)}
 
             {!isLastStep ? (
               <div
                 className={`${
-                  activeStep !== 2
-                    ? "mb-[3%] mr-[3%] ml-[3%] border-t-2 border-[#C1C1C1]"
-                    : ""
-                } flex`}
+                  activeStep !== 3
+                    ? " mb-[3%] mr-[3%] ml-[3%]  border-t-2 border-[#C1C1C1]"
+                    : "mb-[3%] mr-[3%] ml-[3%] "
+                }`}
               >
                 <div className="w-full pt-[2%]">
                   <div
@@ -97,32 +100,29 @@ function ProfileForm() {
                   >
                     {activeStep > 0 && (
                       <>
-                        <button
-                          type="button"
-                          onClick={_handleBack}
-                          className="bg-[#1A3B69] rounded-lg text-white h-12 lg:w-[25%] w-[40%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center"
-                        >
-                          <div className="lg:text-3xl text-xl ">
-                            <FaArrowLeft />
-                          </div>
-                          ANTERIOR
-                        </button>
+                        <div>
+                          <Button
+                            type="button"
+                            onClick={_handleBack}
+                            label="ANTERIOR"
+                            iconPos="left"
+                            icon="pi pi-arrow-left"
+                            className="p-button-raised"
+                          />
+                        </div>
                       </>
                     )}
 
-                    <button
-                      type="submit"
-                      className={`rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${
-                        activeStep === 4
-                          ? "w-[42%] pr-2 bg-[#40B879]"
-                          : "bg-[#1A3B69] w-[40%]"
-                      }`}
-                    >
-                      {activeStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"}
-                      <div className="lg:text-3xl text-xl">
-                        <FaArrowRight />
-                      </div>
-                    </button>
+                    <div className={`${activeStep === 3 ? "next" : ""}`}>
+                      <Button
+                        label={
+                          activeStep === 3 ? "ENVIAR FORMALRIO" : "CONTINUAR"
+                        }
+                        iconPos="right"
+                        icon="pi pi-arrow-right"
+                        className="p-button-raised"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

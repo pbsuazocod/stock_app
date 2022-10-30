@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Formik, Form } from "formik";
+import { Button } from "primereact/button";
+
+import { ToggleButton } from "primereact/togglebutton";
 
 // components
 import { FaArrowRight } from "react-icons/fa";
@@ -48,7 +51,7 @@ function _renderStepContent(step) {
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(3);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -79,12 +82,13 @@ function RiskForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={currentValidationSchema}
+        validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (
           <Form>
             {_renderStepContent(activeStep)}
+            {JSON.stringify({ activeStep })}
 
             {/* buttons  */}
             {!isLastStep ? (
@@ -111,32 +115,29 @@ function RiskForm() {
                   >
                     {activeStep > 0 && (
                       <>
-                        <button
-                          type="button"
-                          onClick={_handleBack}
-                          className="bg-[#1A3B69] rounded-lg text-white h-12 lg:w-[25%] w-[40%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center"
-                        >
-                          <div className="lg:text-3xl text-xl ">
-                            <FaArrowLeft />
-                          </div>
-                          ANTERIOR
-                        </button>
+                        <div>
+                          <Button
+                            type="button"
+                            onClick={_handleBack}
+                            label="ANTERIOR"
+                            iconPos="left"
+                            icon="pi pi-arrow-left"
+                            className="p-button-raised"
+                          />
+                        </div>
                       </>
                     )}
-
-                    <button
-                      type="submit"
-                      className={`rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-4 gap-2 flex justify-center items-center ${
-                        activeStep === 4
-                          ? "w-[42%] pr-2 bg-[#40B879]"
-                          : "bg-[#1A3B69] w-[40%]"
-                      }`}
-                    >
-                      {activeStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"}
-                      <div className="lg:text-3xl text-xl">
-                        <FaArrowRight />
-                      </div>
-                    </button>
+                    <div className={`${activeStep === 3 ? "next" : ""}`}>
+                      <Button
+                        type="submit"
+                        label={
+                          activeStep === 3 ? "ENVIAR FORMALRIO" : "CONTINUAR"
+                        }
+                        iconPos="right"
+                        icon="pi pi-arrow-right"
+                        className="p-button-raised"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

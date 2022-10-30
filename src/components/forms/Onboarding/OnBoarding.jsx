@@ -6,6 +6,7 @@ import photo from "../../images/photo.png";
 import { TbChecks } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import { Button } from "primereact/button";
 
 function OnBoarding() {
   const currentPage = "onBording_step_1";
@@ -68,15 +69,14 @@ function OnBoarding() {
               <TbChecks className="text-[20vh] text-green-500" />
               <h1>INFORMACIÓN VALIDADA CORRECTAMENTE</h1>
             </div>
-            <Link
-              to="/formpage"
-              type="submit"
-              className={`bg-[#1A3B69] w-[40%] rounded-lg text-white h-12 lg:w-[25%] mr-[2%] lg:mr-0 text-sm mt-6 gap-2 flex justify-center items-center`}
-            >
-              CONTINUAR
-              <div className="lg:text-3xl text-xl">
-                <FaArrowRight />
-              </div>
+            <Link className="mt-[2%]" to="/formpage">
+              <Button
+                type="button"
+                label="CONTINUAR"
+                iconPos="right"
+                icon="pi pi-arrow-right"
+                className="p-button-raised"
+              />
             </Link>
           </div>
         </>
