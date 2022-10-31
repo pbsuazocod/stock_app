@@ -5,7 +5,6 @@ import { useState } from "react";
 import photo from "../../images/photo.png";
 import { TbChecks } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
 import { Button } from "primereact/button";
 
 function OnBoarding() {

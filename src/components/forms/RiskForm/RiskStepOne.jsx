@@ -23,15 +23,14 @@ function RiskStepOne() {
     <div className="p-[2%]">
       <div className="pl-[1%] font-montserrat font-bold">
         <p>¿DOMINA UN IDIOMA ADICIONAL AL IDIOMA ESPAÑOL?</p>
-        <div className="flex gap-2">
-          <FormikControl
-            control="radio"
-            label=""
-            name="aditionnal_language_option"
-            options={languageOptions}
-            className={"font-montserrat font-bold"}
-          />
-        </div>
+
+        <FormikControl
+          control="radio"
+          label=""
+          name="aditionnal_language_option"
+          options={languageOptions}
+          className={"font-montserrat font-bold"}
+        />
       </div>
 
       <div className="mt-[2%] ml-[2%]">

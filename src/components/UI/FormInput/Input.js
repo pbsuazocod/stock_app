@@ -4,7 +4,7 @@ import TextError from "./TextError";
 import { InputText } from "primereact";
 
 function Input(props) {
-  const { label, name, ...rest } = props;
+  const { label, name, disable, ...rest } = props;
   return (
     <React.Fragment>
       <Field id={name} name={name} {...rest}>
@@ -12,7 +12,13 @@ function Input(props) {
           return (
             <div className="flex flex-col">
               <label htmlFor={name}>{label}</label>
-              <InputText id={name} name={field.name} {...field} {...rest} />
+              <InputText
+                id={name}
+                name={field.name}
+                {...field}
+                {...rest}
+                disabled={disable}
+              />
             </div>
           );
         }}

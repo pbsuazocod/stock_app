@@ -1,6 +1,9 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
+import { useState } from "react";
 import { radioOptions } from "../../config/constants";
+import { useFormikContext } from "formik";
+
 import {
   levelOfIncomeOptions,
   checkBoxOptions,
@@ -8,10 +11,22 @@ import {
 } from "../../config/constants";
 
 function RiskStepThree() {
+  // Manage state
+  const [disableInvestment, setDisableInvestment] = useState(true);
+  const { values } = useFormikContext();
+
+  React.useEffect(() => {
+    if (values.other_investments === "yes") {
+      setDisableInvestment(false);
+    } else if (values.other_investments === "no") {
+      setDisableInvestment(true);
+    }
+  }, [values.other_investments]);
+
   return (
-    <div className="p-[2%] space-y-4">
+    <div className="p-[2%] space-y-4 font-montserrat font-bold">
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">
-        INFORMACIÓN FINANCIERA DEL CLIENTE
+        INFORMACIÓN DE INVERSIÓN DEL CLIENTE
       </h1>
       <div className="pl-[1%]">
         <FormikControl
@@ -33,6 +48,7 @@ function RiskStepThree() {
             name={"investment_information"}
             label={""}
             type={"textarea"}
+            disable={disableInvestment}
             className={
               "w-full h-16 border-solid border-[#C1C1C1] border-2 rounded-md "
             }
@@ -100,7 +116,7 @@ function RiskStepThree() {
             options={radioOptions}
             className="pt-2"
           />
-          <div className="grid grid-cols-3 mt-[2%] gap-4  w-full border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
+          <div className="grid md:grid-cols-3 grid-cols-1  mt-[2%] gap-4  w-full border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
             <div className="space-y-3">
               PAÍS
               <FormikControl

@@ -11,12 +11,12 @@ function RiskStepFour() {
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">
         INFORMACIÓN DE PERFIL DE RIESGO DEL CLIENTE
       </h1>
-      <h2 className="text-xl text-[#1A3B69] mb-[2%]">
+      <p className="mb-[2%] font-montserrat font-bold">
         DE ACUERDO A SU CONOCIMIENTO Y EXPERIENCIA, ¿CUÁL ES SU PREFERENCIA
         RESPECTO AL RIESGO?
-      </h2>
+      </p>
       <div>
-        <div className="flex items-center">
+        <div className="flex items-center font-montserrat font-bold">
           <FormikControl
             control="checkbox"
             name="conservative"
@@ -39,7 +39,7 @@ function RiskStepFour() {
         </p>
       </div>
       <div>
-        <div className="flex items-center">
+        <div className="flex items-center font-montserrat font-bold">
           <FormikControl
             control="checkbox"
             name="moderate"
@@ -55,7 +55,7 @@ function RiskStepFour() {
         </p>
       </div>
       <div>
-        <div className="flex items-center">
+        <div className="flex items-center font-montserrat font-bold">
           <FormikControl
             control="checkbox"
             name="aggressive"
@@ -72,7 +72,7 @@ function RiskStepFour() {
         </p>
       </div>
 
-      <p>
+      <p className="font-montserrat font-bold">
         ¿CUÁL ES EL OBJETIVO O PROPÓSITO FUNDAMENTAL DE SUS INVERSIONES? (HAGA
         UN COTEJO)
       </p>
@@ -84,7 +84,15 @@ function RiskStepFour() {
           options={purposeOfInvestments}
         />
       </div>
-      <p className="text-justify">
+      <div className=" w-1/2">
+        <FormikControl
+          control="input"
+          name={"other_explain"}
+          label={""}
+          type="text"
+        />
+      </div>
+      <p className="text-justify font-montserrat font-bold">
         IDENTIFIQUE CUÁL SERÍA LA REACCIÓN O DECISIÓN QUE USTED TOMARÍA, EN EL
         SUPUESTO QUE ESCUCHARA NOTICIAS NEGATIVAS DE LA SITUACIÓN ECONÓMICA
         LOCAL O INTERNACIONAL, SI OBSERVA QUE LOS ACTIVOS FINANCIEROS ESTÁN
@@ -99,6 +107,14 @@ function RiskStepFour() {
             options={economicSituationOptions}
           />
         </div>
+      </div>
+      <div className=" w-1/2">
+        <FormikControl
+          control="input"
+          name={"other_action_explain"}
+          label={""}
+          type="text"
+        />
       </div>
     </div>
   );

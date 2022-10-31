@@ -124,8 +124,8 @@ export const savingsOptions = [
     value: " SI, PUEDO CUBIR UN MAXIMO DE 6 MESES DE GASTOS MENSUALES",
   },
   {
-    key: "SI, PUEDO CUBIR UN MAXIMO DE 12 MESES DE GASTOS MENSUALES",
-    value: "SI, PUEDO CUBIR UN MAXIMO DE 12 MESES DE GASTOS MENSUALES",
+    key: "SI, PUEDO CUBRIR UN MÁXIMO DE 12 MESES DE GASTOS MENSUALES",
+    value: "SI, PUEDO CUBRIR UN MÁXIMO DE 12 MESES DE GASTOS MENSUALES",
   },
 ];
 
@@ -185,27 +185,29 @@ export const purposeOfInvestments = [
     value: "Obtener rentabilidad alta aunque esto signifique mayor riesgo",
   },
   {
-    key: "Otro (explique):___________________",
-    value: "Otro (explique):___________________",
+    key: "Otro (explique):",
+    value: "Otro (explique):",
   },
 ];
 export const economicSituationOptions = [
   {
-    key: "Invertir en valores líquidos y con riesgos moderados",
-    value: "Invertir en valores líquidos y con riesgos moderados",
-  },
-  {
-    key: "Lograr un rendimiento que permita acumular capital para financiar metas futuras.",
+    key: "Espera con tranquilidad pensando que el mercado cambiará su tendencia y mejorará.  ",
     value:
-      "Lograr un rendimiento que permita acumular capital para financiar metas futuras.",
+      "Espera con tranquilidad pensando que el mercado cambiará su tendencia y mejorará.  ",
   },
   {
-    key: "Obtener rentabilidad alta aunque esto signifique mayor riesgo.",
-    value: "Obtener rentabilidad alta aunque esto signifique mayor riesgo.",
+    key: "Se impone un tiempo límite con la intención de esperar que cambie la tendencia negativa, de lo contrario, liquida sus inversiones. ",
+    value:
+      "Se impone un tiempo límite con la intención de esperar que cambie la tendencia negativa, de lo contrario, liquida sus inversiones. ",
   },
   {
-    key: "Otro (explique):___________________",
-    value: "Otro (explique):___________________",
+    key: "Se preocupa tanto por la situación que cambia su estrategia de inversión por inversiones más estables..",
+    value:
+      "Se preocupa tanto por la situación que cambia su estrategia de inversión por inversiones más estables.",
+  },
+  {
+    key: "Otra acción (Especifique):",
+    value: "Otra acción (Especifique):",
   },
 ];
 

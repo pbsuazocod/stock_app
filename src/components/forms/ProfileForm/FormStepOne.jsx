@@ -5,7 +5,7 @@ import {
   civilOptions,
   residencyOptions,
 } from "../../config/constants";
-import { InputNumber } from "primereact";
+
 
 function FormStepOne() {
   return (

@@ -2,12 +2,7 @@ import { useState } from "react";
 import { Formik, Form } from "formik";
 import { Button } from "primereact/button";
 
-import { ToggleButton } from "primereact/togglebutton";
-
 // components
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaPlusCircle } from "react-icons/fa";
 import FormWrapper from "../../UI/FormWrapper/FormWrapper";
 import RiskStepOne from "./RiskStepOne";
 import RiskStepTwo from "./RiskStepTwo";
@@ -51,7 +46,7 @@ function _renderStepContent(step) {
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(4);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -118,7 +113,7 @@ function RiskForm() {
                       <Button
                         type="submit"
                         label={
-                          activeStep === 3 ? "ENVIAR FORMALRIO" : "CONTINUAR"
+                          activeStep === 3 ? "ENVIAR FORMULARIO" : "CONTINUAR"
                         }
                         iconPos="right"
                         icon="pi pi-arrow-right"

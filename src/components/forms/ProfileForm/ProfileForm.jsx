@@ -7,8 +7,6 @@ import "./styles.css";
 
 // components
 
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
 import FormWrapper from "../../UI/FormWrapper/FormWrapper";
 import FormStepOne from "./FormStepOne";
 import FormStepTwo from "./FormStepTwo";
@@ -85,7 +83,6 @@ function ProfileForm() {
       >
         {(formik) => (
           <Form>
-            {/* {JSON.stringify({ activeStep })} */}
             {_renderStepContent(activeStep)}
 
             {!isLastStep ? (

@@ -36,7 +36,7 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
         break;
       case 4:
         if (currentPage === "riskpage") {
-          return "PERFIL DE RIESGO DEL CLIENTE";
+          return "";
         } else {
           return "INSTRUCCIONES PARA LIQUIDACIÓN DE FONDOS Y DATOS BANCARIOS";
         }
@@ -65,8 +65,8 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
 
   return (
     <div
-      className={`w-11/12 h-full bg-[#F7F7F7] rounded-3xl ${
-        currentPage === "riskpage" ? "w-[70%]" : "lg:max-w-[50%]"
+      className={`md:w-11/12  h-full bg-[#F7F7F7] rounded-3xl ${
+        currentPage === "riskpage" ? "w-[90%] md:w-[70%]" : "lg:max-w-[50%]"
       }`}
     >
       <div
