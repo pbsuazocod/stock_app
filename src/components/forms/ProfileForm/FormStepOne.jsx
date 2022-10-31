@@ -1,12 +1,16 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
-import { documentOptions } from "../../config/constants";
+import {
+  documentOptions,
+  civilOptions,
+  residencyOptions,
+} from "../../config/constants";
 import { InputNumber } from "primereact";
 
 function FormStepOne() {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 p-[2%] gap-6 font-montserrat font-bold">
         <div className="space-y-2">
           <FormikControl
             control="input"
@@ -36,10 +40,10 @@ function FormStepOne() {
             type={"date"}
           />
           <FormikControl
-            control="input"
+            control="select"
             name={"marital_status"}
             label={"ESTADO CIVIL"}
-            type={"text"}
+            options={civilOptions}
           />
           <FormikControl
             control="input"
@@ -60,10 +64,10 @@ function FormStepOne() {
             type={"email"}
           />
           <FormikControl
-            control="input"
+            control="select"
             name="residency"
             label="RESIDENCIA"
-            type={"text"}
+            options={residencyOptions}
           />
         </div>
         <div className="space-y-2 ">
@@ -96,10 +100,10 @@ function FormStepOne() {
             type="text"
           />
           <FormikControl
-            control="input"
+            control="mask"
             name="nit_number"
             label="NÚMERO DE NIT"
-            type="text"
+            mask="9999-999999-999-9"
           />
           <FormikControl
             control="mask"

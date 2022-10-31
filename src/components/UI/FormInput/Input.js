@@ -1,14 +1,24 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
 import TextError from "./TextError";
+import { InputText } from "primereact";
+
 function Input(props) {
   const { label, name, ...rest } = props;
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
-      <Field id={name} name={name} {...rest} as="input" />
+    <React.Fragment>
+      <Field id={name} name={name} {...rest}>
+        {({ field, form }) => {
+          return (
+            <div className="flex flex-col">
+              <label htmlFor={name}>{label}</label>
+              <InputText id={name} name={field.name} {...field} {...rest} />
+            </div>
+          );
+        }}
+      </Field>
       <ErrorMessage name={name} component={TextError} />
-    </div>
+    </React.Fragment>
   );
 }
 

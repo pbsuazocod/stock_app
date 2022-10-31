@@ -8,7 +8,7 @@ import FormWrapper from "../components/UI/FormWrapper/FormWrapper";
 function LandingPage() {
   return (
     <PageWrapper>
-      <FormWrapper currentStep={0}>
+      <FormWrapper currentStep={9}>
         <div className=" flex h-[80%] items-center mr-[10%] ml-[10%] mt-[10%] mb-[10%] lg:justify-between justify-center gap-4 flex-wrap content-center">
           <Link
             to="/onboarding"

@@ -1,158 +1,177 @@
-import React, { useState } from "react";
+import React from "react";
 import FormikControl from "../../formik/FormikControl";
+import { useFormikContext, FieldArray } from "formik";
 
 // Data
-import { radioOptions } from "../../config/constants";
-import { stockOptions } from "../../config/constants";
-import { saleOptions } from "../../config/constants";
+import { authPersonOptions } from "../../config/constants";
+import { FaPlusCircle } from "react-icons/fa";
+import { authorized_persons_values } from "./ValidationSchema";
 
-function FormStepFour() {
-  // State Management
-  const [stockPurchase, setStockPurchases] = useState(true);
-  const [saleValues, setSaleValues] = useState(true);
+function FormStepFour({ counter }) {
+  // Manage State
+  const { values, errors, setTouched } = useFormikContext();
+  const [disableForm, setDisableForm] = React.useState(true);
+  const [addingAnotherPerson, setAddingAnotherPerson] = React.useState(false);
+
+  function addAnotherPerson(push) {
+    setAddingAnotherPerson(true);
+    push({
+      ...authorized_persons_values,
+    });
+  }
+
+  React.useEffect(() => {
+    if (values.type_of_work_aut_person) {
+      setDisableForm(values.type_of_work_aut_person === "no" ? true : false);
+      if (!addingAnotherPerson) {
+        setTouched({});
+        setAddingAnotherPerson(false);
+      }
+    }
+  }, [values.type_of_work_aut_person]);
 
   return (
-    <div className="space-y-4 m-[3%]">
-      <div className="flex items-center">
-        <input
-          id="compras"
-          value={false}
-          className="text-green-500"
-          onChange={() => {
-            setStockPurchases(false);
-          }}
-          type="checkbox"
-        />
-        <label className="pl-2">
-          POR COMPRAS DE VALORES O VENCIMIENTO DE OPERACIONES A CARGO DEL
-          CLIENTE
-        </label>
-      </div>
-
-      <div className="pl-[2%]">
-        <FormikControl
-          control="radio"
-          label=""
-          name="stock_purchase"
-          options={stockOptions}
-          className="pt-2"
-          disabled={stockPurchase}
-          layout
-        />
-      </div>
-
-      <div className="flex items-center">
-        <input
-          id="ventas"
-          value={false}
-          className="text-green-500"
-          onChange={() => {
-            setSaleValues(false);
-          }}
-          type="checkbox"
-        />
-        <label className="pl-2">
-          POR VENTA DE VALORES O VENCIMIENTO DE OPERACIONES A FAVOR DEL CLIENTE
-        </label>
-      </div>
-
-      <div className="pl-[2%]">
-        <FormikControl
-          control="radio"
-          label=""
-          name="sale_values"
-          options={saleOptions}
-          className="pt-2"
-          disabled={saleValues}
-          layout
-        />
-      </div>
-
-      <div className=" mb-[2%] border-t-2 border-[#C1C1C1]" />
-
-      <div>
-        <h1 className="text-xl text-[#1A3B69] mb-[2%]">CUENTA BANCARIA</h1>
-        <div className="grid-none md:grid grid-rows-2 grid-cols-2 gap-4">
-          <FormikControl
-            control="input"
-            name={"owner_of_the_account"}
-            label={"NOMBRE DEL TITULAR DE LA CUENTA"}
-            type="text"
-          />
-
-          <FormikControl
-            control="input"
-            name={"bank_name"}
-            label={"BANCO"}
-            type="text"
-          />
-
-          <FormikControl
-            control="input"
-            name={"type_of_account"}
-            label={"TIPO DE CUENTA"}
-            type="text"
-          />
-
-          <FormikControl
-            control="input"
-            name={"account_number"}
-            label={"NÚMERO DE CUENTA"}
-            type="text"
-          />
-        </div>
-        <div className=" mt-[2%] mb-[2%] border-t-2 border-[#C1C1C1]" />
-        <h1 className="text-xl text-[#1A3B69] mb-[2%]">
-          MEDIO PARA LA RECEPCION DE INFORMACION
-        </h1>
-        <div className="flex">
-          <FormikControl
-            control="radio"
-            label=""
-            name="receive_email_auth"
-            options={[{ key: "", value: "Si" }]}
-            className="pt-2"
-          />
-          <p>
-            ACEPTO RECIBIR Y ENVIAR LA INFORMACIÓN RELACIONADA A LA CUENTA DE
-            VALORES POR MEDIOS ELECTRONICOS
-          </p>
-        </div>
-        <div className="mt-[2%] mb-[2%] border-t-2 border-[#C1C1C1]" />
-        PEP (PERSONA EXPUESTA POLITICAMENTE)
-        <span className="text-[#40B879]">*</span>
-        <p className="font-normal text-sm">
-          Personas naturales que desempeñan o han desempeñado funciones públicas
-          en nuestro país o en el extranjero (Eje. Presidente, Ministros,
-          Diputados, Alcaldes, Fiscal, Magistrado, Embajadores, etc)
+    <div className="p-[2%]">
+      <div className="pl-[1%] font-montserrat font-bold">
+        <p>
+          DESEA AUTORIZAR A OTRA PERSONA QUE GIRE INSTRUCCIONES EN SU NOMBRE
         </p>
-        <div className="pt-2 mb-[2%]">
-          <FormikControl
-            control="radio"
-            label=""
-            name="PEP"
-            options={radioOptions}
-          />
-        </div>
-        ES USTED CIUDADANO O RESIDENTE (GREEN CARD) ESTADOUNIDENSE
-        <span className="text-[#40B879]">*</span>
-        <div className="flex gap-6 pt-2 mb-[2%]">
-          <FormikControl
-            control="radio"
-            label=""
-            name="green_card"
-            options={radioOptions}
-          />
-        </div>
-        <div className="flex gap-1">
-          <span className="text-[#40B879]">*</span>
-          <p className="font-normal text-sm">
-            En caso su respuesta sea SI la CCB le solicitara documentación
-            adicional en cumplimiento a la Ley FATCA y Ley contral el Lavado de
-            Dinero y Financiamiento al terrorismo
-          </p>
-        </div>
+
+        <FormikControl
+          control="radio"
+          label=""
+          name="type_of_work_aut_person"
+          options={authPersonOptions}
+          className="pt-2"
+        />
       </div>
+
+      {!disableForm && (
+        <div className="mt-[2%] ml-[2%]">
+          <div className=" ">
+            <FieldArray name="authorized_persons">
+              {({ field, form, push, remove }) => {
+                const { values } = form;
+                const { authorized_persons } = values;
+                console.log(authorized_persons);
+
+                return (
+                  <React.Fragment>
+                    {authorized_persons.map((field, index) => (
+                      <React.Fragment key={index}>
+                        <div className="font-montserrat font-bold grid-none md:grid grid-row-5 lg:grid-cols-2 grid-col-1 gap-4 border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
+                          <div>
+                            <FormikControl
+                              control="input"
+                              name={`authorized_persons.${index}.name_of_aut_person`}
+                              label="NOMBRE"
+                              type="text"
+                              disabled={disableForm}
+                            />
+                          </div>
+
+                          <div>
+                            <FormikControl
+                              control="date"
+                              name={`authorized_persons.${index}.day_of_birth_aut_person`}
+                              label="FECHA DE NACIMIENTO"
+                              type="date"
+                              disabled={disableForm}
+                            />
+                          </div>
+                          <div>
+                            <FormikControl
+                              control="input"
+                              name={`authorized_persons.${index}.doc_id_aut_person`}
+                              label="NO. DE DOC DE ID"
+                              mask="999-9999999-9"
+                              type="text"
+                              disabled={disableForm}
+                            />
+                          </div>
+
+                          <div>
+                            <FormikControl
+                              control="input"
+                              name={`authorized_persons.${index}.nationality_aut_person`}
+                              label="NACIONALIDAD"
+                              type="text"
+                              disabled={disableForm}
+                            />
+                          </div>
+
+                          <div>
+                            <FormikControl
+                              control="input"
+                              name={`authorized_persons.${index}.address_aut_person`}
+                              label="DIRECCIÓN"
+                              type="text"
+                              disabled={disableForm}
+                            />
+                          </div>
+                          <div>
+                            <FormikControl
+                              control="input"
+                              name={`authorized_persons.${index}.email_aut_person`}
+                              label="CORREO ELECTRÓNICO"
+                              type="email"
+                              disabled={disableForm}
+                            />
+                          </div>
+                          <div>
+                            <FormikControl
+                              control="input"
+                              name={`authorized_persons.${index}.job_title_aut_person`}
+                              label="CARGO"
+                              type="text"
+                              disabled={disableForm}
+                            />
+                          </div>
+                          <div>
+                            <FormikControl
+                              control="mask"
+                              name={`authorized_persons.${index}.phone_number_aut_person`}
+                              label="TELÉFONO "
+                              mask={"(999) 999-9999"}
+                              disabled={disableForm}
+                            />
+                          </div>
+                          <div className="col-span-2">
+                            <FormikControl
+                              control="input"
+                              name={`authorized_persons.${index}.place_of_work`}
+                              label="LUGAR DE TRABAJO"
+                              type="text"
+                              disabled={disableForm}
+                            />
+                          </div>
+                        </div>
+                        <div
+                          className={`my-[3%] border-t-2 border-[#C1C1C1] flex col-span-2`}
+                        ></div>
+                      </React.Fragment>
+                    ))}
+                    <div className="w-full font-montserrat font-bold">
+                      <div className="pl-[2%]">
+                        <button
+                          type="button"
+                          onClick={() => addAnotherPerson(push)}
+                          className=" flex items-center gap-2"
+                        >
+                          <span className="text-green-600">
+                            <FaPlusCircle />
+                          </span>
+                          AÑADIR OTRA PERSONA
+                        </button>
+                      </div>
+                    </div>
+                  </React.Fragment>
+                );
+              }}
+            </FieldArray>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

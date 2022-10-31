@@ -24,18 +24,25 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
         if (currentPage === "riskpage") {
           return "PERFIL DE RIESGO DEL CLIENTE";
         } else {
-          return "FIRMAS AUTORIZADAS";
+          return "REFERENCIAS PERSONALES";
         }
         break;
       case 3:
         if (currentPage === "riskpage") {
           return "PERFIL DE RIESGO DEL CLIENTE";
         } else {
-          return "INSTRUCCIONES PARA LIQUIDACIÓN DE FONDOS";
+          return "FIRMAS AUTORIZADAS";
         }
         break;
       case 4:
-        return "INSTRUCCIONES PARA LIQUIDACIÓN DE FONDOS";
+        if (currentPage === "riskpage") {
+          return "PERFIL DE RIESGO DEL CLIENTE";
+        } else {
+          return "INSTRUCCIONES PARA LIQUIDACIÓN DE FONDOS Y DATOS BANCARIOS";
+        }
+        break;
+      case 5:
+        return "";
         break;
 
       case 6:
@@ -47,9 +54,9 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
       case 8:
         if (currentPage === "onBording_step_1") return "NOTIFICACIÓN";
         break;
-        case 9:
-          return "SISTEMA DE VINCULACIÓN DIGITAL";
-          break;
+      case 9:
+        return "SISTEMA DE VINCULACIÓN DIGITAL";
+        break;
       default:
         return "default";
         break;
@@ -63,8 +70,8 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
       }`}
     >
       <div
-        className={`bg-[#1A3B69] text-white text-[70%] h-12 md:text-[100%] rounded-t-3xl flex-grow  flex pr-[2%] pl-[4%]  items-center font-Montserrat ${
-          currentStep === 0 ? "justify-center" : ""
+        className={`bg-[#1A3B69] text-white text-[70%] h-12 md:text-[100%] rounded-t-3xl flex-grow  flex pr-[2%] pl-[4%]  items-center font-montserrat font-bold ${
+          currentStep === 9 ? "justify-center" : ""
         }`}
       >
         {<Titles />}

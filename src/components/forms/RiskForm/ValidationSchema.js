@@ -5,7 +5,7 @@ export const step1Test = {
   language: "",
   reading_domain: "",
   writing_domain: "",
-  oral_expresion_domain: ""
+  oral_expresion_domain: "",
 };
 
 export const initialValues = {
@@ -20,6 +20,7 @@ export const initialValues = {
   stock_inverstment: "",
   others: "",
   salary_percentage: "",
+  others_percentaje: "",
   income_front_own_business: "",
   rent_for_property_rental: "",
   Pensions_others: "",
@@ -55,7 +56,7 @@ export const initialValues = {
   moderate: "",
   aggressive: "",
   purpose_of_investments: [],
-  economics_situation: []
+  economics_situation: [],
 };
 
 export const validationSchema = [
@@ -73,10 +74,10 @@ export const validationSchema = [
             writing_domain: Yup.string().required("Favor ingresar porcentaje"),
             oral_expresion_domain: Yup.string().required(
               "Favor ingresar porcentaje"
-            )
+            ),
           })
-        )
-    })
+        ),
+    }),
   }),
   Yup.object().shape({
     level_of_income: Yup.string().required("Favor ingresar rango de ingresos"),
@@ -94,16 +95,16 @@ export const validationSchema = [
       "Favor ingresar inversiones en bolsa"
     ),
     others: Yup.string().required("Favor ingresar otros"),
-    salary_percentage: Yup.string().required("Favor ingresar porcentaje"),
-    income_front_own_business: Yup.string().required(
+    salary_percentage: Yup.number().required("Favor ingresar porcentaje"),
+    income_front_own_business: Yup.number().required(
       "Favor ingresar porcentaje"
     ),
-    rent_for_property_rental: Yup.string().required(
+    rent_for_property_rental: Yup.number().required(
       "Favor ingresar porcentaje"
     ),
     Pensions_others: Yup.string().required("Favor ingresar porcentaje"),
-    stock_investments: Yup.string().required("Favor ingresar porcentaje"),
-    others_percentaje: Yup.string().required("Favor ingresar porcentaje"),
+    stock_investments: Yup.number().required("Favor ingresar porcentaje"),
+    others_percentaje: Yup.number().required("Favor ingresar porcentaje"),
     stock_investments_amount: Yup.number().required(
       "Favor ingresar capital disponible"
     ),
@@ -112,7 +113,7 @@ export const validationSchema = [
       "Favor seleccione una tendencia"
     ),
     explain: Yup.string().required("Favor ingresar explicar las razones"),
-    savings: Yup.string().required("Favor ingresar seleccione una opción")
+    savings: Yup.string().required("Favor ingresar seleccione una opción"),
   }),
   Yup.object().shape({
     other_investments: Yup.string().required("Favor seleccione una opción"),
@@ -142,7 +143,7 @@ export const validationSchema = [
     ),
     negotiated_values_3: Yup.string().required(
       "Favor ingresar tipos de valores negociados"
-    )
+    ),
   }),
   Yup.object().shape({
     conservative: Yup.string().required("Favor ingresar seleccione una opción"),
@@ -153,6 +154,6 @@ export const validationSchema = [
     ),
     economics_situation: Yup.array().required(
       "Favor ingresar seleccione una opción"
-    )
-  })
+    ),
+  }),
 ];

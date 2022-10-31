@@ -30,6 +30,34 @@ export const documentOptions = [
     value: "Pasaporte",
   },
 ];
+export const civilOptions = [
+  {
+    key: "Casado",
+    value: "Married",
+  },
+  {
+    key: "Soltero",
+    value: "Single",
+  },
+  {
+    key: "Viudo",
+    value: "Widower",
+  },
+];
+export const residencyOptions = [
+  {
+    key: "Propia",
+    value: "Own",
+  },
+  {
+    key: "Familiar",
+    value: "Familiar",
+  },
+  {
+    key: "Alquilado",
+    value: "Rented",
+  },
+];
 
 export const radioOptions = [
   {
@@ -54,23 +82,23 @@ export const languageOptions = [
 
 export const stockOptions = [
   {
-    key: "CHEQUE A NOMBRE DE LA CASA",
-    value: "CHEQUE A NOMBRE DE LA CASA",
+    key: "Cheque a nombre de la casa",
+    value: "Cheque a nombre de la casa",
   },
   {
-    key: "ABONO A CUENTA DE LA CASA",
-    value: "ABONO A CUENTA DE LA CASA",
+    key: "Abono a cuenta de la casa",
+    value: "Abono a cuenta de la casa",
   },
 ];
 
 export const saleOptions = [
   {
-    key: "CHEQUE A NOMBRE DEL CLIENTE",
-    value: "CHEQUE A NOMBRE DEL CLIENTE",
+    key: "Cheque a nombre del cliente",
+    value: "Cheque a nombre del cliente",
   },
   {
-    key: "ABONO A CUENTA DEL CLIENTE",
-    value: "ABONO A CUENTA DEL CLIENTE",
+    key: "Abono a cuenta del cliente",
+    value: "Abono a cuenta del cliente",
   },
 ];
 

@@ -15,6 +15,7 @@ import FormStepTwo from "./FormStepTwo";
 import FormStepThree from "./FormStepThree";
 import FormStepFour from "./FormStepFour";
 import FormStepFive from "./FormStepFive";
+import FormStepSix from "./FormStepSix";
 
 // Validation
 
@@ -29,7 +30,8 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five"
+  "Form Step Five",
+  "Form Step Six",
 ];
 
 function _renderStepContent(step) {
@@ -44,6 +46,8 @@ function _renderStepContent(step) {
       return <FormStepFour />;
     case 4:
       return <FormStepFive />;
+    case 5:
+      return <FormStepSix />;
     default:
       return <div>Not Found</div>;
   }
@@ -60,7 +64,7 @@ function ProfileForm() {
   };
 
   function _handleSubmit(values, actions) {
-    // console.log(values);
+    console.log(values);
     if (isLastStep) {
       console.log("form", values);
       alert(values);
@@ -113,10 +117,10 @@ function ProfileForm() {
                       </>
                     )}
 
-                    <div className={`${activeStep === 3 ? "next" : ""}`}>
+                    <div className={`${activeStep === 4 ? "next" : ""}`}>
                       <Button
                         label={
-                          activeStep === 3 ? "ENVIAR FORMALRIO" : "CONTINUAR"
+                          activeStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"
                         }
                         iconPos="right"
                         icon="pi pi-arrow-right"

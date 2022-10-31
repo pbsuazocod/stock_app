@@ -7,7 +7,7 @@ import { typeOfWorkOptions } from "../../config/constants";
 function FormStepTwo() {
   return (
     <>
-      <div className="p-[3%] space-y-4">
+      <div className="p-[3%] space-y-4 font-montserrat font-bold">
         <FormikControl
           control="radio"
           name="type_of_work"

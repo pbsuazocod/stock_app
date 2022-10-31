@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   rangeOfIncomeOptions,
   savingsOptions,
@@ -6,20 +6,44 @@ import {
   capitalPercentageOptions,
 } from "../../config/constants";
 import FormikControl from "../../formik/FormikControl";
+import { useFormikContext } from "formik";
 
 function RiskStepTwo() {
+  const { values, errors, setTouched } = useFormikContext();
+  const [percentage, setPercentage] = useState(0);
+
+  React.useEffect(() => {
+    const percentageCal =
+      values.salary_percentage +
+      values.income_front_own_business +
+      values.rent_for_property_rental +
+      values.Pensions_others +
+      values.stock_investments +
+      values.others_percentaje;
+    // const percentageCal =
+    //   values.salary_percentage + values.income_front_own_business;
+    setPercentage(percentageCal);
+  }, [
+    values.salary_percentage,
+    values.income_front_own_business,
+    values.rent_for_property_rental,
+    values.Pensions_others,
+    values.stock_investments,
+    values.others_percentaje,
+  ]);
+
   return (
-    <div className="md:p-[4%] p-[2%] space-y-2">
+    <div className="md:p-[4%] p-[2%] space-y-2 font-monserrat font-bold">
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">
         INFORMACIÓN FINANCIERA DEL CLIENTE
       </h1>
       <p>
-        Seleccione el rango en el que se encuentra su nivel de ingresos anual.
+        SELECCIONE EL RANGO EN EL QUE SE ENCUENTRA SU NIVEL DE INGRESOS ANUAL.
         El Ingreso anual está conformado por salarios, utilidades, otros
         ingresos
       </p>
 
-      <div className="lg:w-1/4 w-full ">
+      <div className="lg:w-1/3 w-full ">
         <FormikControl
           control="select"
           name={"level_of_income"}
@@ -28,8 +52,8 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-        Señale la procedencia de sus ingresos y la proporción que le corresponde
-        del total de los mismos. (El porcentaje debe sumar 100%)
+         SEÑALE LA PROCEDENCIA DE SUS INGRESOS Y LA PROPORCIÓN QUE LE
+        CORRESPONDE DEL TOTAL DE LOS MISMOS (El porcentaje debe sumar 100%)
       </p>
       <div className="grid grid-cols-2 gap-4 lg:w-1/2 w-full  ">
         <div className="space-y-4">
@@ -81,29 +105,21 @@ function RiskStepTwo() {
         <div className="space-y-4">
           PORCENTANJE %
           <FormikControl
-            control="input"
+            control="number"
             name={"salary_percentage"}
             label={""}
-            type="number"
           />
           <FormikControl
-            control="input"
+            control="number"
             name={"income_front_own_business"}
             label={""}
-            type="number"
           />
           <FormikControl
-            control="input"
+            control="number"
             name={"rent_for_property_rental"}
             label={""}
-            type="number"
           />
-          <FormikControl
-            control="input"
-            name={"Pensions_others"}
-            label={""}
-            type="number"
-          />
+          <FormikControl control="number" name={"Pensions_others"} label={""} />
           <FormikControl
             control="input"
             name={"stock_investments"}
@@ -114,13 +130,13 @@ function RiskStepTwo() {
             control="input"
             name={"others_percentaje"}
             label={""}
-            type="text"
+            type="number"
           />
-          <p className=" text-right ">100%</p>
+          <p className=" text-right ">{percentage}</p>
         </div>
       </div>
 
-      <p>Especifique a cuánto asciende el capital disponible para invertir :</p>
+      <p>ESPECIFIQUE A CUÁNTO ASCIENDE EL CAPITAL DISPONIBLE PARA INVERTIR :</p>
 
       <div className="lg:w-1/4 w-full">
         <FormikControl
@@ -131,8 +147,8 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-        Indique el rango en que se encuentra el porcentaje del capital
-        disponible para invertir con respecto al total de su patrimonio:
+        INDIQUE EL RANGO EN QUE SE ENCUENTRA EL PORCENTAJE DEL CAPITAL
+        DISPONIBLE PARA INVERTIR CON RESPECTO AL TOTAL DE SU PATRIMONIO:
       </p>
       <div className="lg:w-1/4 w-full">
         <FormikControl
@@ -144,8 +160,8 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-        Señale cómo espera que sea la tendencia de la principal fuente de
-        ingresos en los próximos 5 años:
+        SEÑALE CÓMO ESPERA QUE SEA LA TENDENCIA DE LA PRINCIPAL FUENTE DE
+         INGRESOS EN LOS PRÓXIMOS 5 AÑOS:
       </p>
       <div className="lg:w-1/4 w-full">
         <FormikControl
@@ -156,8 +172,8 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-        En caso, que su respuesta sea “inestable” o “no sabe”, explique las
-        razones:
+         EN CASO, QUE SU RESPUESTA SEA “INESTABLE” O “NO SABE”, EXPLIQUE LAS
+         RAZONES:
       </p>
       <div className="">
         <FormikControl
@@ -171,7 +187,7 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-        ¿Cuenta con ahorros suficientes para afrontar situaciones imprevistas?
+        ¿CUENTA CON AHORROS SUFICIENTES PARA AFRONTAR SITUACIONES IMPREVISTAS?
       </p>
       <div className="pl-[2%]">
         <FormikControl

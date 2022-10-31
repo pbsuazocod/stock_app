@@ -28,7 +28,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five"
+  "Form Step Five",
 ];
 
 function _renderStepContent(step) {
@@ -82,13 +82,12 @@ function RiskForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={currentValidationSchema}
+        validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (
           <Form>
             {_renderStepContent(activeStep)}
-            {JSON.stringify({ activeStep })}
 
             {/* buttons  */}
             {!isLastStep ? (
