@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFormikContext } from "formik";
 
-// Data 
+// Data
 
 import {
   rangeOfIncomeOptions,
@@ -12,8 +12,7 @@ import {
 import FormikControl from "../../formik/FormikControl";
 
 function RiskStepTwo() {
-
-// Manage State
+  // Manage State
 
   const { values, errors, setTouched } = useFormikContext();
   const [percentage, setPercentage] = useState(0);
@@ -32,7 +31,7 @@ function RiskStepTwo() {
     values.percentage_front_own_business,
     values.percentage_from_rent,
     values.Pensions_others,
-    values.stock_investments,
+    values.percentage_stock_investments,
     values.others_percentage,
   ]);
 
@@ -137,7 +136,7 @@ function RiskStepTwo() {
 
             <div className="md:w-[12vw] w-[30vw]">
               <FormikControl
-                control="input"
+                control="number"
                 name={"percentage_stock_investments"}
               />
             </div>
@@ -153,7 +152,7 @@ function RiskStepTwo() {
               />
             </div>
             <div className="md:w-[12vw] w-[30vw]">
-              <FormikControl control="input" name={"others_percentage"} />
+              <FormikControl control="number" name={"others_percentage"} />
             </div>
           </div>
         </div>

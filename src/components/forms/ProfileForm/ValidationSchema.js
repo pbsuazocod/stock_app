@@ -32,22 +32,23 @@ export const step2 = {
   phone: "8099999999",
   full_address: "calle 4 no. 3",
 };
+
 export const authorized_persons_values = {
-  name_of_aut_person: "Juan carlos",
-  day_of_birth_aut_person: "Thu Oct 06 2022 00:00:00 GMT-0800 (GMT-08:00) {}",
-  place_of_work: "Banco Popular",
-  email_aut_person: "jsuazo@gmail.com",
-  doc_id_aut_person: "00111111111",
-  nationality_aut_person: "Dominicano",
-  job_title_aut_person: "analista",
-  phone_number_aut_person: "8099999999",
-  address_aut_person: "calle 4 no.3 ",
+  name_of_aut_person: "",
+  day_of_birth_aut_person: "",
+  doc_id_aut_person: "",
+  nationality_aut_person: "",
+  address_aut_person: "",
+  email_aut_person: "",
+  job_title_aut_person: "",
+  phone_number_aut_person: "",
+  place_of_work: "",
 };
 export const personal_reference_values = {
-  name_of_ref_person: "Maria luisa",
-  ref_place_of_work: "banco del reservas",
-  ref_email_aut_person: "maria@gmail.com",
-  phone_number_ref_person: "8099999999",
+  name_of_ref_person: "",
+  ref_place_of_work: "",
+  ref_email_aut_person: "",
+  phone_number_ref_person: "",
 };
 
 export const step3 = {
@@ -55,7 +56,7 @@ export const step3 = {
 };
 
 export const step4 = {
-  type_of_work_aut_person: "yes",
+  type_of_work_aut_person: "",
   authorized_persons: [authorized_persons_values],
 };
 
@@ -80,7 +81,8 @@ export const initialValues = {
 };
 
 export const validationSchema = [
-  // stepe 1
+  // step1
+
   Yup.object({
     name: Yup.string()
       .max(15, "Debe ser mas de 10 caracteres.")
@@ -116,7 +118,9 @@ export const validationSchema = [
       .required("Favor ingresar un número de télefono")
       .matches(phoneRegExp, "Favor ingresar un número de télefono valido"),
   }),
+
   // step2
+
   Yup.object({
     type_of_work: Yup.string().required("Favor selecionar una opción"),
     company_name: Yup.string().required(
@@ -139,24 +143,17 @@ export const validationSchema = [
   }),
 
   // Step3
+
   Yup.object({
-    personal_reference: Yup.array().when("name_of_ref_person", {
-      is: "",
-      then: (schema) =>
-        schema.of(
-          Yup.object().shape({
-            name_of_ref_person: Yup.string()
-              .max(15, "Debe ser mas de 10 caracteres.")
-              .required("Favor ingresar tu nombre completo"),
-            day_of_birth_aut_person: Yup.string().required(
-              "Favor introducir fecha de nacimiento"
-            ),
-          })
-        ),
-    }),
+    personal_reference: Yup.array().of(
+      Yup.object().shape({
+        name_of_ref_person: Yup.string().required("requerido"),
+      })
+    ),
   }),
 
   // Step4
+
   Yup.object({
     type_of_work_aut_person: Yup.string().required(
       "Favor selecionar una opción"
@@ -172,20 +169,20 @@ export const validationSchema = [
             day_of_birth_aut_person: Yup.string().required(
               "Favor introducir fecha de nacimiento"
             ),
-            place_of_birth_aut_person: Yup.string().required(
-              "Favor introducir lugar de nacimiento"
-            ),
-            email_aut_person: Yup.string()
-              .email("Invalid email address")
-              .required(
-                "Debes ingresar tu dirección de correo con el siguiente formato: tuemail@ejemplo.com"
-              ),
             doc_id_aut_person: Yup.string().required(
-              "Favor introducir la fecha de vencimiento"
+              "Favor introducir número de doc"
             ),
             nationality_aut_person: Yup.string().required(
               "Favor introducir nacionalidad"
             ),
+            address_aut_person: Yup.string().required(
+              "Favor introducir dirección"
+            ),
+            email_aut_person: Yup.string()
+              .email("Correo electrónico no valido")
+              .required(
+                "Debes ingresar tu dirección de correo con el siguiente formato: tuemail@ejemplo.com"
+              ),
             job_title_aut_person: Yup.string().required(
               "Favor introducir nombre del cargo"
             ),
@@ -195,9 +192,7 @@ export const validationSchema = [
                 phoneRegExp,
                 "Favor ingresar un número de télefono valido"
               ),
-            address_aut_person: Yup.string().required(
-              "Favor introducir dirección"
-            ),
+            place_of_work: Yup.string().notRequired(),
           })
         ),
     }),

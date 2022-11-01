@@ -51,7 +51,7 @@ function _renderStepContent(step) {
 
 function ProfileForm() {
   // Manage States
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -81,7 +81,6 @@ function ProfileForm() {
       >
         {(formik) => (
           <Form>
-            {JSON.stringify({ isLastStep })}
             {_renderStepContent(activeStep)}
 
             {!isLastStep ? (

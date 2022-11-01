@@ -33,7 +33,7 @@ function RiskStepThree() {
     } else if (values.outside_salvador_experience === "no") {
       setSalMarkets(true);
     }
-  }, [values.outside_salvador_experience]);
+  }, [values.outside_salvador_experience]);  
 
   return (
     <div className="p-[2%] space-y-4 font-montserrat font-bold">
