@@ -24,7 +24,7 @@ export const step1 = {
 };
 
 export const step2 = {
-  type_of_work: "inversiones",
+  type_of_work: "PENSIONADO",
   company_name: "inversiones futuro",
   company_line_of_work: "prestamos",
   job_title: "contador",
@@ -33,21 +33,21 @@ export const step2 = {
   full_address: "calle 4 no. 3",
 };
 export const authorized_persons_values = {
-  name_of_aut_person: "juan carlos",
+  name_of_aut_person: "Juan carlos",
   day_of_birth_aut_person: "Thu Oct 06 2022 00:00:00 GMT-0800 (GMT-08:00) {}",
-  place_of_work: "externo",
+  place_of_work: "Banco Popular",
   email_aut_person: "jsuazo@gmail.com",
-  doc_id_aut_person: "0111111111111",
-  nationality_aut_person: "dominicano",
-  job_title_aut_person: "programador",
+  doc_id_aut_person: "00111111111",
+  nationality_aut_person: "Dominicano",
+  job_title_aut_person: "analista",
   phone_number_aut_person: "8099999999",
-  address_aut_person: "calle 4 no.3",
+  address_aut_person: "calle 4 no.3 ",
 };
 export const personal_reference_values = {
-  name_of_ref_person: "",
-  ref_place_of_work: "",
-  ref_email_aut_person: "",
-  phone_number_ref_person: "",
+  name_of_ref_person: "Maria luisa",
+  ref_place_of_work: "banco del reservas",
+  ref_email_aut_person: "maria@gmail.com",
+  phone_number_ref_person: "8099999999",
 };
 
 export const step3 = {
@@ -55,20 +55,20 @@ export const step3 = {
 };
 
 export const step4 = {
-  type_of_work_aut_person: "",
+  type_of_work_aut_person: "yes",
   authorized_persons: [authorized_persons_values],
 };
 
 export const step5 = {
-  stock_purchase: "",
-  sale_values: "",
-  owner_of_the_account: "",
-  bank_name: "",
-  type_of_account: "",
-  account_number: "",
-  receive_email_auth: "",
-  PEP: "",
-  green_card: "",
+  stock_purchase: "Cheque a nombre de la casa",
+  sale_values: "Cheque a nombre del cliente",
+  owner_of_the_account: "Alexander abreu",
+  bank_name: "BHD Leon",
+  type_of_account: "De ahorro",
+  account_number: "001-121444-5",
+  receive_email_auth: "alex@gmail.com ",
+  PEP: "yes",
+  green_card: "yes",
 };
 
 export const initialValues = {
@@ -166,9 +166,9 @@ export const validationSchema = [
       then: (schema) =>
         schema.of(
           Yup.object().shape({
-            name_of_aut_person: Yup.string()
-              .max(15, "Debe ser mas de 10 caracteres.")
-              .required("Favor ingresar tu nombre completo"),
+            name_of_aut_person: Yup.string().required(
+              "Favor ingresar tu nombre completo"
+            ),
             day_of_birth_aut_person: Yup.string().required(
               "Favor introducir fecha de nacimiento"
             ),

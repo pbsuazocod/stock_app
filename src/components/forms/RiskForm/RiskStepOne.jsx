@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import FormikControl from "../../formik/FormikControl";
-import { languageOptions } from "../../config/constants";
+
+// Components
+
 import { useFormikContext, FieldArray } from "formik";
 import { FaPlusCircle } from "react-icons/fa";
+
+// Data
+
+import FormikControl from "../../formik/FormikControl";
+import { languageOptions } from "../../config/constants";
 import { step1Test } from "./ValidationSchema";
 
 function test(values) {
@@ -16,9 +22,22 @@ function test(values) {
     </div>
   ));
 }
+
 function RiskStepOne() {
+  // Manage States
+
   const [adicLang, setAdicLang] = useState(false);
   const { values, submitForm } = useFormikContext();
+  const [languageDisable, setLanguageDisable] = useState(true);
+
+  React.useEffect(() => {
+    if (values.aditionnal_language_option === "yes") {
+      setLanguageDisable(false);
+    } else if (values.aditionnal_language_option === "no") {
+      setLanguageDisable(true);
+    }
+  }, [values.aditionnal_language_option]);
+
   return (
     <div className="p-[2%]">
       <div className="pl-[1%] font-montserrat font-bold">
@@ -51,6 +70,7 @@ function RiskStepOne() {
                             label={"IDIOMA"}
                             type="text"
                             className="p-inputtext-lg block"
+                            disable={languageDisable}
                           />
                         </div>
 
@@ -61,6 +81,7 @@ function RiskStepOne() {
                             label={"% DOMINIO DE LECTURA"}
                             type="number"
                             className="p-inputtext-lg block"
+                            disable={languageDisable}
                           />
                         </div>
                         <div>
@@ -70,6 +91,7 @@ function RiskStepOne() {
                             label={"% DOMINIO DE ESCRITURA"}
                             type="number"
                             className="p-inputtext-lg block"
+                            disable={languageDisable}
                           />
                         </div>
                         <div>
@@ -79,6 +101,7 @@ function RiskStepOne() {
                             label={"% DOMINIO EXPRESIÓN ORAL"}
                             type="number"
                             className="p-inputtext-lg block"
+                            disable={languageDisable}
                           />
                         </div>
                       </div>

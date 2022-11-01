@@ -1,14 +1,17 @@
 import React from "react";
-import FormikControl from "../../formik/FormikControl";
 import { useFormikContext, FieldArray } from "formik";
+import { FaPlusCircle } from "react-icons/fa";
 
 // Data
+
 import { authPersonOptions } from "../../config/constants";
-import { FaPlusCircle } from "react-icons/fa";
 import { authorized_persons_values } from "./ValidationSchema";
+import FormikControl from "../../formik/FormikControl";
 
 function FormStepFour({ counter }) {
+
   // Manage State
+  
   const { values, errors, setTouched } = useFormikContext();
   const [disableForm, setDisableForm] = React.useState(true);
   const [addingAnotherPerson, setAddingAnotherPerson] = React.useState(false);

@@ -1,11 +1,12 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
+
+// Data
 import {
   documentOptions,
   civilOptions,
   residencyOptions,
 } from "../../config/constants";
-
 
 function FormStepOne() {
   return (

@@ -7,7 +7,7 @@ function RiskStepFive() {
     <div className="flex flex-col min-h-[30vh] font-montserrat font-bold ">
       <Link
         to="/"
-        className=" h-[30vh] flex flex-col justify-center items-center"
+        className="pl-[2%] pr-[2%] h-[30vh] flex flex-col justify-center items-center"
       >
         <h1>
           Su solicitud de vinculación fue enviada exitosamente, la CCB de su

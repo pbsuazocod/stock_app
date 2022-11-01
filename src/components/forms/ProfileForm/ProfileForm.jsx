@@ -46,14 +46,12 @@ function _renderStepContent(step) {
       return <FormStepFive />;
     case 5:
       return <FormStepSix />;
-    default:
-      return <div>Not Found</div>;
   }
 }
 
 function ProfileForm() {
   // Manage States
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(4);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -63,10 +61,10 @@ function ProfileForm() {
 
   function _handleSubmit(values, actions) {
     console.log(values);
-    if (isLastStep) {
+    if (activeStep === steps.length - 2) {
       console.log("form", values);
       alert(values);
-      // _submitForm(values, actions);
+      setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);
       actions.setTouched({});
@@ -83,6 +81,7 @@ function ProfileForm() {
       >
         {(formik) => (
           <Form>
+            {JSON.stringify({ isLastStep })}
             {_renderStepContent(activeStep)}
 
             {!isLastStep ? (
@@ -116,6 +115,7 @@ function ProfileForm() {
 
                     <div className={`${activeStep === 4 ? "next" : ""}`}>
                       <Button
+                        type="submit"
                         label={
                           activeStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"
                         }

@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import FormikControl from "../../formik/FormikControl";
-
-// Data
-import { radioOptions } from "../../config/constants";
 import { stockOptions } from "../../config/constants";
+import { radioOptions } from "../../config/constants";
 import { saleOptions } from "../../config/constants";
 
+// Data
+
+import FormikControl from "../../formik/FormikControl";
+
 function FormStepFive() {
-  // State Management
-  // const [stockPurchase, setStockPurchases] = useState(true);
-  // const [saleValues, setSaleValues] = useState(true);
 
   return (
     <div className="space-y-4 m-[3%] font-montserrat font-bold">

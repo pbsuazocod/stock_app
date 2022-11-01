@@ -1,9 +1,11 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
 import { useState } from "react";
-import { radioOptions } from "../../config/constants";
 import { useFormikContext } from "formik";
 
+// Data
+
+import { radioOptions } from "../../config/constants";
 import {
   levelOfIncomeOptions,
   checkBoxOptions,
@@ -12,7 +14,9 @@ import {
 
 function RiskStepThree() {
   // Manage state
+
   const [disableInvestment, setDisableInvestment] = useState(true);
+  const [salMarkets, setSalMarkets] = useState(true);
   const { values } = useFormikContext();
 
   React.useEffect(() => {
@@ -22,6 +26,14 @@ function RiskStepThree() {
       setDisableInvestment(true);
     }
   }, [values.other_investments]);
+
+  React.useEffect(() => {
+    if (values.outside_salvador_experience === "yes") {
+      setSalMarkets(false);
+    } else if (values.outside_salvador_experience === "no") {
+      setSalMarkets(true);
+    }
+  }, [values.outside_salvador_experience]);
 
   return (
     <div className="p-[2%] space-y-4 font-montserrat font-bold">
@@ -124,18 +136,21 @@ function RiskStepThree() {
                 name={"country_1"}
                 label={""}
                 type="text"
+                disable={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"country_2"}
                 label={""}
                 type="text"
+                disable={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"country_3"}
                 label={""}
                 type="text"
+                disable={salMarkets}
               />
             </div>
 
@@ -147,6 +162,7 @@ function RiskStepThree() {
                   name={"experience_1"}
                   label={""}
                   type="text"
+                  disable={salMarkets}
                 />
               </div>
               <div className=" w-full">
@@ -155,6 +171,7 @@ function RiskStepThree() {
                   name={"experience_2"}
                   label={""}
                   type="text"
+                  disable={salMarkets}
                 />
               </div>
               <div className=" w-full">
@@ -163,6 +180,7 @@ function RiskStepThree() {
                   name={"experience_3"}
                   label={""}
                   type="text"
+                  disable={salMarkets}
                 />
               </div>
             </div>
@@ -173,18 +191,21 @@ function RiskStepThree() {
                 name={"negotiated_values_1"}
                 label={""}
                 type="text"
+                disable={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"negotiated_values_2"}
                 label={""}
                 type="text"
+                disable={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"negotiated_values_3"}
                 label={""}
                 type="text"
+                disable={salMarkets}
               />
             </div>
           </div>

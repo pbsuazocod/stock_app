@@ -1,12 +1,16 @@
 import React from "react";
 import FormikControl from "../../formik/FormikControl";
 import { useFormikContext, FieldArray } from "formik";
-// Data
 import { FaPlusCircle } from "react-icons/fa";
+
+// Data
+
 import { personal_reference_values } from "./ValidationSchema";
 
 function FormStepThree({ counter }) {
+  
   // Manage States
+
   const { values, errors, setTouched } = useFormikContext();
   const [disableForm, setDisableForm] = React.useState(true);
   const [addingAnotherPerson, setAddingAnotherPerson] = React.useState(false);
@@ -18,25 +22,14 @@ function FormStepThree({ counter }) {
     });
   }
 
-  // React.useEffect(() => {
-  //   if (values.type_of_work_aut_person) {
-  //     setDisableForm(values.type_of_work_aut_person === "no" ? true : false);
-  //     if (!addingAnotherPerson) {
-  //       setTouched({});
-  //       setAddingAnotherPerson(false);
-  //     }
-  //   }
-  // }, [values.type_of_work_aut_person]);
-
   return (
     <div className="p-[2%]">
       <div className="mt-[2%] ml-[2%]">
-        <div className=" ">
+        <div>
           <FieldArray name="personal_reference">
             {({ field, form, push, remove }) => {
               const { values } = form;
               const { personal_reference } = values;
-              console.log(personal_reference);
 
               return (
                 <React.Fragment>

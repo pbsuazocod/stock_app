@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useFormikContext } from "formik";
+
+// Data
 import FormikControl from "../../formik/FormikControl";
 import {
   purposeOfInvestments,
@@ -6,6 +9,8 @@ import {
 } from "../../config/constants";
 
 function RiskStepFour() {
+  // Manage States
+
   return (
     <div className="p-[2%] space-y-4">
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">

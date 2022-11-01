@@ -2,9 +2,11 @@ import React from "react";
 import FormikControl from "../../formik/FormikControl";
 
 // Data
+
 import { typeOfWorkOptions } from "../../config/constants";
 
 function FormStepTwo() {
+  
   return (
     <>
       <div className="p-[3%] space-y-4 font-montserrat font-bold">

@@ -38,15 +38,13 @@ function _renderStepContent(step) {
       return <RiskStepFour />;
     case 4:
       return <RiskStepFive />;
-    default:
-      return <div>Not Found</div>;
   }
 }
 
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -62,10 +60,10 @@ function RiskForm() {
 
   function _handleSubmit(values, actions) {
     console.log(values);
-    if (isLastStep) {
+    if (activeStep === steps.length - 2) {
       console.log("form", values);
       alert(values);
-      // _submitForm(values, actions);
+      setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);
       actions.setTouched({});
