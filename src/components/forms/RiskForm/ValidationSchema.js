@@ -5,7 +5,7 @@ export const step1Test = {
   language: "ingles",
   reading_domain: "100",
   writing_domain: "80",
-  oral_expresion_domain: "70",
+  oral_expresion_domain: "70"
 };
 
 export const initialValues = {
@@ -15,20 +15,20 @@ export const initialValues = {
   // step 2
 
   level_of_income: "Menores de US$15,000.00 dolares",
-  salary: "as",
-  own_business_income: "asd",
-  rent_for_real_state: "ads",
-  pensions_and_others: "ads",
-  stock_investments: "ad",
-  others: "asd",
+  salary: "",
+  own_business_income: "",
+  rent_for_real_state: "",
+  pensions_and_others: "",
+  stock_investments: "",
+  others: "",
 
   salary_percentage: null,
 
-  percentage_front_own_business: "",
-  percentage_from_rent: "",
-  percentage_stock_investments: "",
-  others_percentage: "",
-  Pensions_others: "",
+  percentage_front_own_business: null,
+  percentage_from_rent: null,
+  percentage_stock_investments: null,
+  others_percentage: null,
+  Pensions_others: null,
   stock_investments_amount: "1222222",
   capital_percentage: "Mas del 10%",
   income_source_trend: "Nada estable",
@@ -56,6 +56,7 @@ export const initialValues = {
   negotiated_values_3: "",
   alternative_investments: [],
   investment_time: "",
+  percentage: 0,
 
   // step4
 
@@ -65,7 +66,7 @@ export const initialValues = {
   purpose_of_investments: [],
   economics_situation: [],
   other_explain: "",
-  other_action_explain: "",
+  other_action_explain: ""
 };
 
 export const validationSchema = [
@@ -85,54 +86,66 @@ export const validationSchema = [
             writing_domain: Yup.string().required("Favor ingresar porcentaje"),
             oral_expresion_domain: Yup.string().required(
               "Favor ingresar porcentaje"
-            ),
+            )
           })
-        ),
-    }),
+        )
+    })
   }),
 
   // Step2
 
   Yup.object().shape({
     level_of_income: Yup.string().required("Favor ingresar salario"),
-    salary: Yup.string().required("Favor ingresar salario"),
 
+    // ----------------------------------------------------------------
+    salary: Yup.string(),
+    own_business_income: Yup.string(),
+    rent_for_real_state: Yup.string(),
+    pensions_and_others: Yup.string(),
+    stock_investments: Yup.string(),
+    others: Yup.string(),
+    stock_investments_amount: Yup.string(),
+
+    // ----------------------------------------------------------------
+
+    // ----------------------------------------------------------------
     salary_percentage: Yup.number("Favor ingresar número mayor a 0")
-      .required("Favor ingresar porcentaje 1")
-      .min(1, "mayor a 0")
-      .positive()
+
+      .transform((value) => (isNaN(value) ? 0 : value))
       .integer()
       .typeError("Favor ingresar un porcentaje"),
 
-    own_business_income: Yup.string().required(
-      "Favor ingresar ingresos por negocios propios"
-    ),
-    percentage_front_own_business: Yup.number().required(
-      "Favor ingresar porcentaje 2"
-    ),
-    rent_for_real_state: Yup.string().required(
-      "Favor ingresar renta por alquiler"
-    ),
-    percentage_from_rent: Yup.string().required("Favor ingresar porcentaje 3"),
-    pensions_and_others: Yup.string().required(
-      "Favor ingresar pensiones, dietas, etc"
-    ),
-    Pensions_others: Yup.string().required("Favor ingresar porcentaje 4"),
-    stock_investments: Yup.string().required("Favor ingresar porcentaje"),
-    percentage_stock_investments: Yup.string().required(
-      "Favor ingresar capital disponible 5"
-    ),
-    others: Yup.string().required("Favor ingresar otros"),
-    others_percentage: Yup.string().required("Favor ingresar porcentaje 6"),
-    stock_investments_amount: Yup.string().required(
-      "Favor ingresar inversiones en bolsa"
-    ),
+    percentage_front_own_business: Yup.number()
+      .transform((value) => (isNaN(value) ? 0 : value))
+      .integer()
+      .typeError("Favor ingresar un porcentaje"),
+    percentage_from_rent: Yup.number()
+      .transform((value) => (isNaN(value) ? 0 : value))
+      .integer()
+      .typeError("Favor ingresar un porcentaje"),
+    percentage_stock_investments: Yup.number()
+      .transform((value) => (isNaN(value) ? 0 : value))
+      .integer()
+      .typeError("Favor ingresar un porcentaje"),
+    others_percentage: Yup.number()
+      .transform((value) => (isNaN(value) ? 0 : value))
+      .integer()
+      .typeError("Favor ingresar un porcentaje"),
+    Pensions_others: Yup.number()
+      .transform((value) => (isNaN(value) ? 0 : value))
+      .integer()
+      .typeError("Favor ingresar un porcentaje"),
+    // ----------------------------------------------------------------
+
+    percentage: Yup.number()
+      .max(100, "Porcentaje debe ser igual a 100")
+      .min(100, "Porcentaje debe ser igual a 100"),
     capital_percentage: Yup.string().required("Favor ingresar rango"),
     income_source_trend: Yup.string().required(
       "Favor seleccione una tendencia"
     ),
     explain: Yup.string().required("Favor ingresar explicar las razones"),
-    savings: Yup.string().required("Favor ingresar seleccione una opción"),
+    savings: Yup.string().required("Favor ingresar seleccione una opción")
   }),
 
   // Step3
@@ -142,14 +155,18 @@ export const validationSchema = [
     investment_information: Yup.string().when("other_investments", {
       is: (other_investments) => other_investments === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     stock_market_experience: Yup.string().required(
       "Favor  seleccione una opción"
     ),
     level_of_income: Yup.string().required("Favor ingresar escoger un rango"),
     checkBoxOptions: Yup.array().required("Favor  seleccione una opción"),
-    market_investments: Yup.string().required("Favor expecificar"),
+    market_investments: Yup.string().when("checkBoxOptions", {
+      is: (checkBoxOptions) =>
+        checkBoxOptions.find((value) => value === "Otros"),
+      then: Yup.string().required("Favor expecificar")
+    }),
     outside_salvador_experience: Yup.string().required(
       "Favor ingresar seleccione una opción"
     ),
@@ -157,56 +174,56 @@ export const validationSchema = [
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     country_2: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     country_3: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     experience_1: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     experience_2: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     experience_3: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     negotiated_values_1: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     negotiated_values_2: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     negotiated_values_3: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
-    }),
+      otherwise: Yup.string().notRequired()
+    })
   }),
 
   // Step4
@@ -222,6 +239,6 @@ export const validationSchema = [
       "Favor ingresar seleccione una opción"
     ),
     other_explain: Yup.string().required("Favor explique"),
-    other_action_explain: Yup.string().required("Favor especifique"),
-  }),
+    other_action_explain: Yup.string().required("Favor especifique")
+  })
 ];

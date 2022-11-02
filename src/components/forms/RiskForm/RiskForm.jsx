@@ -23,7 +23,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five",
+  "Form Step Five"
 ];
 
 function _renderStepContent(step) {
@@ -44,7 +44,7 @@ function _renderStepContent(step) {
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(2);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -75,7 +75,7 @@ function RiskForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={currentValidationSchema}
+        validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (

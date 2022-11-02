@@ -9,7 +9,7 @@ import { radioOptions } from "../../config/constants";
 import {
   levelOfIncomeOptions,
   checkBoxOptions,
-  alternativeInvestmentsOptions,
+  alternativeInvestmentsOptions
 } from "../../config/constants";
 
 function RiskStepThree() {
@@ -17,6 +17,7 @@ function RiskStepThree() {
 
   const [disableInvestment, setDisableInvestment] = useState(true);
   const [salMarkets, setSalMarkets] = useState(true);
+  const [otherOptions, setOtherOptions] = useState(true);
   const { values } = useFormikContext();
 
   React.useEffect(() => {
@@ -33,7 +34,14 @@ function RiskStepThree() {
     } else if (values.outside_salvador_experience === "no") {
       setSalMarkets(true);
     }
-  }, [values.outside_salvador_experience]);  
+  }, [values.outside_salvador_experience]);
+
+  React.useEffect(() => {
+    const otherOption = values.checkBoxOptions.find(
+      (value) => value === "Otros"
+    );
+    setOtherOptions(!otherOption ? true : false);
+  }, [values.checkBoxOptions]);
 
   return (
     <div className="p-[2%] space-y-4 font-montserrat font-bold">
@@ -113,6 +121,7 @@ function RiskStepThree() {
               name={"market_investments"}
               label={""}
               type="text"
+              disable={otherOptions}
             />
           </div>
 

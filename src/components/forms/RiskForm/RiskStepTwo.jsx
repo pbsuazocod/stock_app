@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFormikContext } from "formik";
+import { ErrorMessage, useFormikContext } from "formik";
 
 // Data
 
@@ -7,14 +7,15 @@ import {
   rangeOfIncomeOptions,
   savingsOptions,
   trentOptions,
-  capitalPercentageOptions,
+  capitalPercentageOptions
 } from "../../config/constants";
 import FormikControl from "../../formik/FormikControl";
+import TextError from "../../UI/FormInput/TextError";
 
 function RiskStepTwo() {
   // Manage State
 
-  const { values, errors, setTouched } = useFormikContext();
+  const { values, errors, setTouched, setFieldValue } = useFormikContext();
   const [percentage, setPercentage] = useState(0);
 
   React.useEffect(() => {
@@ -25,14 +26,15 @@ function RiskStepTwo() {
       values.Pensions_others +
       values.percentage_stock_investments +
       values.others_percentage;
-    setPercentage(percentageCal);
+    setFieldValue("percentage", percentageCal);
+    // setPercentage(percentageCal);
   }, [
     values.salary_percentage,
     values.percentage_front_own_business,
     values.percentage_from_rent,
     values.Pensions_others,
     values.percentage_stock_investments,
-    values.others_percentage,
+    values.others_percentage
   ]);
 
   return (
@@ -160,7 +162,8 @@ function RiskStepTwo() {
         <div className="mt-[1%] flex justify-between lg:w-[50%] md:w-[70%] w-full">
           <p>TOTAL</p>
           <div className="space-y-4">
-            <p className=" text-right ">{percentage}%</p>
+            <p className=" text-right ">{values.percentage}%</p>
+            <ErrorMessage name="percentage" component={TextError} />
           </div>
         </div>
       </div>

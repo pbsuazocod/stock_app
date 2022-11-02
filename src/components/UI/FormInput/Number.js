@@ -19,7 +19,7 @@ function Number(props) {
                 name={field.name}
                 value={form.values[field.name]}
                 onValueChange={(e) => form.setFieldValue(field.name, e.value)}
-                // onBlur={form.handleBlur(field.name)}
+                onBlur={form.handleBlur(field.name)}
                 {...rest}
               />
             </div>
