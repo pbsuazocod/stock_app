@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { useFormikContext } from "formik";
 
 // Data
@@ -10,6 +11,24 @@ import {
 
 function RiskStepFour() {
   // Manage States
+
+  const { values } = useFormikContext();
+  const [investmentsDisable, setInvestmentsDisable] = useState(true);
+  const [economicsDisable, setEconomicsDisable] = useState(true);
+
+  React.useEffect(() => {
+    const investmentsOptions = values.purpose_of_investments.find(
+      (value) => value === "Otro (explique):"
+    );
+    setInvestmentsDisable(!investmentsOptions ? true : false);
+  }, [values.purpose_of_investments]);
+
+  React.useEffect(() => {
+    const economicsOptions = values.economics_situation.find(
+      (value) => value === "Otra acción (Especifique):"
+    );
+    setEconomicsDisable(!economicsOptions ? true : false);
+  }, [values.economics_situation]);
 
   return (
     <div className="p-[2%] space-y-4">
@@ -95,6 +114,7 @@ function RiskStepFour() {
           name={"other_explain"}
           label={""}
           type="text"
+          disable={investmentsDisable}
         />
       </div>
       <p className="text-justify font-montserrat font-bold">
@@ -119,6 +139,7 @@ function RiskStepFour() {
           name={"other_action_explain"}
           label={""}
           type="text"
+          disable={economicsDisable}
         />
       </div>
     </div>

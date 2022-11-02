@@ -60,10 +60,7 @@ function ProfileForm() {
   };
 
   function _handleSubmit(values, actions) {
-    console.log(values);
     if (activeStep === steps.length - 2) {
-      console.log("form", values);
-      alert(values);
       setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);
@@ -94,7 +91,9 @@ function ProfileForm() {
                 <div className="w-full pt-[2%]">
                   <div
                     className={`flex ${
-                      activeStep < 1 ? "justify-end" : "justify-between"
+                      activeStep < 1
+                        ? "justify-end"
+                        : "md:justify-between flex-wrap gap-2 justify-center"
                     }`}
                   >
                     {activeStep > 0 && (

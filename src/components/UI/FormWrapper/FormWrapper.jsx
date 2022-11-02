@@ -65,7 +65,7 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
 
   return (
     <div
-      className={`md:w-11/12  h-full bg-[#F7F7F7] rounded-3xl ${
+      className={`md:w-11/12  h-full bg-[#F7F7F7] drop-shadow-2xl rounded-3xl ${
         currentPage === "riskpage"
           ? "w-[90%] md:w-[70%] lg:w-[70%]"
           : "lg:max-w-[50%]"

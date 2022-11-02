@@ -57,7 +57,6 @@ function FormStepTwo() {
             name="phone"
             label="TELÉFONO"
             mask="(999) 999-9999"
-            // type="tel"
           />
         </div>
 

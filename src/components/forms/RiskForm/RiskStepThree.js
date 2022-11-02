@@ -9,7 +9,7 @@ import { radioOptions } from "../../config/constants";
 import {
   levelOfIncomeOptions,
   checkBoxOptions,
-  alternativeInvestmentsOptions
+  alternativeInvestmentsOptions,
 } from "../../config/constants";
 
 function RiskStepThree() {
@@ -18,6 +18,7 @@ function RiskStepThree() {
   const [disableInvestment, setDisableInvestment] = useState(true);
   const [salMarkets, setSalMarkets] = useState(true);
   const [otherOptions, setOtherOptions] = useState(true);
+  const [alternativeDisable, setAlternativeDisable] = useState(true);
   const { values } = useFormikContext();
 
   React.useEffect(() => {
@@ -42,6 +43,13 @@ function RiskStepThree() {
     );
     setOtherOptions(!otherOption ? true : false);
   }, [values.checkBoxOptions]);
+
+  React.useEffect(() => {
+    const alternativeOption = values.alternative_investments.find(
+      (value) => value === "Ninguno (Sólo indique)"
+    );
+    setAlternativeDisable(!alternativeOption ? true : false);
+  }, [values.alternative_investments]);
 
   return (
     <div className="p-[2%] space-y-4 font-montserrat font-bold">
@@ -108,12 +116,14 @@ function RiskStepThree() {
             MERCADOS DE VALORES:
           </p>
 
-          <FormikControl
-            control="checkbox"
-            label=""
-            name="checkBoxOptions"
-            options={checkBoxOptions}
-          />
+          <div>
+            <FormikControl
+              control="checkbox"
+              label=""
+              name="checkBoxOptions"
+              options={checkBoxOptions}
+            />
+          </div>
 
           <div className="mt-[2%] lg:w-1/4 w-full border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
             <FormikControl
@@ -234,6 +244,15 @@ function RiskStepThree() {
             name="alternative_investments"
             options={alternativeInvestmentsOptions}
           />
+          <div className="mt-[2%] lg:w-1/4 w-full border-l-4 pr-[2%] pl-[1%] border-[#9747FF] first-line:border-solid">
+            <FormikControl
+              control="input"
+              name={"investments_alternative"}
+              label={""}
+              type="text"
+              disable={alternativeDisable}
+            />
+          </div>
 
           <p>MARQUE EL PLAZO O TIEMPO EN QUE ESTÁ INTERESADO EN INVERTIR:</p>
 

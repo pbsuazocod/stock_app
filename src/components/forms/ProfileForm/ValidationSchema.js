@@ -1,36 +1,38 @@
 import * as Yup from "yup";
+
 const phoneRegExp = RegExp(
   /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 );
+
 // Form initial values and validation schemas
 
 export const step1 = {
-  name: "pedro",
-  age: "21",
-  type_of_document: "Pasaportye",
-  issue_date: "Thu Oct 06 2022 00:00:00 GMT-0800 (GMT-08:00) {}",
-  marital_status: "Casado",
-  address: "asdasdasd",
-  home_number: "8099999999",
-  email: "pbsue@gmail.com",
-  residency: "familiar",
-  nationality: "asdasd",
-  day_of_birth: "Thu Oct 06 2022 00:00:00 GMT-0800 (GMT-08:00) {}",
-  identification_card: "223-2323232-3",
-  expiration_date: "Thu Oct 06 2022 00:00:00 GMT-0800 (GMT-08:00) {}",
-  profession: "asdasdsa",
-  nit_number: "1212-121212-121-2",
-  cellphone_number: "8099999999",
+  name: "",
+  age: "",
+  type_of_document: "",
+  issue_date: "",
+  marital_status: "",
+  address: "",
+  home_number: "",
+  email: "",
+  residency: "",
+  nationality: "",
+  day_of_birth: "",
+  identification_card: "",
+  expiration_date: "",
+  profession: "",
+  nit_number: "",
+  cellphone_number: "",
 };
 
 export const step2 = {
-  type_of_work: "PENSIONADO",
-  company_name: "inversiones futuro",
-  company_line_of_work: "prestamos",
-  job_title: "contador",
-  time_in_the_company: "20",
-  phone: "8099999999",
-  full_address: "calle 4 no. 3",
+  type_of_work: "",
+  company_name: "",
+  company_line_of_work: "",
+  job_title: "",
+  time_in_the_company: "",
+  phone: "",
+  full_address: "",
 };
 
 export const authorized_persons_values = {
@@ -61,15 +63,15 @@ export const step4 = {
 };
 
 export const step5 = {
-  stock_purchase: "Cheque a nombre de la casa",
-  sale_values: "Cheque a nombre del cliente",
-  owner_of_the_account: "Alexander abreu",
-  bank_name: "BHD Leon",
-  type_of_account: "De ahorro",
-  account_number: "001-121444-5",
-  receive_email_auth: "alex@gmail.com ",
-  PEP: "yes",
-  green_card: "yes",
+  stock_purchase: "",
+  sale_values: "",
+  owner_of_the_account: "",
+  bank_name: "",
+  type_of_account: "",
+  account_number: "",
+  receive_email_auth: "",
+  PEP: "",
+  green_card: "",
 };
 
 export const initialValues = {
@@ -147,7 +149,21 @@ export const validationSchema = [
   Yup.object({
     personal_reference: Yup.array().of(
       Yup.object().shape({
-        name_of_ref_person: Yup.string().required("requerido"),
+        name_of_ref_person: Yup.string().required(
+          "Favor ingresar nombre completo"
+        ),
+        ref_place_of_work: Yup.string().required(
+          "Favor ingresar lugar de trabajo"
+        ),
+        ref_email_aut_person: Yup.string()
+          .email("Correo electrónico no valido")
+          .required(
+            "Debes ingresar tu dirección de correo con el siguiente formato: tuemail@ejemplo.com"
+          ),
+        phone_number_ref_person: Yup.string()
+          .required()
+          .required("Favor ingresar un número de télefono")
+          .matches(phoneRegExp, "Favor ingresar un número de télefono valido"),
       })
     ),
   }),
@@ -197,6 +213,9 @@ export const validationSchema = [
         ),
     }),
   }),
+
+  // Step 5
+
   Yup.object({
     stock_purchase: Yup.string().required("Favor selecionar una opción"),
     sale_values: Yup.string().required("Favor selecionar una opción"),

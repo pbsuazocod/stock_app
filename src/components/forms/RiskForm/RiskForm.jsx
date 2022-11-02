@@ -23,7 +23,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five"
+  "Form Step Five",
 ];
 
 function _renderStepContent(step) {
@@ -44,7 +44,7 @@ function _renderStepContent(step) {
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(2);
+  const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
@@ -90,7 +90,9 @@ function RiskForm() {
                 <div className="w-full pt-[2%]">
                   <div
                     className={`flex ${
-                      activeStep < 1 ? "justify-end" : "justify-between"
+                      activeStep < 1
+                        ? "justify-end"
+                        : "md:justify-between flex-wrap gap-2 justify-center"
                     }`}
                   >
                     {activeStep > 0 && (

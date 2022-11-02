@@ -56,7 +56,6 @@ function FormStepFour({ counter }) {
               {({ field, form, push, remove }) => {
                 const { values } = form;
                 const { authorized_persons } = values;
-                console.log(authorized_persons);
 
                 return (
                   <React.Fragment>
