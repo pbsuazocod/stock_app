@@ -27,7 +27,6 @@ function RiskStepTwo() {
       values.percentage_stock_investments +
       values.others_percentage;
     setFieldValue("percentage", percentageCal);
-    // setPercentage(percentageCal);
   }, [
     values.salary_percentage,
     values.percentage_front_own_business,

@@ -40,7 +40,7 @@ function RiskStepOne() {
 
   return (
     <div className="p-[2%]">
-      <div className="pl-[1%] font-montserrat font-bold">
+      <div className="pl-[1%]  font-montserrat font-bold">
         <p>¿DOMINA UN IDIOMA ADICIONAL AL IDIOMA ESPAÑOL?</p>
 
         <FormikControl
@@ -62,7 +62,7 @@ function RiskStepOne() {
                 <>
                   {languages.map((field, index) => (
                     <React.Fragment key={index}>
-                      <div className="grid-none md:grid font-montserrat font-bold grid-row-5 lg:grid-cols-4 grid-col-1 gap-4 border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
+                      <div className="grid-none md:grid font-montserrat font-bold grid-row-5 sm:grid-cols-4 grid-col-1 gap-4 border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
                         <div>
                           <FormikControl
                             control="input"

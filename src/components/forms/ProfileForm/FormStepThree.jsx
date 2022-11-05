@@ -32,7 +32,7 @@ function FormStepThree() {
                 <React.Fragment>
                   {personal_reference.map((field, index) => (
                     <React.Fragment key={index}>
-                      <div className="font-monserrant font-bold grid grid-cols-2 grid-rows-1 gap-4  border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
+                      <div className="font-monserrant font-bold grid md:grid-cols-2 grid-cols-1  grid-rows-1 gap-4  border-l-4 pr-[2%] pl-[1%] border-[#40B879] first-line:border-solid">
                         <div>
                           <FormikControl
                             control="input"

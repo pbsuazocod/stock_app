@@ -32,7 +32,7 @@
     @apply block
     font-montserrat;
   }
-  ,
+  
   html {
     font-family: Montserrat, system-ui, sans-serif;
   }
@@ -41,7 +41,3 @@
   font-family: "Montserrat", "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
 }
-/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"); */
-/* .r {
-  background-image: none !important;
-} */

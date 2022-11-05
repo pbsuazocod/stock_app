@@ -16,7 +16,7 @@ function OnBoarding() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       {activeStep === 6 && (
         <>
-          <div className=" flex flex-col pt-[12%] items-center bg-white w-full h-80">
+          <div className=" flex flex-col pt-[12%] items-center bg-white md:w-full h-80 w-[85vw]">
             <button
               onClick={() => {
                 setActiveStep(activeStep + 1);
@@ -25,7 +25,7 @@ function OnBoarding() {
               <MdAddAPhoto className="text-6xl" />
             </button>
             <h1>Haga click para abrir la camara</h1>
-            <footer className="flex flex-col justify-center text-white  items-center bg-gray-500 w-full h-[20%]  mt-auto">
+            <footer className="flex flex-col justify-center text-white items-center bg-gray-500 w-full h-[20%]  mt-auto">
               <h1>Requerimos fotos de su documento</h1>
             </footer>
           </div>
@@ -45,9 +45,11 @@ function OnBoarding() {
               <div className="bg-blue-500 flex justify-center">
                 <h1 className="bold text-white">ID CARD</h1>
               </div>
-              <div className="flex ">
-                <img className="text-sm" src={photo} alt="" />
-                <div className="pl-[4%] flex flex-col space-y-2">
+              <div className="flex flex-col md:flex-row items-center">
+                <div>
+                <img className="md:w-[10vw] w-[20vw] h-auto" src={photo} alt="" />
+                </div>
+                <div className="pl-[10%] flex flex-col text-justify space-y-2">
                   <h1 className="text-2xl bold">001-000100-8</h1>
                   <h1>Lugar de nacimiento</h1>
                   <h1>Fecha de nacimiento</h1>
@@ -63,10 +65,10 @@ function OnBoarding() {
 
       {activeStep === 8 && (
         <>
-          <div className="flex flex-col items-center justify-cente w-full h-80">
+          <div className="flex flex-col items-center justify-center w-full h-80">
             <div className="flex flex-col items-center justify-center">
               <TbChecks className="text-[20vh] text-green-500" />
-              <h1>INFORMACIÓN VALIDADA CORRECTAMENTE</h1>
+              <h1 className="text-center">INFORMACIÓN VALIDADA CORRECTAMENTE</h1>
             </div>
             <Link className="mt-[2%]" to="/formpage">
               <Button

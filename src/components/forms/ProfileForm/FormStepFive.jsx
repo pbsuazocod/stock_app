@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { stockOptions } from "../../config/constants";
 import { radioOptions } from "../../config/constants";
 import { saleOptions } from "../../config/constants";
@@ -10,7 +10,7 @@ import FormikControl from "../../formik/FormikControl";
 function FormStepFive() {
 
   return (
-    <div className="space-y-4 m-[3%] font-montserrat font-bold">
+    <div className="space-y-4 m-[3%] font-montserrat font-bold ">
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">LIQUIDACIÓN DE FONDOS</h1>
       <div className="flex items-center">
         <label className="pl-2">

@@ -38,6 +38,8 @@ function _renderStepContent(step) {
       return <RiskStepFour />;
     case 4:
       return <RiskStepFive />;
+      default:
+        return  ;
   }
 }
 

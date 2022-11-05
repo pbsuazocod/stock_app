@@ -65,14 +65,14 @@ export default function FormWrapper({ children, currentStep, currentPage }) {
 
   return (
     <div
-      className={`md:w-11/12  h-full bg-[#F7F7F7] drop-shadow-2xl rounded-3xl ${
+      className={`md:w-11/12 h-full bg-[#F7F7F7] drop-shadow-2xl rounded-3xl ${
         currentPage === "riskpage"
           ? "w-[90%] md:w-[70%] lg:w-[70%]"
-          : "lg:max-w-[50%]"
+          : "lg:max-w-[50%] ml-[4%] mr-[4%] w-[90vw]"
       }`}
     >
       <div
-        className={`bg-[#1A3B69] text-white text-[70%] h-12 md:text-[100%] rounded-t-3xl flex-grow  flex pr-[2%] pl-[4%]  items-center font-montserrat font-bold ${
+        className={`bg-[#1A3B69] text-white text-[70%] h-12 md:text-[100%] rounded-t-3xl flex-grow flex pr-[2%] pl-[4%] items-center font-montserrat font-bold ${
           currentStep === 9 ? "justify-center" : ""
         }`}
       >

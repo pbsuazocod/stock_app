@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa";
 import { Button } from "primereact/button";
 import "./styles.css";
 
 function FormStepSix() {
   return (
-    <div className="flex flex-col min-h-[50vh] font-montserrat font-bold">
-      <div className=" h-[30vh] flex flex-col justify-center items-center">
+    <div className="flex flex-col min-h-[50vh] font-montserrat font-bold ">
+      <div className=" h-[30vh] flex flex-col justify-center items-center text-center">
         <h1>EL FORMULARIO FUE ENVIADO EXITOSAMENTE.</h1>
         <h1 className="mt-[2%]">POR FAVOR LLENAR EL SiGUIENTE FORMULARIO</h1>
       </div>

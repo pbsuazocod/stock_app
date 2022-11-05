@@ -46,6 +46,8 @@ function _renderStepContent(step) {
       return <FormStepFive />;
     case 5:
       return <FormStepSix />;
+    default:
+      return  ;
   }
 }
 
@@ -73,7 +75,7 @@ function ProfileForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        validationSchema={currentValidationSchema}
+        // validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (
