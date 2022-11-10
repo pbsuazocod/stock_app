@@ -50,7 +50,7 @@ function RiskStepTwo() {
       <div className="lg:w-1/3 w-full ">
         <FormikControl
           control="select"
-          name={"level_of_income"}
+          name={"anual_income"}
           label={""}
           options={rangeOfIncomeOptions}
         />
@@ -184,7 +184,7 @@ function RiskStepTwo() {
       <div className="lg:w-1/4 w-full">
         <FormikControl
           control="select"
-          name={"capital_percentage"}
+          name={"capital_available"}
           label={""}
           placeholder={"Menos del 10%"}
           options={capitalPercentageOptions}

@@ -21,7 +21,7 @@ function FormikControl(props) {
   React.useEffect(() => {
     for (const key in step4) {
       if (values[key]) {
-        console.log(`${key}: `, values[key]);
+        // console.log(`${key}: `, values[key]);
       }
     }
   }, [values]);

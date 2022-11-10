@@ -4,13 +4,16 @@ import { MdAddAPhoto } from "react-icons/md";
 import { useState } from "react";
 import photo from "../../images/photo.png";
 import { TbChecks } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "primereact/button";
 
 function OnBoarding() {
   const currentPage = "onBording_step_1";
   // manage state
   const [activeStep, setActiveStep] = useState(6);
+  const location = useLocation()
+  const { market_id } = location.state
+
   // Form steps to be render
   return (
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
@@ -47,7 +50,7 @@ function OnBoarding() {
               </div>
               <div className="flex flex-col md:flex-row items-center">
                 <div>
-                <img className="md:w-[10vw] w-[20vw] h-auto" src={photo} alt="" />
+                  <img className="md:w-[10vw] w-[20vw] h-auto" src={photo} alt="" />
                 </div>
                 <div className="pl-[10%] flex flex-col text-justify space-y-2">
                   <h1 className="text-2xl bold">001-000100-8</h1>
@@ -70,7 +73,7 @@ function OnBoarding() {
               <TbChecks className="text-[20vh] text-green-500" />
               <h1 className="text-center">INFORMACIÓN VALIDADA CORRECTAMENTE</h1>
             </div>
-            <Link className="mt-[2%]" to="/formpage">
+            <Link className="mt-[2%]" to="/formpage" state={{ market_id }}>
               <Button
                 type="button"
                 label="CONTINUAR"

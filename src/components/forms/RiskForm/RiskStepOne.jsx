@@ -31,12 +31,12 @@ function RiskStepOne() {
   const [languageDisable, setLanguageDisable] = useState(true);
 
   React.useEffect(() => {
-    if (values.aditionnal_language_option === "yes") {
+    if (values.can_speak_other_language === "yes") {
       setLanguageDisable(false);
-    } else if (values.aditionnal_language_option === "no") {
+    } else if (values.can_speak_other_language === "no") {
       setLanguageDisable(true);
     }
-  }, [values.aditionnal_language_option]);
+  }, [values.can_speak_other_language]);
 
   return (
     <div className="p-[2%]">
@@ -46,7 +46,7 @@ function RiskStepOne() {
         <FormikControl
           control="radio"
           label=""
-          name="aditionnal_language_option"
+          name="can_speak_other_language"
           options={languageOptions}
           className={"font-montserrat font-bold"}
         />
@@ -77,7 +77,7 @@ function RiskStepOne() {
                         <div>
                           <FormikControl
                             control="input"
-                            name={`languages.${index}.reading_domain`}
+                            name={`languages.${index}.reading_percentage`}
                             label={"% DOMINIO DE LECTURA"}
                             type="number"
                             className="p-inputtext-lg block"
@@ -87,7 +87,7 @@ function RiskStepOne() {
                         <div>
                           <FormikControl
                             control="input"
-                            name={`languages.${index}.writing_domain`}
+                            name={`languages.${index}.writing_percentage`}
                             label={"% DOMINIO DE ESCRITURA"}
                             type="number"
                             className="p-inputtext-lg block"
@@ -97,7 +97,7 @@ function RiskStepOne() {
                         <div>
                           <FormikControl
                             control="input"
-                            name={`languages.${index}.oral_expresion_domain`}
+                            name={`languages.${index}.speaking_percentage`}
                             label={"% DOMINIO EXPRESIÓN ORAL"}
                             type="number"
                             className="p-inputtext-lg block"

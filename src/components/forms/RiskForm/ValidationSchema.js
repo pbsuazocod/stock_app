@@ -3,35 +3,33 @@ import * as Yup from "yup";
 // Form initial values and validaiton schemas
 export const step1Test = {
   language: "",
-  reading_domain: "",
-  writing_domain: "",
-  oral_expresion_domain: "",
+  reading_percentage: "",
+  writing_percentage: "",
+  speaking_percentage: "",
 };
 
 
 export const initialValues = {
-  aditionnal_language_option: "",
+  can_speak_other_language: "",
   languages: [step1Test],
 
   // step 2
 
-  level_of_income: "",
+  anual_income: "",
   salary: "",
   own_business_income: "",
   rent_for_real_state: "",
   pensions_and_others: "",
   stock_investments: "",
   others: "",
-
   salary_percentage: null,
-
   percentage_front_own_business: null,
   percentage_from_rent: null,
   percentage_stock_investments: null,
   others_percentage: null,
   Pensions_others: null,
   stock_investments_amount: "",
-  capital_percentage: "",
+  capital_available: "",
   income_source_trend: "",
   explain: "",
   savings: "",
@@ -75,18 +73,18 @@ export const validationSchema = [
   // Step1
 
   Yup.object().shape({
-    aditionnal_language_option: Yup.string().required(
+    can_speak_other_language: Yup.string().required(
       "Favor selecionar una opción"
     ),
-    languages: Yup.array().when("aditionnal_language_option", {
+    languages: Yup.array().when("can_speak_other_language", {
       is: "yes",
       then: (schema) =>
         schema.of(
           Yup.object().shape({
             language: Yup.string().required("Favor ingresar idioma"),
-            reading_domain: Yup.string().required("Favor ingresar porcentaje"),
-            writing_domain: Yup.string().required("Favor ingresar porcentaje"),
-            oral_expresion_domain: Yup.string().required(
+            reading_percentage: Yup.string().required("Favor ingresar porcentaje"),
+            writing_percentage: Yup.string().required("Favor ingresar porcentaje"),
+            speaking_percentage: Yup.string().required(
               "Favor ingresar porcentaje"
             ),
           })
@@ -97,7 +95,7 @@ export const validationSchema = [
   // Step2
 
   Yup.object().shape({
-    level_of_income: Yup.string().required("Favor ingresar salario"),
+    anual_income: Yup.string().required("Favor ingresar salario"),
 
     // ----------------------------------------------------------------
     salary: Yup.string(),
@@ -106,7 +104,7 @@ export const validationSchema = [
     pensions_and_others: Yup.string(),
     stock_investments: Yup.string(),
     others: Yup.string(),
-    stock_investments_amount: Yup.string(),
+    stock_investments_amount: Yup.string().required("Favor ingresar rango"),
 
     // ----------------------------------------------------------------
     salary_percentage: Yup.number("Favor ingresar número mayor a 0")
@@ -140,7 +138,7 @@ export const validationSchema = [
     percentage: Yup.number()
       .max(100, "Porcentaje debe ser igual a 100")
       .min(100, "Porcentaje debe ser igual a 100"),
-    capital_percentage: Yup.string().required("Favor ingresar rango"),
+      capital_available: Yup.string().required("Favor ingresar rango"),
     income_source_trend: Yup.string().required(
       "Favor seleccione una tendencia"
     ),

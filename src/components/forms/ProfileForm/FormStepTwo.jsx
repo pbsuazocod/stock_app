@@ -12,7 +12,7 @@ function FormStepTwo() {
       <div className="p-[3%] space-y-4 font-montserrat font-bold">
         <FormikControl
           control="radio"
-          name="type_of_work"
+          name="job_type"
           options={typeOfWorkOptions}
           className="pt-2"
           layout
@@ -30,7 +30,7 @@ function FormStepTwo() {
 
         <FormikControl
           control="input"
-          name="company_line_of_work"
+          name="job_activity"
           label="A QUÉ SE DEDICA LA EMPRESA"
           type="text"
         />
@@ -38,14 +38,14 @@ function FormStepTwo() {
         <div className="md:flex gap-4 ">
           <FormikControl
             control="input"
-            name="job_title"
+            name="job_position"
             label="CARGO"
             type="text"
           />
 
           <FormikControl
             control="number"
-            name="time_in_the_company"
+            name="time_in_company"
             label="TIEMPO QUE LABORA EN LA EMPRESA"
             mode="decimal"
           />
@@ -54,7 +54,7 @@ function FormStepTwo() {
         <div className="md:w-1/2">
           <FormikControl
             control="mask"
-            name="phone"
+            name="job_phone"
             label="TELÉFONO"
             mask="(999) 999-9999"
           />

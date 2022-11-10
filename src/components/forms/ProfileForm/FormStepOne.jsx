@@ -17,7 +17,7 @@ function FormStepOne() {
           <FormikControl
             control="input"
             label="NOMBRE"
-            name="name"
+            name="full_name"
             type="text"
           />
           <FormikControl
@@ -29,7 +29,7 @@ function FormStepOne() {
 
           <FormikControl
             control="select"
-            name={"type_of_document"}
+            name={"document_type"}
             label={"TIPO DE DOCUMENTO"}
             placeholder="Seleccione tipo de domuento"
             options={documentOptions}
@@ -55,7 +55,7 @@ function FormStepOne() {
           />
           <FormikControl
             control="mask"
-            name="home_number"
+            name="phone"
             label="TELÉFONO CASA"
             mask={"(999) 999-9999"}
           />
@@ -67,7 +67,7 @@ function FormStepOne() {
           />
           <FormikControl
             control="select"
-            name="residency"
+            name="residence"
             label="RESIDENCIA"
             options={residencyOptions}
           />
@@ -75,18 +75,18 @@ function FormStepOne() {
         <div className="space-y-2 ">
           <FormikControl
             control="input"
-            name="nationality"
+            name="nacionality"
             label="NACIONALIDAD"
             type="text"
           />
           <FormikControl
             control="date"
-            name="day_of_birth"
+            name="birthday"
             label="FECHA DE NACIMIENTO"
           />
           <FormikControl
             control="mask"
-            name="identification_card"
+            name="document_number"
             label="NÚMERO DE DOCUMENTO"
             mask="999-9999999-9"
           />
@@ -103,13 +103,13 @@ function FormStepOne() {
           />
           <FormikControl
             control="mask"
-            name="nit_number"
+            name="nit"
             label="NÚMERO DE NIT"
             mask="9999-999999-999-9"
           />
           <FormikControl
             control="mask"
-            name="cellphone_number"
+            name="cellphone"
             label="TELÉFONO CELULAR"
             mask="(999) 999-9999"
           />

@@ -24,14 +24,14 @@ function FormStepFour({ counter }) {
   }
 
   React.useEffect(() => {
-    if (values.type_of_work_aut_person) {
-      setDisableForm(values.type_of_work_aut_person === "no" ? true : false);
+    if (values.authorize_other_people) {
+      setDisableForm(values.authorize_other_people === "no" ? true : false);
       if (!addingAnotherPerson) {
         setTouched({});
         setAddingAnotherPerson(false);
       }
     }
-  }, [values.type_of_work_aut_person]);
+  }, [values.authorize_other_people]);
 
   return (
     <div className="p-[2%]">
@@ -43,7 +43,7 @@ function FormStepFour({ counter }) {
         <FormikControl
           control="radio"
           label=""
-          name="type_of_work_aut_person"
+          name="authorize_other_people"
           options={authPersonOptions}
           className="pt-2"
         />
@@ -65,7 +65,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="input"
-                              name={`authorized_persons.${index}.name_of_aut_person`}
+                              name={`authorized_persons.${index}.signature_full_name`}
                               label="NOMBRE"
                               type="text"
                               disabled={disableForm}
@@ -75,7 +75,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="date"
-                              name={`authorized_persons.${index}.day_of_birth_aut_person`}
+                              name={`authorized_persons.${index}.signature_birthday`}
                               label="FECHA DE NACIMIENTO"
                               type="date"
                               disabled={disableForm}
@@ -84,7 +84,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="input"
-                              name={`authorized_persons.${index}.doc_id_aut_person`}
+                              name={`authorized_persons.${index}.signature_document_number`}
                               label="NO. DE DOC DE ID"
                               mask="999-9999999-9"
                               type="text"
@@ -95,7 +95,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="input"
-                              name={`authorized_persons.${index}.nationality_aut_person`}
+                              name={`authorized_persons.${index}.signature_nationality`}
                               label="NACIONALIDAD"
                               type="text"
                               disabled={disableForm}
@@ -105,7 +105,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="input"
-                              name={`authorized_persons.${index}.address_aut_person`}
+                              name={`authorized_persons.${index}.signature_address`}
                               label="DIRECCIÓN"
                               type="text"
                               disabled={disableForm}
@@ -114,7 +114,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="input"
-                              name={`authorized_persons.${index}.email_aut_person`}
+                              name={`authorized_persons.${index}.signature_email`}
                               label="CORREO ELECTRÓNICO"
                               type="email"
                               disabled={disableForm}
@@ -123,7 +123,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="input"
-                              name={`authorized_persons.${index}.job_title_aut_person`}
+                              name={`authorized_persons.${index}.signature_position`}
                               label="CARGO"
                               type="text"
                               disabled={disableForm}
@@ -132,7 +132,7 @@ function FormStepFour({ counter }) {
                           <div>
                             <FormikControl
                               control="mask"
-                              name={`authorized_persons.${index}.phone_number_aut_person`}
+                              name={`authorized_persons.${index}.signature_phone`}
                               label="TELÉFONO "
                               mask={"(999) 999-9999"}
                               disabled={disableForm}
@@ -141,7 +141,7 @@ function FormStepFour({ counter }) {
                           <div className="col-span-2">
                             <FormikControl
                               control="input"
-                              name={`authorized_persons.${index}.place_of_work`}
+                              name={`authorized_persons.${index}.signature_workspace`}
                               label="LUGAR DE TRABAJO"
                               type="text"
                               disabled={disableForm}

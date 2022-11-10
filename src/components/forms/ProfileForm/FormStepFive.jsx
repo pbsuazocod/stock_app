@@ -55,7 +55,7 @@ function FormStepFive() {
           <div>
             <FormikControl
               control="input"
-              name={"owner_of_the_account"}
+              name={"account_holder_name"}
               label={"NOMBRE DEL TITULAR DE LA CUENTA"}
               type="text"
             />
@@ -72,7 +72,7 @@ function FormStepFive() {
           <div>
             <FormikControl
               control="input"
-              name={"type_of_account"}
+              name={"account_type"}
               label={"TIPO DE CUENTA"}
               type="text"
             />
