@@ -7,7 +7,6 @@ const phoneRegExp = RegExp(
 // Form initial values and validation schemas
 
 export const step1 = {
-  // client_id: "",
   stock_market_id: "",
   full_name: "",
   age: "",
@@ -24,7 +23,7 @@ export const step1 = {
   profession: "",
   nit: "",
   cellphone: "",
-  phone: "",
+  phone: ""
 };
 
 export const step2 = {
@@ -34,7 +33,7 @@ export const step2 = {
   job_position: "",
   time_in_company: "",
   job_phone: "",
-  full_address: "",
+  full_address: ""
 };
 
 export const authorized_persons_values = {
@@ -46,22 +45,22 @@ export const authorized_persons_values = {
   signature_email: "",
   signature_position: "",
   signature_phone: "",
-  signature_workspace: "",
+  signature_workspace: ""
 };
 export const personal_reference_values = {
   name_of_ref_person: "",
   ref_place_of_work: "",
   ref_email_aut_person: "",
-  phone_number_ref_person: "",
+  phone_number_ref_person: ""
 };
 
 export const step3 = {
-  personal_reference: [personal_reference_values],
+  personal_reference: [personal_reference_values]
 };
 
 export const step4 = {
   authorize_other_people: "",
-  authorized_persons: [authorized_persons_values],
+  authorized_persons: [authorized_persons_values]
 };
 
 export const step5 = {
@@ -73,7 +72,7 @@ export const step5 = {
   account_number: "",
   receive_email_auth: "",
   PEP: "",
-  green_card: "",
+  green_card: ""
 };
 
 export const initialValues = {
@@ -81,7 +80,7 @@ export const initialValues = {
   ...step2,
   ...step3,
   ...step4,
-  ...step5,
+  ...step5
 };
 
 export const validationSchema = [
@@ -124,7 +123,7 @@ export const validationSchema = [
     phone: Yup.string()
       .required()
       .required("Favor ingresar un número de télefono")
-      .matches(phoneRegExp, "Favor ingresar un número de télefono valido"),
+      .matches(phoneRegExp, "Favor ingresar un número de télefono valido")
   }),
 
   // step2
@@ -147,7 +146,7 @@ export const validationSchema = [
       .matches(phoneRegExp, "Favor ingresar un número de télefono valido"),
     full_address: Yup.string().required(
       "Favor ingresar el nombre de la compañia"
-    ),
+    )
   }),
 
   // Step3
@@ -169,9 +168,9 @@ export const validationSchema = [
         phone_number_ref_person: Yup.string()
           .required()
           .required("Favor ingresar un número de télefono")
-          .matches(phoneRegExp, "Favor ingresar un número de télefono valido"),
+          .matches(phoneRegExp, "Favor ingresar un número de télefono valido")
       })
-    ),
+    )
   }),
 
   // Step4
@@ -214,10 +213,10 @@ export const validationSchema = [
                 phoneRegExp,
                 "Favor ingresar un número de télefono valido"
               ),
-            signature_workspace: Yup.string().notRequired(),
+            signature_workspace: Yup.string().notRequired()
           })
-        ),
-    }),
+        )
+    })
   }),
 
   // Step 5
@@ -233,6 +232,6 @@ export const validationSchema = [
     account_number: Yup.string().required("Favor ingresar tipo de cuenta"),
     receive_email_auth: Yup.string().required("Favor ingresar tipo de cuenta"),
     PEP: Yup.string().required("Favor selecionar una opción"),
-    green_card: Yup.string().required("Favor selecionar una opción"),
-  }),
+    green_card: Yup.string().required("Favor selecionar una opción")
+  })
 ];

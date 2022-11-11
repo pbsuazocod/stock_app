@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 import { Formik, Form } from "formik";
 import { Button } from "primereact/button";
 
@@ -14,6 +14,7 @@ import RiskStepFive from "./RiskStepFive";
 // Validation
 
 import { initialValues, validationSchema } from "./ValidationSchema";
+import { submitForm } from "../../../utils/form_helper";
 
 const currentPage = "riskpage";
 
@@ -24,7 +25,7 @@ const steps = [
   "Form Step two",
   "Form Step tree",
   "Form Step four",
-  "Form Step Five",
+  "Form Step Five"
 ];
 
 function _renderStepContent(step) {
@@ -39,19 +40,17 @@ function _renderStepContent(step) {
       return <RiskStepFour />;
     case 4:
       return <RiskStepFive />;
-      default:
-        return  ;
+    default:
+      return;
   }
 }
 
 function RiskForm() {
   // State Management
   const [counter, setCounter] = useState(0);
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(3);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
-
-
 
   // Handlers
 
@@ -67,6 +66,14 @@ function RiskForm() {
     console.log(values);
     if (activeStep === steps.length - 2) {
       console.log("form", values);
+      submitForm(values, [
+        "checkBoxOptions",
+        "type_of_values",
+        "languages",
+        "alternative_investments",
+        "purpose_of_investments",
+        "economics_situation"
+      ]);
       alert(values);
       setActiveStep(activeStep + 1);
     } else {
@@ -80,7 +87,7 @@ function RiskForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        validationSchema={currentValidationSchema}
+        // validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (

@@ -5,9 +5,8 @@ export const step1Test = {
   language: "",
   reading_percentage: "",
   writing_percentage: "",
-  speaking_percentage: "",
+  speaking_percentage: ""
 };
-
 
 export const initialValues = {
   can_speak_other_language: "",
@@ -66,7 +65,7 @@ export const initialValues = {
   purpose_of_investments: [],
   economics_situation: [],
   other_explain: "",
-  other_action_explain: "",
+  other_action_explain: ""
 };
 
 export const validationSchema = [
@@ -82,14 +81,18 @@ export const validationSchema = [
         schema.of(
           Yup.object().shape({
             language: Yup.string().required("Favor ingresar idioma"),
-            reading_percentage: Yup.string().required("Favor ingresar porcentaje"),
-            writing_percentage: Yup.string().required("Favor ingresar porcentaje"),
-            speaking_percentage: Yup.string().required(
+            reading_percentage: Yup.string().required(
               "Favor ingresar porcentaje"
             ),
+            writing_percentage: Yup.string().required(
+              "Favor ingresar porcentaje"
+            ),
+            speaking_percentage: Yup.string().required(
+              "Favor ingresar porcentaje"
+            )
           })
-        ),
-    }),
+        )
+    })
   }),
 
   // Step2
@@ -138,12 +141,12 @@ export const validationSchema = [
     percentage: Yup.number()
       .max(100, "Porcentaje debe ser igual a 100")
       .min(100, "Porcentaje debe ser igual a 100"),
-      capital_available: Yup.string().required("Favor ingresar rango"),
+    capital_available: Yup.string().required("Favor ingresar rango"),
     income_source_trend: Yup.string().required(
       "Favor seleccione una tendencia"
     ),
     explain: Yup.string().required("Favor ingresar explicar las razones"),
-    savings: Yup.string().required("Favor ingresar seleccione una opción"),
+    savings: Yup.string().required("Favor ingresar seleccione una opción")
   }),
 
   // Step3
@@ -153,7 +156,7 @@ export const validationSchema = [
     investment_information: Yup.string().when("other_investments", {
       is: (other_investments) => other_investments === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     stock_market_experience: Yup.string().required(
       "Favor  seleccione una opción"
@@ -163,7 +166,7 @@ export const validationSchema = [
     market_investments: Yup.string().when("checkBoxOptions", {
       is: (checkBoxOptions) =>
         checkBoxOptions.find((value) => value === "Otros"),
-      then: Yup.string().required("Favor especifique"),
+      then: Yup.string().required("Favor especifique")
     }),
     outside_salvador_experience: Yup.string().required(
       "Favor ingresar seleccione una opción"
@@ -172,55 +175,55 @@ export const validationSchema = [
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     country_2: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     country_3: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     experience_1: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     experience_2: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     experience_3: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     negotiated_values_1: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     negotiated_values_2: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     negotiated_values_3: Yup.string().when("outside_salvador_experience", {
       is: (outside_salvador_experience) =>
         outside_salvador_experience === "yes",
       then: Yup.string().required("Favor especifique inversiones"),
-      otherwise: Yup.string().notRequired(),
+      otherwise: Yup.string().notRequired()
     }),
     alternative_investments: Yup.array().required(
       "Favor elegir alternativas de inversión"
@@ -230,8 +233,8 @@ export const validationSchema = [
         alternative_investments.find(
           (value) => value === "Ninguno (Sólo indique)"
         ),
-      then: Yup.string().required("Favor especifique"),
-    }),
+      then: Yup.string().required("Favor especifique")
+    })
   }),
 
   // Step4
@@ -249,21 +252,21 @@ export const validationSchema = [
     other_explain: Yup.string().when("purpose_of_investments", {
       is: (purpose_of_investments) =>
         purpose_of_investments.find((value) => value === "Otro (explique):"),
-      then: Yup.string().required("Favor especifique"),
+      then: Yup.string().required("Favor especifique")
     }),
     investments_alternative: Yup.string().when("alternative_investments", {
       is: (alternative_investments) =>
         alternative_investments.find(
           (value) => value === "Ninguno (Sólo indique)"
         ),
-      then: Yup.string().required("Favor especifique"),
+      then: Yup.string().required("Favor especifique")
     }),
     other_action_explain: Yup.string().when("economics_situation", {
       is: (economics_situation) =>
         economics_situation.find(
           (value) => value === "Otra acción (Especifique):"
         ),
-      then: Yup.string().required("Favor especifique"),
-    }),
-  }),
+      then: Yup.string().required("Favor especifique")
+    })
+  })
 ];

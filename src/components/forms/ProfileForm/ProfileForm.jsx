@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import { useState } from "react";
 import { Button } from "primereact/button";
 import "./styles.css";
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 
 // components
 
@@ -19,6 +19,8 @@ import FormStepSix from "./FormStepSix";
 // Validation
 
 import { initialValues, validationSchema } from "./ValidationSchema";
+import { services } from "../../../services/api";
+import { parserBody, submitForm } from "../../../utils/form_helper";
 
 const currentPage = "profileForm";
 
@@ -30,7 +32,7 @@ const steps = [
   "Form Step tree",
   "Form Step four",
   "Form Step Five",
-  "Form Step Six",
+  "Form Step Six"
 ];
 
 function _renderStepContent(step) {
@@ -54,13 +56,12 @@ function _renderStepContent(step) {
 
 function ProfileForm() {
   // Manage States
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(4);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
-  const location = useLocation()
-  const { market_id } = location.state
-  initialValues["stock_market_id"] = market_id
-
+  const location = useLocation();
+  const { market_id } = location.state;
+  initialValues["stock_market_id"] = market_id;
 
   const _handleBack = () => {
     setActiveStep(activeStep - 1);
@@ -69,7 +70,12 @@ function ProfileForm() {
   function _handleSubmit(values, actions) {
     if (activeStep === steps.length - 2) {
       setActiveStep(activeStep + 1);
-      console.log(values)
+
+      submitForm(values, ["authorized_persons", "personal_reference"]);
+      // for (let property of formData.entries()) {
+      //   console.log(property[0], property[1]);
+      // }
+      // console.log(values);
       // const userId = localStorage.getItem('userId')
     } else {
       setActiveStep(activeStep + 1);
@@ -82,7 +88,7 @@ function ProfileForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        validationSchema={currentValidationSchema}
+        // validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (
@@ -91,17 +97,19 @@ function ProfileForm() {
 
             {!isLastStep ? (
               <div
-                className={`${activeStep !== 3
-                  ? " mb-[3%] mr-[3%] ml-[3%]  border-t-2 border-[#C1C1C1]"
-                  : "mb-[3%] mr-[3%] ml-[3%] "
-                  }`}
+                className={`${
+                  activeStep !== 3
+                    ? " mb-[3%] mr-[3%] ml-[3%]  border-t-2 border-[#C1C1C1]"
+                    : "mb-[3%] mr-[3%] ml-[3%] "
+                }`}
               >
                 <div className="w-full pt-[2%]">
                   <div
-                    className={`flex ${activeStep < 1
-                      ? "justify-end"
-                      : "md:justify-between flex-wrap gap-2 justify-center"
-                      }`}
+                    className={`flex ${
+                      activeStep < 1
+                        ? "justify-end"
+                        : "md:justify-between flex-wrap gap-2 justify-center"
+                    }`}
                   >
                     {activeStep > 0 && (
                       <>
