@@ -32,7 +32,7 @@ const steps = [
   "Form Step tree",
   "Form Step four",
   "Form Step Five",
-  "Form Step Six"
+  "Form Step Six",
 ];
 
 function _renderStepContent(step) {
@@ -56,7 +56,7 @@ function _renderStepContent(step) {
 
 function ProfileForm() {
   // Manage States
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
   const location = useLocation();
@@ -88,7 +88,7 @@ function ProfileForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={currentValidationSchema}
+        validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (
