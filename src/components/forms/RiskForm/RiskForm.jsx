@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { Formik, Form } from "formik";
 import { Button } from "primereact/button";
 
@@ -87,7 +86,7 @@ function RiskForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        validationSchema={currentValidationSchema}
+        // validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (

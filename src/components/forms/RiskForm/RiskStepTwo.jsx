@@ -7,7 +7,7 @@ import {
   rangeOfIncomeOptions,
   savingsOptions,
   trentOptions,
-  capitalPercentageOptions
+  capitalPercentageOptions,
 } from "../../config/constants";
 import FormikControl from "../../formik/FormikControl";
 import TextError from "../../UI/FormInput/TextError";
@@ -33,17 +33,17 @@ function RiskStepTwo() {
     values.percentage_from_rent,
     values.Pensions_others,
     values.percentage_stock_investments,
-    values.others_percentage
+    values.others_percentage,
   ]);
 
   return (
     <div className="md:p-[4%] p-[2%] space-y-2 font-monserrat font-bold">
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">
-        INFORMACIÓN FINANCIERA DEL CLIENTE
+        I.- INFORMACIÓN FINANCIERA DEL CLIENTE
       </h1>
       <p>
-        SELECCIONE EL RANGO EN EL QUE SE ENCUENTRA SU NIVEL DE INGRESOS ANUAL.
-        El Ingreso anual está conformado por salarios, utilidades, otros
+        2.-SELECCIONE EL RANGO EN EL QUE SE ENCUENTRA SU NIVEL DE INGRESOS
+        ANUAL. El Ingreso anual está conformado por salarios, utilidades, otros
         ingresos
       </p>
 
@@ -56,7 +56,7 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-         SEÑALE LA PROCEDENCIA DE SUS INGRESOS Y LA PROPORCIÓN QUE LE
+         3.-SEÑALE LA PROCEDENCIA DE SUS INGRESOS Y LA PROPORCIÓN QUE LE
         CORRESPONDE DEL TOTAL DE LOS MISMOS (El porcentaje debe sumar 100%)
       </p>
       <div className=" w-full">
@@ -167,18 +167,21 @@ function RiskStepTwo() {
         </div>
       </div>
 
-      <p>ESPECIFIQUE A CUÁNTO ASCIENDE EL CAPITAL DISPONIBLE PARA INVERTIR :</p>
+      <p>
+        4.-ESPECIFIQUE A CUÁNTO ASCIENDE EL CAPITAL DISPONIBLE PARA INVERTIR :
+      </p>
 
       <div className="lg:w-1/4 w-full">
         <FormikControl
-          control="input"
+          control="number"
           name={"stock_investments_amount"}
           label={"US"}
-          type="number"
+          // type="number"
+          decimal
         />
       </div>
       <p>
-        INDIQUE EL RANGO EN QUE SE ENCUENTRA EL PORCENTAJE DEL CAPITAL
+        5.-INDIQUE EL RANGO EN QUE SE ENCUENTRA EL PORCENTAJE DEL CAPITAL
         DISPONIBLE PARA INVERTIR CON RESPECTO AL TOTAL DE SU PATRIMONIO:
       </p>
       <div className="lg:w-1/4 w-full">
@@ -191,7 +194,7 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-        SEÑALE CÓMO ESPERA QUE SEA LA TENDENCIA DE LA PRINCIPAL FUENTE DE
+        6.-SEÑALE CÓMO ESPERA QUE SEA LA TENDENCIA DE LA PRINCIPAL FUENTE DE
          INGRESOS EN LOS PRÓXIMOS 5 AÑOS:
       </p>
       <div className="lg:w-1/4 w-full">
@@ -218,7 +221,8 @@ function RiskStepTwo() {
         />
       </div>
       <p>
-        ¿CUENTA CON AHORROS SUFICIENTES PARA AFRONTAR SITUACIONES IMPREVISTAS?
+        ¿CUENTA CON AHORROS SUFICIENTES PARA AFRONTAR SITUACIONES
+        IMPREVISTAS?
       </p>
       <div className="pl-[2%]">
         <FormikControl

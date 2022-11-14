@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from "formik";
 import TextError from "./TextError";
 
 function Mask(props) {
-  const { label, name, ...rest } = props;
+  const { label, name, disabled, ...rest } = props;
 
   return (
     <div>
@@ -13,7 +13,7 @@ function Mask(props) {
           return (
             <div className="flex flex-col">
               <label htmlFor={name}>{label}</label>
-              <InputMask id={name} {...field} {...rest} />
+              <InputMask id={name} {...field} {...rest} disabled={disabled} />
             </div>
           );
         }}

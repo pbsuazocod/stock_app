@@ -9,11 +9,12 @@ import CheckBoxGroup from "../UI/FormInput/CheckBoxGroup";
 import FieldArrayComponent from "../UI/FormInput/FieldArray";
 import { useFormikContext } from "formik";
 import Mask from "../UI/FormInput/Mask";
+import Upload from "../UI/FormInput/Upload";
 import {
   step1,
   step2,
   step3,
-  step4
+  step4,
 } from "../forms/ProfileForm/ValidationSchema";
 function FormikControl(props) {
   const { control, ...rest } = props;
@@ -21,13 +22,14 @@ function FormikControl(props) {
   React.useEffect(() => {
     for (const key in step4) {
       if (values[key]) {
-        // console.log(`${key}: `, values[key]);
       }
     }
   }, [values]);
   switch (control) {
     case "input":
       return <Input {...rest} />;
+    case "upload":
+      return <Upload {...rest} />;
     case "textarea":
       return <TextArea {...rest} />;
     case "select":

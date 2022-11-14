@@ -1,10 +1,12 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
-import TextError from "./TextError";
-import { InputText } from "primereact";
+// import { FileUpload } from "primereact";
 
-function Input(props) {
-  const { label, name, disabled, ...rest } = props;
+import TextError from "./TextError";
+
+function Upload(props) {
+  const { label, name, ...rest } = props;
+
   return (
     <React.Fragment>
       <Field id={name} name={name} {...rest}>
@@ -12,12 +14,15 @@ function Input(props) {
           return (
             <div className="flex flex-col">
               <label htmlFor={name}>{label}</label>
-              <InputText
+              <input
+                type="file"
                 id={name}
                 name={field.name}
-                {...field}
+                value={form.values[field.name]}
+                onChange={(e) => form.setFieldValue("file", e.target.files[0])}
+                // onBlur={form.handleBlur(field.name)}
                 {...rest}
-                disabled={disabled}
+                className=" opacity-0 z-0 absolute bg-green-300"
               />
             </div>
           );
@@ -28,4 +33,4 @@ function Input(props) {
   );
 }
 
-export default Input;
+export default Upload;

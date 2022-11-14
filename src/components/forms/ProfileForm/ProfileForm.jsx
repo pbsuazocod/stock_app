@@ -21,6 +21,7 @@ import FormStepSix from "./FormStepSix";
 import { initialValues, validationSchema } from "./ValidationSchema";
 import { services } from "../../../services/api";
 import { parserBody, submitForm } from "../../../utils/form_helper";
+import { date } from "yup";
 
 const currentPage = "profileForm";
 
@@ -56,7 +57,7 @@ function _renderStepContent(step) {
 
 function ProfileForm() {
   // Manage States
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(4);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
   const location = useLocation();
@@ -78,17 +79,17 @@ function ProfileForm() {
       // console.log(values);
       // const userId = localStorage.getItem('userId')
     } else {
+      console.log(values);
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
     }
   }
-
   return (
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        validationSchema={currentValidationSchema}
+        // validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (
@@ -130,7 +131,7 @@ function ProfileForm() {
                       <Button
                         type="submit"
                         label={
-                          activeStep === 4 ? "ENVIAR FORMALRIO" : "CONTINUAR"
+                          activeStep === 4 ? "ENVIAR FORMULARIO" : "CONTINUAR"
                         }
                         iconPos="right"
                         icon="pi pi-arrow-right"

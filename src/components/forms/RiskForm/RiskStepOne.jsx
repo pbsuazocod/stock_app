@@ -41,7 +41,7 @@ function RiskStepOne() {
   return (
     <div className="p-[2%]">
       <div className="pl-[1%]  font-montserrat font-bold">
-        <p>¿DOMINA UN IDIOMA ADICIONAL AL IDIOMA ESPAÑOL?</p>
+        <p>1.-¿DOMINA UN IDIOMA ADICIONAL AL IDIOMA ESPAÑOL?</p>
 
         <FormikControl
           control="radio"
@@ -124,7 +124,7 @@ function RiskStepOne() {
                         <span className="text-green-600">
                           <FaPlusCircle />
                         </span>
-                        AÑADIR OTRA IDIOMA
+                        AÑADIR OTRO IDIOMA
                       </button>
                     </div>
                   </div>

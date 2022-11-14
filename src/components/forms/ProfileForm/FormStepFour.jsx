@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormikContext, FieldArray } from "formik";
 import { FaPlusCircle } from "react-icons/fa";
+import { FaTimesCircle } from "react-icons/fa";
 
 // Data
 
@@ -9,9 +10,8 @@ import { authorized_persons_values } from "./ValidationSchema";
 import FormikControl from "../../formik/FormikControl";
 
 function FormStepFour({ counter }) {
-
   // Manage State
-  
+
   const { values, errors, setTouched } = useFormikContext();
   const [disableForm, setDisableForm] = React.useState(true);
   const [addingAnotherPerson, setAddingAnotherPerson] = React.useState(false);
@@ -32,6 +32,14 @@ function FormStepFour({ counter }) {
       }
     }
   }, [values.authorize_other_people]);
+ 
+ 
+  function removePerson(remove) {
+    setAddingAnotherPerson(true);
+    remove({
+      ...authorized_persons_values,
+    });
+  }
 
   return (
     <div className="p-[2%]">
@@ -134,7 +142,7 @@ function FormStepFour({ counter }) {
                               control="mask"
                               name={`authorized_persons.${index}.signature_phone`}
                               label="TELÉFONO "
-                              mask={"(999) 999-9999"}
+                              mask="(999) 999-9999? 99999"
                               disabled={disableForm}
                             />
                           </div>
@@ -166,6 +174,20 @@ function FormStepFour({ counter }) {
                           AÑADIR OTRA PERSONA
                         </button>
                       </div>
+                      {authorized_persons.length > 1 && (
+                        <div className="pl-[2%]">
+                          <button
+                            type="button"
+                            onClick={() => removePerson(remove)}
+                            className=" flex items-center gap-2"
+                          >
+                            <span className="text-red-600">
+                              <FaTimesCircle />
+                            </span>
+                            REMOVER PERSONA
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </React.Fragment>
                 );

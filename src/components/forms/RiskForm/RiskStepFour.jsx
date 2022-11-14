@@ -33,10 +33,10 @@ function RiskStepFour() {
   return (
     <div className="p-[2%] space-y-4">
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">
-        INFORMACIÓN DE PERFIL DE RIESGO DEL CLIENTE
+        III.-INFORMACIÓN DE PERFIL DE RIESGO DEL CLIENTE
       </h1>
       <p className="mb-[2%] font-montserrat font-bold">
-        DE ACUERDO A SU CONOCIMIENTO Y EXPERIENCIA, ¿CUÁL ES SU PREFERENCIA
+        14.-DE ACUERDO A SU CONOCIMIENTO Y EXPERIENCIA, ¿CUÁL ES SU PREFERENCIA
         RESPECTO AL RIESGO?
       </p>
       <div>
@@ -97,8 +97,8 @@ function RiskStepFour() {
       </div>
 
       <p className="font-montserrat font-bold">
-        ¿CUÁL ES EL OBJETIVO O PROPÓSITO FUNDAMENTAL DE SUS INVERSIONES? (HAGA
-        UN COTEJO)
+        15.-¿CUÁL ES EL OBJETIVO O PROPÓSITO FUNDAMENTAL DE SUS INVERSIONES?
+        (HAGA UN COTEJO)
       </p>
 
       <div className="pl-[2%]">
@@ -118,8 +118,8 @@ function RiskStepFour() {
         />
       </div>
       <p className="text-justify font-montserrat font-bold">
-        IDENTIFIQUE CUÁL SERÍA LA REACCIÓN O DECISIÓN QUE USTED TOMARÍA, EN EL
-        SUPUESTO QUE ESCUCHARA NOTICIAS NEGATIVAS DE LA SITUACIÓN ECONÓMICA
+        16.-IDENTIFIQUE CUÁL SERÍA LA REACCIÓN O DECISIÓN QUE USTED TOMARÍA, EN
+        EL SUPUESTO QUE ESCUCHARA NOTICIAS NEGATIVAS DE LA SITUACIÓN ECONÓMICA
         LOCAL O INTERNACIONAL, SI OBSERVA QUE LOS ACTIVOS FINANCIEROS ESTÁN
         TENIENDO UN DESEMPEÑO NEGATIVO, O SI APRECIA QUE ESTÁ TENIENDO PÉRDIDAS
         DE CAPITAL EN SUS INVERSIONES:

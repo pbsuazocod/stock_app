@@ -20,7 +20,61 @@ export const authPersonOptions = [
     value: "no",
   },
 ];
+export const companyOptions = [
+  { key: "seleccione una opción", value: "" },
+  {
+    key: "FINANZAS",
+    value: "FINANZAS",
+  },
+  {
+    key: "CONTABILIDAD",
+    value: "CONTABILIDAD",
+  },
+  {
+    key: "BANCA",
+    value: "BANCA",
+  },
+  {
+    key: "CONSTRUCCION",
+    value: "CONSTRUCCION",
+  },
+  {
+    key: "SECTOR SALUD",
+    value: "SECTOR SALUD",
+  },
+];
+export const accountOptions = [
+  { key: "seleccione una opción", value: "" },
+  {
+    key: "AHORRO",
+    value: "AHORRO",
+  },
+  {
+    key: "CORRIENTE",
+    value: "CORRIENTE",
+  },
+];
+export const companyTimeOptions = [
+  { key: "seleccione una opción", value: "" },
+  {
+    key: "MENOS DE UN AÑO",
+    value: "MENOS DE UN AÑO",
+  },
+  {
+    key: "1-3 AÑOS",
+    value: "1-3 AÑOS",
+  },
+  {
+    key: "3-5 AÑOS",
+    value: "3-5 AÑOS",
+  },
+  {
+    key: "+5 AÑOS",
+    value: "+5 AÑOS",
+  },
+];
 export const documentOptions = [
+  { key: "seleccione una opción", value: "" },
   {
     key: "DUI",
     value: "DUI",
@@ -31,6 +85,8 @@ export const documentOptions = [
   },
 ];
 export const civilOptions = [
+  { key: "seleccione una opción", value: "" },
+
   {
     key: "Casado",
     value: "Married",
@@ -105,12 +161,24 @@ export const saleOptions = [
 export const rangeOfIncomeOptions = [
   { key: "seleccione una opción", value: "" },
   {
-    key: "Menores de US$15,000.00 dolares",
-    value: "Menores de US$15,000.00 dolares",
+    key: "Menores de US$ 15,000.00",
+    value: "Menores de US$ 15,000.00",
   },
   {
-    key: "Mayores de US$15,000.00 dolares",
-    value: "Mayores de US$15,000.00 dolares",
+    key: "Entre US$ 15,001.00 y US$ 25,000.00",
+    value: "Entre US$ 15,001.00 y US$ 25,000.00",
+  },
+  {
+    key: "Entre US$ 25,000.00 y US$ 50,000.00",
+    value: "Entre US$ 25,000.00 y US$ 50,000.00",
+  },
+  {
+    key: "Entre US$ 50,001.00 y US$ 100,000.00",
+    value: "Entre US$ 50,000.00 y US$ 100,000.00",
+  },
+  {
+    key: "Mayores a US$ 100,000.00",
+    value: "Mayores a US$ 100,000.00",
   },
 ];
 
@@ -130,8 +198,10 @@ export const savingsOptions = [
 ];
 
 export const levelOfIncomeOptions = [
-  { key: "Menos de 1 año ", value: "Menos de 1 año " },
-  { key: "Mas de 1 año ", value: "Mas de 1 año " },
+  { key: "seleccione una opción", value: "" },
+  { key: "Menos de 1 año", value: "Menos de 1 año" },
+  { key: "De 1 a 5 años", value: "De 1 a 5 años" },
+  { key: "Más de 5 años", value: "Más de 5 años" },
 ];
 
 export const typeOfInvestmentsOptions = [
@@ -212,20 +282,40 @@ export const economicSituationOptions = [
 ];
 
 export const trentOptions = [
+  { key: "seleccione una opción", value: "" },
+
   { key: "Muy estable", value: "Muy estable" },
   {
-    key: "Nada estable",
-    value: "Nada estable",
+    key: "Estable",
+    value: "Estable",
   },
   {
     key: "Inestable",
     value: "Inestable",
   },
+  {
+    key: "No sabe",
+    value: "No sabe",
+  },
 ];
 export const capitalPercentageOptions = [
+  { key: "seleccione una opción", value: "" },
+
   { key: "Menos del 10%", value: "Menos del 10%" },
   {
-    key: "Mas del 10%",
-    value: "Mas del 10%",
+    key: "Entre 10% y 25%",
+    value: "Entre 10% y 25%",
+  },
+  {
+    key: "Entre 25% y 50%",
+    value: "Entre 25% y 50%",
+  },
+  {
+    key: "Entre 50% y 75%",
+    value: "Entre 50% y 75%",
+  },
+  {
+    key: "Entre 75% y 100%",
+    value: "Entre 75% y 100%",
   },
 ];

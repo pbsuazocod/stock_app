@@ -5,15 +5,19 @@ import TextError from "./TextError";
 
 function Date(props) {
   const { label, name, ...rest } = props;
-
   return (
     <div>
-      <Field id={name} name={name} {...rest} >
+      <Field id={name} name={name} {...rest}>
         {({ field, form }) => {
           return (
             <div className="flex flex-col">
               <label htmlFor={name}>{label}</label>
-              <Calendar dateFormat="dd/mm/yy" id={name} {...field} disabled={rest.disabled}  />
+              <Calendar
+                dateFormat="dd/mm/yy"
+                id={name}
+                {...field}
+                disabled={rest.disabled}
+              />
             </div>
           );
         }}

@@ -2,21 +2,29 @@ import React from "react";
 import { stockOptions } from "../../config/constants";
 import { radioOptions } from "../../config/constants";
 import { saleOptions } from "../../config/constants";
+import { accountOptions } from "../../config/constants";
 
 // Data
 
 import FormikControl from "../../formik/FormikControl";
+import tooltip from "../../images/tooltip.png";
 
 function FormStepFive() {
-
   return (
     <div className="space-y-4 m-[3%] font-montserrat font-bold ">
       <h1 className="text-xl text-[#1A3B69] mb-[2%]">LIQUIDACIÓN DE FONDOS</h1>
-      <div className="flex items-center">
+      <div className="flex items-center gap-3">
         <label className="pl-2">
           POR COMPRAS DE VALORES O VENCIMIENTO DE OPERACIONES A CARGO DEL
           CLIENTE
         </label>
+        <div className="w-4">
+          <img
+            src={tooltip}
+            alt=""
+            title="Indica el medio por el cual usted como inversionista pagará su inversión a la CCB."
+          />
+        </div>
       </div>
 
       <div className="pl-[2%]">
@@ -30,10 +38,17 @@ function FormStepFive() {
         />
       </div>
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-3">
         <label className="pl-2">
           POR VENTA DE VALORES O VENCIMIENTO DE OPERACIONES A FAVOR DEL CLIENTE
         </label>
+        <div className="w-4">
+          <img
+            src={tooltip}
+            alt=""
+            title="Indica el medio por el cual la CCB le pagará los rendimientos o capital de su inversión"
+          />
+        </div>
       </div>
 
       <div className="pl-[2%]">
@@ -71,18 +86,18 @@ function FormStepFive() {
           </div>
           <div>
             <FormikControl
-              control="input"
+              control="select"
               name={"account_type"}
               label={"TIPO DE CUENTA"}
-              type="text"
+              options={accountOptions}
             />
           </div>
 
           <div>
             <FormikControl
               control="input"
-              name={"account_number"}
-              label={"NÚMERO DE CUENTA"}
+              name="account_number"
+              label="NÚMERO DE CUENTA"
               type="text"
             />
           </div>

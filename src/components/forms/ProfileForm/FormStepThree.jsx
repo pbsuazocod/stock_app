@@ -1,6 +1,7 @@
 import React from "react";
 import { FieldArray } from "formik";
 import { FaPlusCircle } from "react-icons/fa";
+import { FaTimesCircle } from "react-icons/fa";
 
 // Data
 
@@ -19,12 +20,19 @@ function FormStepThree() {
     });
   }
 
+  function removePerson(remove) {
+    setAddingAnotherPerson(true);
+    remove({
+      ...personal_reference_values,
+    });
+  }
+
   return (
     <div className="p-[2%]">
       <div className="mt-[2%] ml-[2%]">
         <div>
           <FieldArray name="personal_reference">
-            {({ form, push }) => {
+            {({ form, push, remove }) => {
               const { values } = form;
               const { personal_reference } = values;
 
@@ -64,7 +72,7 @@ function FormStepThree() {
                             control="mask"
                             name={`personal_reference.${index}.phone_number_ref_person`}
                             label="TELÉFONO "
-                            mask={"(999) 999-9999"}
+                            mask="(999) 999-9999? 99999"
                           />
                         </div>
                       </div>
@@ -85,6 +93,21 @@ function FormStepThree() {
                         </span>
                         AÑADIR OTRA PERSONA
                       </button>
+
+                      {personal_reference.length > 1 && (
+                        <div className="">
+                          <button
+                            type="button"
+                            onClick={() => removePerson(remove)}
+                            className=" flex items-center gap-2"
+                          >
+                            <span className="text-red-600">
+                              <FaTimesCircle />
+                            </span>
+                            REMOVER PERSONA
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </React.Fragment>
