@@ -70,7 +70,7 @@ function RiskStepOne() {
                             label={"IDIOMA"}
                             type="text"
                             className="p-inputtext-lg block"
-                            disable={languageDisable}
+                            disabled={languageDisable}
                           />
                         </div>
 
@@ -81,7 +81,7 @@ function RiskStepOne() {
                             label={"% DOMINIO DE LECTURA"}
                             type="number"
                             className="p-inputtext-lg block"
-                            disable={languageDisable}
+                            disabled={languageDisable}
                           />
                         </div>
                         <div>
@@ -91,7 +91,7 @@ function RiskStepOne() {
                             label={"% DOMINIO DE ESCRITURA"}
                             type="number"
                             className="p-inputtext-lg block"
-                            disable={languageDisable}
+                            disabled={languageDisable}
                           />
                         </div>
                         <div>
@@ -101,7 +101,7 @@ function RiskStepOne() {
                             label={"% DOMINIO EXPRESIÓN ORAL"}
                             type="number"
                             className="p-inputtext-lg block"
-                            disable={languageDisable}
+                            disabled={languageDisable}
                           />
                         </div>
                       </div>

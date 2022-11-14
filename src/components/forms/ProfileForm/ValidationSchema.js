@@ -96,7 +96,7 @@ export const validationSchema = [
       .min(18, "Debe ser mayor de 18 años")
       .max(100, "Debe ser menor de 100 años"),
     document_type: Yup.string().required("Favor ingresar tipo de documento"),
-    issue_date: Yup.string().required("Pedro"),
+    issue_date: Yup.string().required("Favor ingresar una fecha"),
     marital_status: Yup.string().required("Favor ingresar su estado civil"),
     address: Yup.string().required("Favor ingresar su dirección"),
     email: Yup.string()
@@ -129,18 +129,50 @@ export const validationSchema = [
 
   Yup.object({
     job_type: Yup.string().required("Favor selecionar una opción"),
-    company_name: Yup.string().required(
-      "Favor ingresar el nombre de la compañia"
-    ),
-    job_activity: Yup.string().required(
-      "Favor ingresar a que se dedica la compañia"
-    ),
-    job_position: Yup.string().required("Favor ingresar titulo de su cargo"),
-    time_in_company: Yup.string().required("Favor seleccionar una opción"),
-    job_phone: Yup.string().required("Favor ingresar un número de télefono"),
-    full_address: Yup.string().required(
-      "Favor ingresar el nombre de la compañia"
-    ),
+
+    company_name: Yup.string().when("job_type", {
+      is: (job_type) =>
+        job_type === "NEGOCIO PROPIO O INDEPENDIENTE" ||
+        job_type === "EMPLEO PRIVADO, EMPLEO PUBLICO",
+      then: Yup.string().required("Favor ingresar el nombre de la compañia"),
+      otherwise: Yup.string().notRequired(),
+    }),
+
+    job_activity: Yup.string().when("job_type", {
+      is: (job_type) =>
+        job_type === "NEGOCIO PROPIO O INDEPENDIENTE" ||
+        job_type === "EMPLEO PRIVADO, EMPLEO PUBLICO",
+      then: Yup.string().required("Favor ingresar a que se dedica la compañia"),
+      otherwise: Yup.string().notRequired(),
+    }),
+    job_position: Yup.string().when("job_type", {
+      is: (job_type) =>
+        job_type === "NEGOCIO PROPIO O INDEPENDIENTE" ||
+        job_type === "EMPLEO PRIVADO, EMPLEO PUBLICO",
+      then: Yup.string().required("Favor ingresar titulo de su cargo"),
+      otherwise: Yup.string().notRequired(),
+    }),
+    time_in_company: Yup.string().when("job_type", {
+      is: (job_type) =>
+        job_type === "NEGOCIO PROPIO O INDEPENDIENTE" ||
+        job_type === "EMPLEO PRIVADO, EMPLEO PUBLICO",
+      then: Yup.string().required("Favor seleccionar una opción"),
+      otherwise: Yup.string().notRequired(),
+    }),
+    job_phone: Yup.string().when("job_type", {
+      is: (job_type) =>
+        job_type === "NEGOCIO PROPIO O INDEPENDIENTE" ||
+        job_type === "EMPLEO PRIVADO, EMPLEO PUBLICO",
+      then: Yup.string().required("Favor ingresar un número de télefono"),
+      otherwise: Yup.string().notRequired(),
+    }),
+    full_address: Yup.string().when("job_type", {
+      is: (job_type) =>
+        job_type === "NEGOCIO PROPIO O INDEPENDIENTE" ||
+        job_type === "EMPLEO PRIVADO, EMPLEO PUBLICO",
+      then: Yup.string().required("Favor ingresar el nombre de la compañia"),
+      otherwise: Yup.string().notRequired(),
+    }),
   }),
 
   // Step3

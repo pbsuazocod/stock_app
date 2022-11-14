@@ -6,6 +6,8 @@ import { useFormikContext } from "formik";
 // Data
 
 import { radioOptions } from "../../config/constants";
+import { stockMarketOptions } from "../../config/constants";
+import { outsideSalvadorOptions } from "../../config/constants";
 import tooltip from "../../images/tooltip.png";
 
 import {
@@ -21,6 +23,7 @@ function RiskStepThree() {
   const [salMarkets, setSalMarkets] = useState(true);
   const [otherOptions, setOtherOptions] = useState(true);
   const [alternativeDisable, setAlternativeDisable] = useState(true);
+  const [stockMarketExperience, setStockMarketExperience] = useState(true);
   const { values } = useFormikContext();
 
   React.useEffect(() => {
@@ -30,6 +33,14 @@ function RiskStepThree() {
       setDisableInvestment(true);
     }
   }, [values.other_investments]);
+
+  React.useEffect(() => {
+    if (values.stock_market_experience === "yes") {
+      setStockMarketExperience(false);
+    } else if (values.stock_market_experience === "no") {
+      setStockMarketExperience(true);
+    }
+  }, [values.stock_market_experience]);
 
   React.useEffect(() => {
     if (values.outside_salvador_experience === "yes") {
@@ -79,7 +90,7 @@ function RiskStepThree() {
             name={"investment_information"}
             label={""}
             type={"textarea"}
-            disable={disableInvestment}
+            disabled={disableInvestment}
             className={
               "w-full h-16 border-solid border-[#C1C1C1] border-2 rounded-md "
             }
@@ -103,7 +114,7 @@ function RiskStepThree() {
           control="radio"
           label=""
           name="stock_market_experience"
-          options={radioOptions}
+          options={stockMarketOptions}
           className="pt-2"
         />
 
@@ -118,6 +129,7 @@ function RiskStepThree() {
               control="select"
               name="level_of_income"
               options={levelOfIncomeOptions}
+              disabled={stockMarketExperience}
             />
           </div>
 
@@ -132,6 +144,7 @@ function RiskStepThree() {
               label=""
               name="checkBoxOptions"
               options={checkBoxOptions}
+              disabled={stockMarketExperience}
             />
           </div>
 
@@ -141,7 +154,7 @@ function RiskStepThree() {
               name={"market_investments"}
               label={""}
               type="text"
-              disable={otherOptions}
+              disabled={otherOptions}
             />
           </div>
 
@@ -154,8 +167,9 @@ function RiskStepThree() {
             control="radio"
             label=""
             name="outside_salvador_experience"
-            options={radioOptions}
+            options={outsideSalvadorOptions}
             className="pt-2"
+            disabled={stockMarketExperience}
           />
           <div className="grid md:grid-cols-3 grid-cols-1  mt-[2%] gap-4  w-full pr-[2%] pl-[1%]">
             <div className="space-y-3">
@@ -165,21 +179,21 @@ function RiskStepThree() {
                 name={"country_1"}
                 label={""}
                 type="text"
-                disable={salMarkets}
+                disabled={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"country_2"}
                 label={""}
                 type="text"
-                disable={salMarkets}
+                disabled={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"country_3"}
                 label={""}
                 type="text"
-                disable={salMarkets}
+                disabled={salMarkets}
               />
             </div>
 
@@ -191,7 +205,7 @@ function RiskStepThree() {
                   name={"experience_1"}
                   label={""}
                   type="text"
-                  disable={salMarkets}
+                  disabled={salMarkets}
                 />
               </div>
               <div className=" w-full">
@@ -200,7 +214,7 @@ function RiskStepThree() {
                   name={"experience_2"}
                   label={""}
                   type="text"
-                  disable={salMarkets}
+                  disabled={salMarkets}
                 />
               </div>
               <div className=" w-full">
@@ -209,7 +223,7 @@ function RiskStepThree() {
                   name={"experience_3"}
                   label={""}
                   type="text"
-                  disable={salMarkets}
+                  disabled={salMarkets}
                 />
               </div>
             </div>
@@ -220,21 +234,21 @@ function RiskStepThree() {
                 name={"negotiated_values_1"}
                 label={""}
                 type="text"
-                disable={salMarkets}
+                disabled={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"negotiated_values_2"}
                 label={""}
                 type="text"
-                disable={salMarkets}
+                disabled={salMarkets}
               />
               <FormikControl
                 control="input"
                 name={"negotiated_values_3"}
                 label={""}
                 type="text"
-                disable={salMarkets}
+                disabled={salMarkets}
               />
             </div>
           </div>
@@ -260,7 +274,7 @@ function RiskStepThree() {
               name={"investments_alternative"}
               label={""}
               type="text"
-              disable={alternativeDisable}
+              disabled={alternativeDisable}
             />
           </div>
 

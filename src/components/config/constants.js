@@ -125,6 +125,26 @@ export const radioOptions = [
     value: "no",
   },
 ];
+export const stockMarketOptions = [
+  {
+    key: "SI",
+    value: "yes",
+  },
+  {
+    key: "NO",
+    value: "no",
+  },
+];
+export const outsideSalvadorOptions = [
+  {
+    key: "SI",
+    value: "yes",
+  },
+  {
+    key: "NO",
+    value: "no",
+  },
+];
 export const languageOptions = [
   {
     key: "SI",

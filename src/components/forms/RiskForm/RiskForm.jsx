@@ -73,7 +73,6 @@ function RiskForm() {
         "purpose_of_investments",
         "economics_situation",
       ]);
-      alert(values);
       setActiveStep(activeStep + 1);
     } else {
       setActiveStep(activeStep + 1);
@@ -86,7 +85,7 @@ function RiskForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={currentValidationSchema}
+        validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (

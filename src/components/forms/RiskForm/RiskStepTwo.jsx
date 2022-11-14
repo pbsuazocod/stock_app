@@ -176,8 +176,6 @@ function RiskStepTwo() {
           control="number"
           name={"stock_investments_amount"}
           label={"US"}
-          // type="number"
-          decimal
         />
       </div>
       <p>

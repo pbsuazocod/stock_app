@@ -3,7 +3,7 @@ import { Field, ErrorMessage } from "formik";
 import TextError from "./TextError";
 
 function CheckBoxGroup(props) {
-  const { label, name, options, ...rest } = props;
+  const { label, name, options, disabled, ...rest } = props;
   return (
     <div>
       <label>{label}</label>
@@ -19,6 +19,7 @@ function CheckBoxGroup(props) {
                     {...field}
                     value={option.value}
                     checked={field.value.includes(option.value)}
+                    disabled={disabled}
                   />
                   <label className="pl-3" htmlFor={option.value}>
                     {option.key}

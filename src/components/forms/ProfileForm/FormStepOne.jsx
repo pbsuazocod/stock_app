@@ -42,6 +42,7 @@ function FormStepOne() {
             name={"issue_date"}
             label={"FECHA DE EMISIÓN"}
             type={"date"}
+            maxDate={new Date()}
           />
           <FormikControl
             control="select"
@@ -59,7 +60,18 @@ function FormStepOne() {
           <FormikControl
             control="mask"
             name="phone"
-            label="TELÉFONO CASA"
+            label={
+              <div className="flex gap-2">
+                <h1>TELÉFONO CASA</h1>
+                <div className="w-4">
+                  <img
+                    src={tooltip}
+                    alt=""
+                    title="Por favor colocar el codigo de área del país"
+                  />
+                </div>
+              </div>
+            }
             mask="(999) 999-9999? 99999"
           />
           <FormikControl
@@ -97,6 +109,7 @@ function FormStepOne() {
             control="date"
             name="expiration_date"
             label="FECHA DE VENCIMIENTO"
+            minDate={new Date()}
           />
           <FormikControl
             control="input"
@@ -113,7 +126,18 @@ function FormStepOne() {
           <FormikControl
             control="mask"
             name="cellphone"
-            label="TELÉFONO CELULAR"
+            label={
+              <div className="flex gap-2">
+                <h1>TELÉFONO CELULAR</h1>
+                <div className="w-4">
+                  <img
+                    src={tooltip}
+                    alt=""
+                    title="Por favor colocar el codigo de área del país"
+                  />
+                </div>
+              </div>
+            }
             mask="(999) 999-9999? 99999"
           />
         </div>

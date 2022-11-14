@@ -4,6 +4,7 @@ import tooltip from "../../images/tooltip.png";
 
 // Data
 
+import { useFormikContext } from "formik";
 import { typeOfWorkOptions } from "../../config/constants";
 import { companyOptions } from "../../config/constants";
 import { companyTimeOptions } from "../../config/constants";
@@ -11,12 +12,23 @@ import { FiUpload } from "react-icons/fi";
 
 function FormStepTwo() {
   // state
-  const [company, setCompany] = useState(false);
-  const [job, setJob] = useState(false);
-  const [jobPosition, setJobPosition] = useState(false);
-  const [timeInCompany, setTimeInCompany] = useState(false);
-  const [jobPhone, setJobPhone] = useState(false);
-  const [fullAddress, setFullAddress] = useState(false);
+
+  const { values } = useFormikContext();
+  const [disabledFields, setDisabledFields] = useState(true);
+  const [constancyDisable, setConstancyDisable] = useState(true);
+
+  React.useEffect(() => {
+    if (
+      values.job_type === "NEGOCIO PROPIO O INDEPENDIENTE" ||
+      values.job_type === "EMPLEO PRIVADO, EMPLEO PUBLICO"
+    ) {
+      setDisabledFields(false)
+      setConstancyDisable(false);
+    } else if (values.job_type === "PENSIONADO") {
+      setConstancyDisable(false);
+      setDisabledFields(true)
+    }
+  }, [values.job_type]);
 
   return (
     <>
@@ -36,6 +48,7 @@ function FormStepTwo() {
             label="NOMBRE DE LA EMPRESA"
             className="w-1/2"
             type="text"
+            disabled={disabledFields}
           />
         </div>
         <div className="md:w-1/2">
@@ -44,25 +57,25 @@ function FormStepTwo() {
             name="job_activity"
             label="NATURALEZA DE LA EMPRESA"
             options={companyOptions}
-            disabled={job}
+            disabled={disabledFields}
           />
         </div>
         <div className="md:flex gap-6 h-20 ">
-        <div>
-        <FormikControl
-            control="input"
-            name="job_position"
-            label="CARGO"
-            type="text"
-            disabled={jobPosition}
-          />
-        </div>
+          <div>
+            <FormikControl
+              control="input"
+              name="job_position"
+              label="CARGO"
+              type="text"
+              disabled={disabledFields}
+            />
+          </div>
           <FormikControl
             control="select"
             name="time_in_company"
             label="ANTIGÜEDAD"
             options={companyTimeOptions}
-            disabled={timeInCompany}
+            disabled={disabledFields}
           />
         </div>
 
@@ -72,7 +85,7 @@ function FormStepTwo() {
             name="job_phone"
             label="TELÉFONO"
             mask="(999) 999-9999"
-            disabled={jobPhone}
+            disabled={disabledFields}
           />
         </div>
 
@@ -81,7 +94,7 @@ function FormStepTwo() {
           name="full_address"
           label="DIRECCIÓN COMPLETA"
           type="text"
-          disabled={fullAddress}
+          disabled={disabledFields}
         />
         <div>
           <div className="flex gap-2">
@@ -96,7 +109,11 @@ function FormStepTwo() {
               />
             </div>
           </div>
-          <FormikControl control="upload" name="constancy" />
+          <FormikControl
+            control="upload"
+            name="constancy"
+            disabled={constancyDisable}
+          />
           <div className="w-44 h-12 mt-3 bg-[#1a3b69] rounded-lg text-white flex  justify-center items-center">
             <label className="flex gap-2" for={"proof_of_address"}>
               SUBIR ARCHIVO <FiUpload />

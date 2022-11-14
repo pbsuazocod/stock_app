@@ -57,7 +57,7 @@ function _renderStepContent(step) {
 
 function ProfileForm() {
   // Manage States
-  const [activeStep, setActiveStep] = useState(4);
+  const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
   const location = useLocation();
@@ -71,13 +71,7 @@ function ProfileForm() {
   function _handleSubmit(values, actions) {
     if (activeStep === steps.length - 2) {
       setActiveStep(activeStep + 1);
-
       submitForm(values, ["authorized_persons", "personal_reference"]);
-      // for (let property of formData.entries()) {
-      //   console.log(property[0], property[1]);
-      // }
-      // console.log(values);
-      // const userId = localStorage.getItem('userId')
     } else {
       console.log(values);
       setActiveStep(activeStep + 1);
@@ -89,7 +83,7 @@ function ProfileForm() {
     <FormWrapper currentStep={activeStep} currentPage={currentPage}>
       <Formik
         initialValues={initialValues}
-        // validationSchema={currentValidationSchema}
+        validationSchema={currentValidationSchema}
         onSubmit={_handleSubmit}
       >
         {(formik) => (

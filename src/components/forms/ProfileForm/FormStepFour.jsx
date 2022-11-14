@@ -32,8 +32,7 @@ function FormStepFour({ counter }) {
       }
     }
   }, [values.authorize_other_people]);
- 
- 
+
   function removePerson(remove) {
     setAddingAnotherPerson(true);
     remove({
@@ -87,6 +86,7 @@ function FormStepFour({ counter }) {
                               label="FECHA DE NACIMIENTO"
                               type="date"
                               disabled={disableForm}
+                              maxDate={new Date()}
                             />
                           </div>
                           <div>

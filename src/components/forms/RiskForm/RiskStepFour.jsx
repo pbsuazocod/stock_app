@@ -17,10 +17,11 @@ function RiskStepFour() {
   const [economicsDisable, setEconomicsDisable] = useState(true);
 
   React.useEffect(() => {
-    const investmentsOptions = values.purpose_of_investments.find(
-      (value) => value === "Otro (explique):"
-    );
-    setInvestmentsDisable(!investmentsOptions ? true : false);
+    if (values.purpose_of_investments === "Otro (explique):") {
+      setInvestmentsDisable(false);
+    } else {
+      setInvestmentsDisable(true);
+    }
   }, [values.purpose_of_investments]);
 
   React.useEffect(() => {
@@ -42,8 +43,8 @@ function RiskStepFour() {
       <div>
         <div className="flex items-center font-montserrat font-bold">
           <FormikControl
-            control="checkbox"
-            name="conservative"
+            control="radio"
+            name="risk"
             options={[
               {
                 key: "Conservador o adverso al riesgo (Rentista)",
@@ -65,8 +66,8 @@ function RiskStepFour() {
       <div>
         <div className="flex items-center font-montserrat font-bold">
           <FormikControl
-            control="checkbox"
-            name="moderate"
+            control="radio"
+            name="risk"
             options={[{ key: "Moderado:", value: "moderate" }]}
           />
         </div>
@@ -81,8 +82,8 @@ function RiskStepFour() {
       <div>
         <div className="flex items-center font-montserrat font-bold">
           <FormikControl
-            control="checkbox"
-            name="aggressive"
+            control="radio"
+            name="risk"
             options={[{ key: "Agresivo o especulador:", value: "aggressive" }]}
           />
         </div>
@@ -103,9 +104,10 @@ function RiskStepFour() {
 
       <div className="pl-[2%]">
         <FormikControl
-          control="checkbox"
+          control="radio"
           name="purpose_of_investments"
           options={purposeOfInvestments}
+          layout
         />
       </div>
       <div className=" w-1/2">
@@ -114,7 +116,7 @@ function RiskStepFour() {
           name={"other_explain"}
           label={""}
           type="text"
-          disable={investmentsDisable}
+          disabled={investmentsDisable}
         />
       </div>
       <p className="text-justify font-montserrat font-bold">
@@ -139,7 +141,7 @@ function RiskStepFour() {
           name={"other_action_explain"}
           label={""}
           type="text"
-          disable={economicsDisable}
+          d={economicsDisable}
         />
       </div>
     </div>

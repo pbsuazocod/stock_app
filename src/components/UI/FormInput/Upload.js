@@ -5,7 +5,7 @@ import { Field, ErrorMessage } from "formik";
 import TextError from "./TextError";
 
 function Upload(props) {
-  const { label, name, ...rest } = props;
+  const { label, name, disabled, ...rest } = props;
 
   return (
     <React.Fragment>
@@ -17,6 +17,7 @@ function Upload(props) {
               <input
                 type="file"
                 id={name}
+                disabled={disabled}
                 name={field.name}
                 value={form.values[field.name]}
                 onChange={(e) => form.setFieldValue("file", e.target.files[0])}
